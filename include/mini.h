@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 28 09:26:37 2014 ugo belfiore
-** Last update Tue Mar 17 09:28:21 2015 ugo belfiore
+** Last update Tue Mar 17 15:28:31 2015 ugo belfiore
 */
 
 #ifndef MINI_H_
@@ -100,9 +100,10 @@ typedef struct	s_pic
 
 typedef struct	s_lum
 {
-  double	*x_lum;
-  double	*y_lum;
-  double	*z_lum;
+  double	x_lum[10];
+  double	y_lum[10];
+  double	z_lum[10];
+  int		nb_lum;
   double	px;
   double	py;
   double	pz;
@@ -112,6 +113,7 @@ typedef struct	s_lum
   double	sx;
   double	sy;
   double	sz;
+  int		debug;
 }		t_lum;
 
 /*
@@ -148,11 +150,12 @@ typedef struct	s_plan
 
 typedef struct	s_sphere
 {
-  int		*x_sphere;
-  int		*y_sphere;
-  int		*z_sphere;
-  int		*r_sh;
-  int		*color_sphere;
+  int		x_sphere[10];
+  int		y_sphere[10];
+  int		z_sphere[10];
+  int		r_sh[10];
+  int		color_sphere[10];
+  int		debug;
 }		t_sphere;
 
 /*
@@ -161,11 +164,12 @@ typedef struct	s_sphere
 
 typedef struct	s_cyl
 {
-  int		*x_cyl;
-  int		*y_cyl;
-  int		*z_cyl;
-  int		*r_cyl;
-  int		*color_cyl;
+  int		x_cyl[10];
+  int		y_cyl[10];
+  int		z_cyl[10];
+  int		r_cyl[10];
+  int		color_cyl[10];
+  int		debug;
 }		t_cyl;
 
 /*
@@ -174,11 +178,12 @@ typedef struct	s_cyl
 
 typedef struct	s_cone
 {
-  int		*x_cone;
-  int		*y_cone;
-  int		*z_cone;
-  int		*r_cone;
-  int		*color_cone;
+  int		x_cone[10];
+  int		y_cone[10];
+  int		z_cone[10];
+  int		r_cone[10];
+  int		color_cone[10];
+  int		debug;
 }		t_cone;
 
 /*
