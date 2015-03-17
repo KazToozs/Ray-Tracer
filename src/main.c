@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Fri Dec  5 17:23:50 2014 ugo belfiore
-** Last update Tue Mar 17 15:31:10 2015 ugo belfiore
+** Last update Tue Mar 17 17:22:30 2015 ugo belfiore
 */
 
 #include "../include/my.h"
@@ -33,6 +33,10 @@ int		main(int ac, char **av)
 	my_error(&d, "ERROR: no argument & file 'scene1.conf' corrupted.", -1);
     }
   d.o.lum.nb_lum = 0;  // init nombre de lumiere
+  d.o.pl.nb_plan = 0;
+  d.o.sph.nb_sph = 0;
+  d.o.cy.nb_cyl = 0;
+  d.o.co.nb_cone = 0;
   d.o.lum.debug = 0;
   d.o.sph.debug = 0;
   d.o.cy.debug = 0;

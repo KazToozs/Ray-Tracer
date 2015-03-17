@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Fri Oct 24 19:29:19 2014 ugo belfiore
-** Last update Tue Mar 17 15:32:10 2015 ugo belfiore
+** Last update Tue Mar 17 17:24:17 2015 ugo belfiore
 */
 
 #include "../include/my.h"
@@ -33,7 +33,7 @@ int	match(char *s1, char *s2)
 
 void	test_line(t_data *d, int line)
 {
-  //my_printf("%s\n", d->fi.buff);
+  char *test;
   d->fi.tab = my_str_to_wordtab_rt(d->fi.buff);
   if (line == 0)
     {
@@ -55,7 +55,6 @@ void	test_line(t_data *d, int line)
     }
   if (line == 2)
     {
-      // si on a init aucune lumière et qu'il n'y a aps de ligne LIGHT_&
       if (d->o.lum.nb_lum == 0 && (!match(d->fi.tab[0], "LIGHT_&:")))
 	my_error(d, "ERROR: missing LIGHT_&: in file.", -1);
       d->o.lum.x_lum[d->o.lum.nb_lum] = (double)my_getnbr(d->fi.tab[1]);
@@ -80,17 +79,122 @@ void	test_line(t_data *d, int line)
 	      d->o.lum.debug = 1;
 	    }
 	  else
-	    my_error(d, "ERROR: missing PLAN: in file.", -1);
+	    line++;// pas de plan
 	}
       else
 	{
 	  d->o.pl.high = my_getnbr(d->fi.tab[1]);
-	  char *test;
 	  d->o.pl.color_plan = strtol(d->fi.tab[2], &test, 16);
+	  d->o.pl.nb_plan++;
 	  printf("plan: %d %x\n", d->o.pl.high, d->o.pl.color_plan);
 	}
     }
-  
+  if (line == 4)
+    {
+      if (d->o.sph.nb_sph == 0 && (!match(d->fi.tab[0], "SPHERE_&:")))
+	line++;
+      else
+	{
+	  d->o.sph.x_sphere[d->o.sph.nb_sph] =
+	    d->o.view.x_eyes + my_getnbr(d->fi.tab[1]);
+	  d->o.sph.y_sphere[d->o.sph.nb_sph] =
+	    d->o.view.y_eyes + my_getnbr(d->fi.tab[2]);
+	  d->o.sph.z_sphere[d->o.sph.nb_sph] =
+	    d->o.view.z_eyes + my_getnbr(d->fi.tab[3]);
+	  d->o.sph.r_sh[d->o.sph.nb_sph] = my_getnbr(d->fi.tab[4]);
+	  d->o.sph.color_sphere[d->o.sph.nb_sph] =
+	    strtol(d->fi.tab[5], &test, 16);
+	  d->o.sph.rotx[d->o.sph.nb_sph] = (double)my_getnbr(d->fi.tab[6]);
+	  d->o.sph.roty[d->o.sph.nb_sph] = (double)my_getnbr(d->fi.tab[7]);
+	  d->o.sph.rotz[d->o.sph.nb_sph] = (double)my_getnbr(d->fi.tab[8]);
+	  printf("sph(%d):%d %d %d %d %x %f %f %f\n", d->o.sph.nb_sph,
+		 d->o.sph.x_sphere[d->o.sph.nb_sph],
+		 d->o.sph.y_sphere[d->o.sph.nb_sph],
+		 d->o.sph.z_sphere[d->o.sph.nb_sph],
+		 d->o.sph.r_sh[d->o.sph.nb_sph],
+		 d->o.sph.color_sphere[d->o.sph.nb_sph],
+		 d->o.sph.rotx[d->o.sph.nb_sph],
+		 d->o.sph.roty[d->o.sph.nb_sph],
+		 d->o.sph.rotz[d->o.sph.nb_sph]);
+	  d->o.sph.nb_sph++;
+	}
+    }
+  if (line == 5)
+    {
+      if (!match(d->fi.tab[0], "CYLINDER_&:"))
+	{
+	  if (match(d->fi.tab[0], "SPHERE_&:"))
+	    {
+	      if (d->o.sph.nb_sph >= 8)
+                my_error(d, "ERROR: too many sphere !", -1);
+	      d->o.sph.x_sphere[d->o.sph.nb_sph] =
+		d->o.view.x_eyes + my_getnbr(d->fi.tab[1]);
+	      d->o.sph.y_sphere[d->o.sph.nb_sph] =
+		d->o.view.y_eyes + my_getnbr(d->fi.tab[2]);
+	      d->o.sph.z_sphere[d->o.sph.nb_sph] =
+		d->o.view.z_eyes + my_getnbr(d->fi.tab[3]);
+	      d->o.sph.r_sh[d->o.sph.nb_sph] = my_getnbr(d->fi.tab[4]);
+	      d->o.sph.color_sphere[d->o.sph.nb_sph] =
+		strtol(d->fi.tab[5], &test, 16);
+	      d->o.sph.rotx[d->o.sph.nb_sph] = (double)my_getnbr(d->fi.tab[6]);
+	      d->o.sph.roty[d->o.sph.nb_sph] = (double)my_getnbr(d->fi.tab[7]);
+	      d->o.sph.rotz[d->o.sph.nb_sph] = (double)my_getnbr(d->fi.tab[8]);
+	      printf("sph(%d):%d %d %d %d %x %f %f %f\n", d->o.sph.nb_sph,
+		     d->o.sph.x_sphere[d->o.sph.nb_sph],
+		     d->o.sph.y_sphere[d->o.sph.nb_sph],
+		     d->o.sph.z_sphere[d->o.sph.nb_sph],
+		     d->o.sph.r_sh[d->o.sph.nb_sph],
+		     d->o.sph.color_sphere[d->o.sph.nb_sph],
+		     d->o.sph.rotx[d->o.sph.nb_sph],
+		     d->o.sph.roty[d->o.sph.nb_sph],
+		     d->o.sph.rotz[d->o.sph.nb_sph]);
+	      d->o.sph.nb_sph++;
+	      d->o.sph.debug = 1;
+	    }
+	  else
+	    line++;
+	}
+      else
+	{
+	  //premier cylindre ?
+	  if (d->o.cy.nb_cyl == 0 && (!match(d->fi.tab[0], "CYLINDER_&:")))
+	    line++; // pas de cylindre, ouf passons au cone !
+	  else
+	    {
+	      d->o.cy.x_cyl[d->o.cy.nb_cyl] =
+		d->o.view.x_eyes + my_getnbr(d->fi.tab[1]);
+	      d->o.cy.y_cyl[d->o.cy.nb_cyl] =
+		d->o.view.y_eyes + my_getnbr(d->fi.tab[2]);
+	      d->o.cy.z_cyl[d->o.cy.nb_cyl] =
+		d->o.view.z_eyes + my_getnbr(d->fi.tab[3]);
+	      d->o.cy.r_cyl[d->o.cy.nb_cyl] = my_getnbr(d->fi.tab[4]);
+	      d->o.cy.color_cyl[d->o.cy.nb_cyl] =
+		strtol(d->fi.tab[5], &test, 16);
+	      d->o.cy.rotx[d->o.cy.nb_cyl] = (double)my_getnbr(d->fi.tab[6]);
+	      d->o.cy.roty[d->o.cy.nb_cyl] = (double)my_getnbr(d->fi.tab[7]);
+	      d->o.cy.rotz[d->o.cy.nb_cyl] = (double)my_getnbr(d->fi.tab[8]);
+	      d->o.cy.high[d->o.cy.nb_cyl] = my_getnbr(d->fi.tab[9]);
+	      printf("cyl(%d):%d %d %d %d %x %f %f %f %d\n", d->o.cy.nb_cyl,
+		     d->o.cy.x_cyl[d->o.cy.nb_cyl],
+		     d->o.cy.y_cyl[d->o.cy.nb_cyl],
+		     d->o.cy.z_cyl[d->o.cy.nb_cyl],
+		     d->o.cy.r_cyl[d->o.cy.nb_cyl],
+		     d->o.cy.color_cyl[d->o.cy.nb_cyl],
+		     d->o.cy.rotx[d->o.cy.nb_cyl],
+		     d->o.cy.roty[d->o.cy.nb_cyl],
+		     d->o.cy.rotz[d->o.cy.nb_cyl],
+		     d->o.cy.high[d->o.cy.nb_cyl]);
+	      d->o.cy.nb_cyl++;
+	    }
+	}
+    }
+  if (line == 6)
+    {
+      // cylindre en boucle, else et apres premeir cone.
+    }
+  /* if (d->o.sph.nb_sph >= 8) */
+  /*   my_error(d, "ERROR: too many sphere !", -1); */
+  /* d->o.sph.debug = 1; */
 }
 
 void	my_fucking_parsing_rt(t_data *d)

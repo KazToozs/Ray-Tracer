@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 28 09:26:37 2014 ugo belfiore
-** Last update Tue Mar 17 15:28:31 2015 ugo belfiore
+** Last update Tue Mar 17 17:22:20 2015 ugo belfiore
 */
 
 #ifndef MINI_H_
@@ -140,6 +140,7 @@ typedef struct	s_view
 typedef struct	s_plan
 {
   int		high;
+  int		nb_plan;
   double	flag;
   int		color_plan;
 }		t_plan;
@@ -155,7 +156,11 @@ typedef struct	s_sphere
   int		z_sphere[10];
   int		r_sh[10];
   int		color_sphere[10];
+  double	rotx[10];
+  double	roty[10];
+  double	rotz[10];
   int		debug;
+  int		nb_sph;
 }		t_sphere;
 
 /*
@@ -169,7 +174,12 @@ typedef struct	s_cyl
   int		z_cyl[10];
   int		r_cyl[10];
   int		color_cyl[10];
+  double	rotx[10];
+  double	roty[10];
+  double	rotz[10];
+  int		high[10];
   int		debug;
+  int		nb_cyl;
 }		t_cyl;
 
 /*
@@ -183,7 +193,12 @@ typedef struct	s_cone
   int		z_cone[10];
   int		r_cone[10];
   int		color_cone[10];
+  double	rotx[10];
+  double	roty[10];
+  double	rotz[10];
+  int		high[10];
   int		debug;
+  int		nb_cone;
 }		t_cone;
 
 /*
