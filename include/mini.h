@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 28 09:26:37 2014 ugo belfiore
-** Last update Mon Mar 16 17:02:37 2015 ugo belfiore
+** Last update Tue Mar 17 09:28:21 2015 ugo belfiore
 */
 
 #ifndef MINI_H_
@@ -216,8 +216,8 @@ typedef struct	s_obj
 
 typedef struct  s_file
 {
-  char          buff[8192000];
-  /* int           word; */
+  char          *buff;
+  char		**tab;
 }               t_file;
 
 /*
@@ -254,7 +254,9 @@ void	aff_win(t_data *d, char *name);
 void	aff_pix_img(t_data *d, int x, int y, char *img);
 void	sound_init(t_data *d);
 void	my_error(t_data *d, char *error, int i);
-char    **my_str_to_wordtab_rt(char *str);
+char	*get_next_line(const int fd);
+char	**my_str_to_wordtab_rt(char *str);
+char	*my_strdup(char *str);
 
 /*
 ** fonction evenement minilibix
@@ -271,11 +273,16 @@ int	manage_keyRelease(int keycode, void *param);
 int	manage_key(int keycode, void *param);
 
 /*
-** fonction rt v1
-** algo_rt: début de la création de l'image
+** fonction rt parsing
 */
 
-void	my_fucking_parsing_rt(t_data *d, char *av);
+void	my_fucking_parsing_rt(t_data *d);
+void	debug(t_data *d);
+
+/*
+** fonction rt affichage
+*/
+
 void	parsing(t_data *d);
 void	init_sphere(t_data *d);
 void	init_cyl(t_data *d);
