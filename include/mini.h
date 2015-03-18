@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 28 09:26:37 2014 ugo belfiore
-** Last update Tue Mar 17 17:22:20 2015 ugo belfiore
+** Last update Wed Mar 18 16:28:36 2015 ugo belfiore
 */
 
 #ifndef MINI_H_
@@ -103,7 +103,7 @@ typedef struct	s_lum
   double	x_lum[10];
   double	y_lum[10];
   double	z_lum[10];
-  int		nb_lum;
+  int		check;
   double	px;
   double	py;
   double	pz;
@@ -131,6 +131,8 @@ typedef struct	s_view
   double	rotangx;
   double	rotangy;
   double	rotangz;
+  int		check;
+  int		check2;
 }		t_view;
 
 /*
@@ -139,10 +141,10 @@ typedef struct	s_view
 
 typedef struct	s_plan
 {
-  int		high;
-  int		nb_plan;
+  int		high[10];
+  int		check;
   double	flag;
-  int		color_plan;
+  int		color_plan[10];
 }		t_plan;
 
 /*
@@ -160,7 +162,7 @@ typedef struct	s_sphere
   double	roty[10];
   double	rotz[10];
   int		debug;
-  int		nb_sph;
+  int		check;
 }		t_sphere;
 
 /*
@@ -179,7 +181,7 @@ typedef struct	s_cyl
   double	rotz[10];
   int		high[10];
   int		debug;
-  int		nb_cyl;
+  int		check;
 }		t_cyl;
 
 /*
@@ -198,7 +200,7 @@ typedef struct	s_cone
   double	rotz[10];
   int		high[10];
   int		debug;
-  int		nb_cone;
+  int		check;
 }		t_cone;
 
 /*
@@ -238,6 +240,7 @@ typedef struct  s_file
 {
   char          *buff;
   char		**tab;
+  int		fd;
 }               t_file;
 
 /*
@@ -257,7 +260,7 @@ typedef struct	s_data
   int		bpp;
   int		sizeline;
   int		end;
-  int		f[18];
+  int		f[256];
   int		timer;
   double	k;
   t_file	fi;
@@ -297,13 +300,11 @@ int	manage_key(int keycode, void *param);
 */
 
 void	my_fucking_parsing_rt(t_data *d);
-void	debug(t_data *d);
 
 /*
 ** fonction rt affichage
 */
 
-void	parsing(t_data *d);
 void	init_sphere(t_data *d);
 void	init_cyl(t_data *d);
 void	init_cone(t_data *d);
@@ -311,11 +312,11 @@ void	algo_rt(t_data *d, int flew, int flew2);
 void	sphere(t_data *d, int i);
 void	cyl(t_data *d, int i);
 void	cone(t_data *d, int i);
-void	plan(t_data *d);
+void	plan(t_data *d, int i);
 void	rotate_x(t_data *d, double angle);
 void	rotate_y(t_data *d, double angle);
 void	rotate_z(t_data *d, double angle);
-void	lum(t_data *d);
+void	lum(t_data *d, int i);
 void	my_change_color(t_data *d);
 
 #endif

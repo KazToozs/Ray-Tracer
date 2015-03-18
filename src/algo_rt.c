@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Sun Feb  8 16:18:36 2015 ugo belfiore
-** Last update Mon Mar 16 13:27:45 2015 ugo belfiore
+** Last update Wed Mar 18 16:21:00 2015 ugo belfiore
 */
 
 #include "../lib/minilibx/mlx.h"
@@ -21,13 +21,14 @@ static void	calc(t_data *d)
 {
   int		i;
 
+  d->k = 100000; // distance maximal (sinon les élément infini comme le cone
+		 // ou les plan vont boucler infini.
+  d->colo = COLOR_BLACK;	// couleur initiale black.
   i = -1;
-  d->k = 100000;
-  d->colo = COLOR_BLACK;
-  while (++i < 3)
+  while (++i < d->o.sph.check)
     sphere(d, i);
   i = -1;
-  while (++i < 3)
+  while (++i < d->o.cy.check)
     {
       if (i == 2)
 	rotate_x(d, 40);
@@ -36,10 +37,14 @@ static void	calc(t_data *d)
 	rotate_x(d, -40);
     }
   i = -1;
-  while (++i < 3)
+  while (++i < d->o.co.check)
     cone(d, i);
-  plan(d);
-  lum(d);
+  i = -1;
+  while (++i < d->o.pl.check)
+    plan(d, i);
+  i = -1;
+  while (++i < d->o.lum.check)
+    lum(d, i);
 }
 
 /*

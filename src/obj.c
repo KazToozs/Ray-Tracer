@@ -5,29 +5,29 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Thu Mar 12 17:26:03 2015 ugo belfiore
-** Last update Thu Mar 12 17:42:26 2015 ugo belfiore
+** Last update Wed Mar 18 16:34:47 2015 ugo belfiore
 */
 
 #include "../lib/minilibx/mlx.h"
 #include "../include/mini.h"
 #include "../include/my.h"
 
-void		plan(t_data *d)
+void		plan(t_data *d, int i)
 {
   double	tmp_z;
 
-  tmp_z = d->o.view.vz + d->o.pl.high;
+  tmp_z = d->o.view.vz + d->o.pl.high[i];
   if (abs(tmp_z) > 0.00001)
     d->o.pl.flag = -d->o.view.z_eyes / tmp_z;
   else if (d->o.pl.flag < d->k && d->o.pl.flag > 0.00001)
     {
       d->k = d->o.pl.flag;
-      d->colo = d->o.pl.color_plan;
+      d->colo = d->o.pl.color_plan[i];
     }
   if (d->o.pl.flag < d->k && d->o.pl.flag > 0.00001)
     {
       d->k = d->o.pl.flag;
-      d->colo = d->o.pl.color_plan;
+      d->colo = COLOR_BLUE;
     }
 }
 
@@ -47,7 +47,7 @@ void		cyl(t_data *d, int i)
 	  (d->o.cal.x1 < d->o.cal.x2 || d->o.cal.x2 < 0.000001))
 	{
 	  d->k = d->o.cal.x1;
-	  d->colo = d->o.cy.color_cyl[i];
+	  d->colo = COLOR_GREEN;
 	}
     }
 }
@@ -76,7 +76,7 @@ void		cone(t_data *d, int i)
           (d->o.cal.x1 < d->o.cal.x2 || d->o.cal.x2 < 0.000001))
         {
           d->k = d->o.cal.x1;
-          d->colo = d->o.co.color_cone[i];
+          d->colo = COLOR_PURPLE;
         }
     }
 }
@@ -100,7 +100,7 @@ void		sphere(t_data *d, int i)
 	  (d->o.cal.x1 < d->o.cal.x2 || d->o.cal.x2 < 0.000001))
 	{
 	  d->k = d->o.cal.x1;
-	  d->colo = d->o.sph.color_sphere[i];
+	  d->colo = COLOR_RED;
 	}
     }
 }

@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Fri Mar  6 12:51:45 2015 ugo belfiore
-** Last update Thu Mar 12 17:45:44 2015 ugo belfiore
+** Last update Wed Mar 18 16:27:35 2015 ugo belfiore
 */
 
 #include "../lib/minilibx/mlx.h"
@@ -39,14 +39,14 @@ void	my_change_color(t_data *d)
 ** fonction de la luminosité
 */
 
-void	lum(t_data *d)
+void	lum(t_data *d, int i)
 {
   d->o.lum.px = d->o.view.x_eyes + (d->k * d->o.view.vx);
   d->o.lum.py = d->o.view.y_eyes + (d->k * d->o.view.vy);
   d->o.lum.pz = d->o.view.z_eyes + (d->k * d->o.view.vz);
-  d->o.lum.lx = d->o.lum.px - d->o.lum.x_lum;
-  d->o.lum.ly = d->o.lum.py - d->o.lum.y_lum;
-  d->o.lum.lz = d->o.lum.pz - d->o.lum.z_lum;
+  d->o.lum.lx = d->o.lum.px - d->o.lum.x_lum[i];
+  d->o.lum.ly = d->o.lum.py - d->o.lum.y_lum[i];
+  d->o.lum.lz = d->o.lum.pz - d->o.lum.z_lum[i];
   d->o.cal.sca = (d->o.lum.px * d->o.lum.lx)
     + (d->o.lum.py * d->o.lum.ly) + (d->o.lum.pz * d->o.lum.lz);
   d->o.cal.norm = sqrt(pow(d->o.lum.px, 2) + pow(d->o.lum.py, 2)

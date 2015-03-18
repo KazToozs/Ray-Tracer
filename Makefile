@@ -5,7 +5,7 @@
 ## Login   <belfio_u@epitech.net>
 ## 
 ## Started on  Mon Oct 27 15:13:44 2014 ugo belfiore
-## Last update Tue Mar 17 08:36:14 2015 ugo belfiore
+## Last update Wed Mar 18 15:39:33 2015 ugo belfiore
 ##
 
 SRC     =       ./src/main.c			\
@@ -14,9 +14,9 @@ SRC     =       ./src/main.c			\
 		./src/get_next_line.c		\
 		./src/my_str_to_wordtab_rt.c	\
 		./src/my_strdup.c		\
-#		./src/parsing.c			\
 		./src/evenement.c		\
 		./src/evenement_keyframe.c	\
+		./src/parsing_change.c		\
 		./src/aff_pix_img.c		\
 		./src/algo_rt.c			\
 		./src/obj.c			\

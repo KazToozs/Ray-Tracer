@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon Feb  2 18:47:55 2015 ugo belfiore
-** Last update Mon Mar 16 12:02:47 2015 ugo belfiore
+** Last update Wed Mar 18 16:40:17 2015 ugo belfiore
 */
 
 #include "../lib/minilibx/mlx.h"
@@ -38,8 +38,7 @@ int		manage_key(int keycode, void *param)
   if (keycode == KEY_ESC)		// echap
     my_error(d, "exit.", 0);
   else if (keycode == KEY_REFRESH)	// refresh
-    parsing(d);			//paring de tout les objet
-  // changer avec le parsing du début ?
+    my_fucking_parsing_rt(d);
   else
     modify_key(d, keycode);
   return (0);
@@ -51,26 +50,20 @@ int		manage_key(int keycode, void *param)
 
 void	modify_key(t_data *d, int keycode)
 {
-  (keycode == KEY_UP) ? d->o.view.x_eyes += 50 : 1;
-  (keycode == KEY_DOWN) ? d->o.view.x_eyes -= 50 : 1;
-  (keycode == KEY_RIGHT) ? d->o.view.y_eyes -= 10 : 1;
-  (keycode == KEY_LEFT) ? d->o.view.y_eyes += 10 : 1;
-  (keycode == KEY_MORE) ? d->o.view.z_eyes -= 10 : 1;
-  (keycode == KEY_LESS) ? d->o.view.z_eyes += 10 : 1;
+  /* (keycode == KEY_UP) ? d->o.view.x_eyes += 50 : 1; */
+  /* (keycode == KEY_DOWN) ? d->o.view.x_eyes -= 50 : 1; */
+  /* (keycode == KEY_RIGHT) ? d->o.view.y_eyes -= 10 : 1; */
+  /* (keycode == KEY_LEFT) ? d->o.view.y_eyes += 10 : 1; */
+  /* (keycode == KEY_MORE) ? d->o.view.z_eyes -= 10 : 1; */
+  /* (keycode == KEY_LESS) ? d->o.view.z_eyes += 10 : 1; */
   (keycode == KEY_A) ? d->o.view.rotangx += 5 : 1;
   (keycode == KEY_E) ? d->o.view.rotangx -= 5 : 1;
   (keycode == KEY_S) ? d->o.view.rotangy += 5 : 1;
   (keycode == KEY_Z) ? d->o.view.rotangy -= 5 : 1;
   (keycode == KEY_Q) ? d->o.view.rotangz += 5 : 1;
   (keycode == KEY_D) ? d->o.view.rotangz -= 5 : 1;
-  (keycode == KEY_I) ? d->o.lum.x_lum -= 50 : 1;
-  (keycode == KEY_K) ? d->o.lum.x_lum += 50 : 1;
-  (keycode == KEY_L) ? d->o.lum.y_lum -= 50 : 1;
-  (keycode == KEY_J) ? d->o.lum.y_lum += 50 : 1;
-  (keycode == KEY_U) ? d->o.lum.z_lum -= 50 : 1;
-  (keycode == KEY_O) ? d->o.lum.z_lum += 50 : 1;
-  init_sphere(d);
-  init_cyl(d);
-  init_cone(d);
+  /* init_sphere(d); */
+  /* init_cyl(d); */
+  /* init_cone(d); */
   algo_rt(d, 5, 0);
 }
