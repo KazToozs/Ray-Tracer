@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Fri Oct 24 19:29:19 2014 ugo belfiore
-** Last update Wed Mar 18 16:31:37 2015 ugo belfiore
+** Last update Mon Apr 20 07:00:51 2015 ugo belfiore
 */
 
 #include "../include/my.h"
@@ -19,7 +19,7 @@ static void    debug(t_data *d)
     my_error(d, "ERROR: can't find CAMERA_POS.", -1);
   if (d->o.view.check2 == 0)
     my_error(d, "ERROR: can't find CAMERA_ROTATE.", -1);
-  (d->o.lum.check == 0) ? my_printf("INFO: no LIGHT detected.\n")
+  (d->o.lum.check == 0) ? my_error(d, "ERROR: no LIGHT detected.\n", -1)
     : my_printf("INFO: there are %d LIGHT.\n", d->o.lum.check);
   (d->o.pl.check == 0) ? my_printf("INFO: no PLAN detected.\n")
     : my_printf("INFO: there are %d PLAN.\n", d->o.pl.check);

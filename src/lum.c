@@ -5,12 +5,30 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Fri Mar  6 12:51:45 2015 ugo belfiore
-** Last update Wed Mar 18 16:27:35 2015 ugo belfiore
+** Last update Wed Mar 18 17:44:59 2015 ugo belfiore
 */
 
 #include "../lib/minilibx/mlx.h"
 #include "../include/mini.h"
 #include "../include/my.h"
+
+/* int             shadow(t_st *s) */
+/* { */
+  /*
+  ** refaire les intersections des objets à partir du point d'intersection en
+  ** utilisant les vecteurs intersection->lumière:
+  ** on check si de notre point d'intersection on voit la lumière.
+  ** Si non, c'est une ombre.
+  */
+  /* inter_cyl(&s->x.c, &s->cy); */
+  /* inter_cone(&s->x.c, &s->co); */
+  /* inter_sphere(&s->x.c, &s->s); */
+  /* inter_plan(s, &s->x.c); */
+  /* if (shadow_k(s) == -1) */
+  /*   return (-1); */
+/*   return (0); */
+/* } */
+
 
 /*
 ** décalage de bit avec un systeme d'union pour multiplier la couleur
@@ -47,6 +65,8 @@ void	lum(t_data *d, int i)
   d->o.lum.lx = d->o.lum.px - d->o.lum.x_lum[i];
   d->o.lum.ly = d->o.lum.py - d->o.lum.y_lum[i];
   d->o.lum.lz = d->o.lum.pz - d->o.lum.z_lum[i];
+  /* if (shadow(s) == -1) */
+  /*   return; */
   d->o.cal.sca = (d->o.lum.px * d->o.lum.lx)
     + (d->o.lum.py * d->o.lum.ly) + (d->o.lum.pz * d->o.lum.lz);
   d->o.cal.norm = sqrt(pow(d->o.lum.px, 2) + pow(d->o.lum.py, 2)

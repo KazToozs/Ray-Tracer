@@ -5,12 +5,13 @@
 ## Login   <belfio_u@epitech.net>
 ## 
 ## Started on  Mon Oct 27 15:13:44 2014 ugo belfiore
-## Last update Wed Mar 18 15:39:33 2015 ugo belfiore
+## Last update Mon Apr 20 06:52:08 2015 ugo belfiore
 ##
 
 SRC     =       ./src/main.c			\
 		./src/my_fucking_parsing_rt.c	\
 		./src/sound.c			\
+		./src/my_error.c		\
 		./src/get_next_line.c		\
 		./src/my_str_to_wordtab_rt.c	\
 		./src/my_strdup.c		\
