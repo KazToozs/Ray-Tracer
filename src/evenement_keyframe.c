@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Thu Mar 12 13:45:12 2015 ugo belfiore
-** Last update Mon Mar 16 12:02:22 2015 ugo belfiore
+** Last update Mon Apr 20 07:06:46 2015 ugo belfiore
 */
 
 #include "../lib/minilibx/mlx.h"
@@ -20,6 +20,7 @@ int		manage_frame(void *param)
 {
   t_data	*d;
 
+  usleep(1000);
   d = (t_data *)param;
   manage_frame_test_key(d);
   d->timer++;

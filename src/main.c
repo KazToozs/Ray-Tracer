@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Fri Dec  5 17:23:50 2014 ugo belfiore
-** Last update Mon Apr 20 07:02:52 2015 ugo belfiore
+** Last update Mon Apr 20 07:28:37 2015 ugo belfiore
 */
 
 #include "../include/my.h"
@@ -16,7 +16,7 @@
 ** initialise quelque variable
 */
 
-static void    init_fucking_rt(t_data *d)
+static void	init_fucking_rt(t_data *d)
 {
   int   i;
 

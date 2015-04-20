@@ -5,7 +5,7 @@
 ## Login   <belfio_u@epitech.net>
 ## 
 ## Started on  Mon Oct 27 15:13:44 2014 ugo belfiore
-## Last update Mon Apr 20 06:52:08 2015 ugo belfiore
+## Last update Mon Apr 20 08:13:38 2015 ugo belfiore
 ##
 
 SRC     =       ./src/main.c			\
@@ -35,7 +35,7 @@ LIBMINI =	./lib/minilibx/libmlx.a
 
 CC      =       clang
 
-CFLAGS  +=      -W -Wall -Wextra
+CFLAGS  +=      -W -Wall -Wextra -g3
 
 LDFLAGS	=	-L/usr/lib64/X11 -lXext -lX11 -lm -Llib/my/ -lmy -Llib/minilibx/  -lmlx ./lib/libson.so -lpthread
 
