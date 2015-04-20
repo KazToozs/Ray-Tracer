@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 28 09:26:37 2014 ugo belfiore
-** Last update Mon Apr 20 08:23:25 2015 ugo belfiore
+** Last update Mon Apr 20 09:51:41 2015 ugo belfiore
 */
 
 #ifndef MINI_H_
@@ -267,6 +267,7 @@ typedef struct	s_data
   t_sound	sd;
   t_pic		p;
   t_obj		o;
+  pthread_t     threads[5];
 }               t_data;
 
 /*
@@ -305,6 +306,11 @@ void	my_fucking_parsing_rt(t_data *d);
 ** fonction rt affichage
 */
 
+void	part_one(t_data *d);
+void	part_two(t_data *d);
+void	part_tree(t_data *d);
+void	part_four(t_data *d);
+void	part_five(t_data *d);
 void	init_sphere(t_data *d);
 void	init_cyl(t_data *d);
 void	init_cone(t_data *d);

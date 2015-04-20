@@ -1,0 +1,34 @@
+/*
+** thread_func.c for  in /home/belfio_u/rendu/MUL/MUL_2014_rtracer/src
+** 
+** Made by ugo belfiore
+** Login   <belfio_u@epitech.net>
+** 
+** Started on  Mon Apr 20 09:48:32 2015 ugo belfiore
+** Last update Mon Apr 20 09:49:15 2015 ugo belfiore
+*/
+
+#include "../lib/minilibx/mlx.h"
+#include "../include/mini.h"
+#include "../include/my.h"
+
+void	part_one(t_data *d)
+{
+
+}
+
+void	part_two(t_data *d)
+{
+
+}
+
+void	part_tree(t_data *d)
+{
+
+}
+
+void	part_four(t_data *d)
+{
+
+}
+

@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Thu Mar 12 13:45:12 2015 ugo belfiore
-** Last update Mon Apr 20 07:06:46 2015 ugo belfiore
+** Last update Mon Apr 20 09:58:18 2015 ugo belfiore
 */
 
 #include "../lib/minilibx/mlx.h"
@@ -20,7 +20,6 @@ int		manage_frame(void *param)
 {
   t_data	*d;
 
-  usleep(1000);
   d = (t_data *)param;
   manage_frame_test_key(d);
   d->timer++;
@@ -38,33 +37,17 @@ int		manage_frame(void *param)
 
 void	fast_way_only(t_data *d)
 {
-  (d->timer == 100) ? algo_rt(d, 4, 0) : 1;
-  (d->timer == 200) ? algo_rt(d, 3, 0) : 1;
-  (d->timer == 300) ? algo_rt(d, 2, 0) : 1;
-  (d->timer == 400) ? algo_rt(d, 1, 0) : 1;
-  (d->timer == 500) ? algo_rt(d, 0, 0) : 1;
-  (d->timer == 600) ? algo_rt(d, 4, 1) : 1;
-  (d->timer == 700) ? algo_rt(d, 3, 1) : 1;
-  (d->timer == 800) ? algo_rt(d, 2, 1) : 1;
-  (d->timer == 900) ? algo_rt(d, 1, 1) : 1;
-  (d->timer == 1000) ? algo_rt(d, 0, 1) : 1;
-  (d->timer == 1100) ? algo_rt(d, 4, 2) : 1;
-  (d->timer == 1200) ? algo_rt(d, 3, 2) : 1;
-  (d->timer == 1300) ? algo_rt(d, 2, 2) : 1;
-  (d->timer == 1400) ? algo_rt(d, 1, 2) : 1;
-  (d->timer == 1500) ? algo_rt(d, 0, 2) : 1;
-  (d->timer == 1600) ? algo_rt(d, 4, 3) : 1;
-  (d->timer == 1700) ? algo_rt(d, 3, 3) : 1;
-  (d->timer == 1800) ? algo_rt(d, 2, 3) : 1;
-  (d->timer == 1900) ? algo_rt(d, 1, 3) : 1;
-  (d->timer == 2000) ? algo_rt(d, 0, 3) : 1;
-  (d->timer == 2100) ? algo_rt(d, 4, 4) : 1;
-  (d->timer == 2200) ? algo_rt(d, 3, 4) : 1;
-  (d->timer == 2300) ? algo_rt(d, 2, 4) : 1;
-  (d->timer == 2400) ? algo_rt(d, 1, 4) : 1;
-  (d->timer == 2500) ? algo_rt(d, 0, 4) : 1;
+  pthread_create(&d->threads[0], NULL, (void *)&part_one, d);
+  pthread_create(&d->threads[1], NULL, (void *)&part_two, d);
+  pthread_create(&d->threads[2], NULL, (void *)&part_tree, d);
+  pthread_create(&d->threads[3], NULL, (void *)&part_four, d);
+  pthread_create(&d->threads[4], NULL, (void *)&part_five, d);
+  pthread_join(d->threads[0], NULL);
+  pthread_join(d->threads[1], NULL);
+  pthread_join(d->threads[2], NULL);
+  pthread_join(d->threads[3], NULL);
+  pthread_join(d->threads[4], NULL);
 }
-
 /*
 ** fonction de test dans le manage_frame SI une touche a été, ou est en train
 ** d'être appuyé.
