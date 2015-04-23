@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Thu Mar 12 13:45:12 2015 ugo belfiore
-** Last update Mon Apr 20 09:58:18 2015 ugo belfiore
+** Last update Mon Apr 20 10:38:55 2015 ugo belfiore
 */
 
 #include "../lib/minilibx/mlx.h"
@@ -48,6 +48,7 @@ void	fast_way_only(t_data *d)
   pthread_join(d->threads[3], NULL);
   pthread_join(d->threads[4], NULL);
 }
+
 /*
 ** fonction de test dans le manage_frame SI une touche a été, ou est en train
 ** d'être appuyé.
