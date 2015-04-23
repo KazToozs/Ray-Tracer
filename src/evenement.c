@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon Feb  2 18:47:55 2015 ugo belfiore
-** Last update Mon Apr 20 09:37:10 2015 ugo belfiore
+** Last update Thu Apr 23 08:54:34 2015 ugo belfiore
 */
 
 #include "../lib/minilibx/mlx.h"
@@ -38,7 +38,7 @@ int		manage_key(int keycode, void *param)
   if (keycode == KEY_ESC)		// echap
     my_error(d, "exit.", 0);
   else if (keycode == KEY_REFRESH)	// refresh
-    my_fucking_parsing_rt(d);
+    my_parsing_rt(d);
   else
     modify_key(d, keycode);
   return (0);

@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 28 09:26:37 2014 ugo belfiore
-** Last update Mon Apr 20 09:51:41 2015 ugo belfiore
+** Last update Thu Apr 23 08:53:05 2015 ugo belfiore
 */
 
 #ifndef MINI_H_
@@ -300,7 +300,7 @@ int	manage_key(int keycode, void *param);
 ** fonction rt parsing
 */
 
-void	my_fucking_parsing_rt(t_data *d);
+void	my_parsing_rt(t_data *d);
 
 /*
 ** fonction rt affichage
