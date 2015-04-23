@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Fri Oct 24 19:29:19 2014 ugo belfiore
-** Last update Mon Apr 20 09:14:15 2015 ugo belfiore
+** Last update Thu Apr 23 08:10:20 2015 msa_m
 */
 
 #include "../include/my.h"
@@ -153,7 +153,6 @@ static void	test_line(t_data *d)
       /* d->o.sph.rotx = realloc(d->o.sph.rotx, sizeof(double) * d->o.sph.check + 1); */
       /* d->o.sph.roty = realloc(d->o.sph.roty, sizeof(double) * d->o.sph.check + 1); */
       /* d->o.sph.rotz = realloc(d->o.sph.rotz, sizeof(double) * d->o.sph.check + 1); */
-
       d->o.sph.x_sphere[d->o.sph.check - 1] = my_getnbr(d->fi.tab[1]);
       d->o.sph.y_sphere[d->o.sph.check - 1] = my_getnbr(d->fi.tab[2]);
       d->o.sph.z_sphere[d->o.sph.check - 1] = my_getnbr(d->fi.tab[3]);

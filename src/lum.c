@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Fri Mar  6 12:51:45 2015 ugo belfiore
-** Last update Wed Mar 18 17:44:59 2015 ugo belfiore
+** Last update Thu Apr 23 08:11:20 2015 msa_m
 */
 
 #include "../lib/minilibx/mlx.h"
@@ -28,7 +28,6 @@
   /*   return (-1); */
 /*   return (0); */
 /* } */
-
 
 /*
 ** décalage de bit avec un systeme d'union pour multiplier la couleur

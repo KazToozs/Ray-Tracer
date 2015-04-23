@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon Apr 20 09:48:32 2015 ugo belfiore
-** Last update Mon Apr 20 09:57:29 2015 ugo belfiore
+** Last update Thu Apr 23 08:04:28 2015 msa_m
 */
 
 #include "../lib/minilibx/mlx.h"
@@ -27,7 +27,7 @@ void	part_two(t_data *d)
   (d->timer == 21) ? algo_rt(d, 3, 1) : 1;
   (d->timer == 31) ? algo_rt(d, 2, 1) : 1;
   (d->timer == 41) ? algo_rt(d, 1, 1) : 1;
-  (d->timer == 51) ? algo_rt(d, 0, 1) : 1;  
+  (d->timer == 51) ? algo_rt(d, 0, 1) : 1;
 }
 
 void	part_tree(t_data *d)
