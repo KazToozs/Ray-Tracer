@@ -5,12 +5,10 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon Apr 20 06:52:15 2015 ugo belfiore
-** Last update Thu Apr 23 09:13:48 2015 ugo belfiore
+** Last update Mon May  4 12:59:17 2015 ugo belfiore
 */
 
-#include "../lib/minilibx/mlx.h"
-#include "../include/mini.h"
-#include "../include/my.h"
+#include "mini.h"
 
 /*
 ** fonction echap qui clean et free ce qu'il y a à free.

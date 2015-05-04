@@ -5,12 +5,61 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Sun Feb  8 16:18:36 2015 ugo belfiore
-** Last update Mon Apr 20 09:37:42 2015 ugo belfiore
+** Last update Mon May  4 14:46:50 2015 ugo belfiore
 */
 
-#include "../lib/minilibx/mlx.h"
-#include "../include/mini.h"
-#include "../include/my.h"
+#include "mini.h"
+
+static void	part_sph(t_data *d)
+{
+  int		i;
+
+  i = -1;
+  while (++i < d->o.sph.check)
+    {
+      rotate_x(d, d->o.sph.rotx[i]);
+      rotate_y(d, d->o.sph.roty[i]);
+      rotate_z(d, d->o.sph.rotz[i]);
+      sphere(d, i);
+      rotate_x(d, -d->o.sph.rotx[i]);
+      rotate_y(d, -d->o.sph.roty[i]);
+      rotate_z(d, -d->o.sph.rotz[i]);
+    }
+}
+
+static void	part_cyl(t_data *d)
+{
+  int		i;
+
+  i = -1;
+  while (++i < d->o.cy.check)
+    {
+      rotate_x(d, d->o.cy.rotx[i]);
+      rotate_y(d, d->o.cy.roty[i]);
+      rotate_z(d, d->o.cy.rotz[i]);
+      cyl(d, i);
+      rotate_x(d, -d->o.cy.rotx[i]);
+      rotate_y(d, -d->o.cy.roty[i]);
+      rotate_z(d, -d->o.cy.rotz[i]);
+    }
+}
+
+static void	part_cone(t_data *d)
+{
+  int		i;
+
+  i = -1;
+  while (++i < d->o.co.check)
+    {
+      rotate_x(d, d->o.co.rotx[i]);
+      rotate_y(d, d->o.co.roty[i]);
+      rotate_z(d, d->o.co.rotz[i]);
+      cone(d, i);
+      rotate_x(d, -d->o.co.rotx[i]);
+      rotate_y(d, -d->o.co.roty[i]);
+      rotate_z(d, -d->o.co.rotz[i]);
+    }
+}
 
 /*
 ** fonction qui permet de calculer les intersections
@@ -24,21 +73,9 @@ static void	calc(t_data *d)
   d->k = 100000; // distance maximal (sinon les élément infini comme le cone
 		 // ou les plan vont boucler infini.
   d->colo = COLOR_BLACK;	// couleur initiale black.
-  i = -1;
-  while (++i < d->o.sph.check)
-    sphere(d, i);
-  i = -1;
-  while (++i < d->o.cy.check)
-    {
-      if (i == 2)
-	rotate_x(d, 40);
-      cyl(d, i);
-      if (i == 2)
-	rotate_x(d, -40);
-    }
-  i = -1;
-  while (++i < d->o.co.check)
-    cone(d, i);
+  part_sph(d);
+  part_cyl(d);
+  part_cone(d);
   i = -1;
   while (++i < d->o.pl.check)
     plan(d, i);

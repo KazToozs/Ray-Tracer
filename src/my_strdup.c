@@ -5,12 +5,10 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct  7 21:31:05 2014 ugo belfiore
-** Last update Tue Mar 17 08:34:01 2015 ugo belfiore
+** Last update Mon May  4 12:59:35 2015 ugo belfiore
 */
 
-#include "../include/my.h"
-#include "../lib/minilibx/mlx.h"
-#include "../include/mini.h"
+#include "mini.h"
 
 char		*my_strdup(char *str)
 {

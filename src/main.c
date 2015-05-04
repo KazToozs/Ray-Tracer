@@ -5,12 +5,10 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Fri Dec  5 17:23:50 2014 ugo belfiore
-** Last update Thu Apr 23 08:55:03 2015 ugo belfiore
+** Last update Mon May  4 12:59:04 2015 ugo belfiore
 */
 
-#include "../include/my.h"
-#include "../lib/minilibx/mlx.h"
-#include "../include/mini.h"
+#include "mini.h"
 
 /*
 ** initialise quelque variable
@@ -59,7 +57,7 @@ void	aff_win(t_data *d, char *name)
 {
   d->x_max = 1200;
   d->y_max = 710;
-  sound_init(d);
+  //sound_init(d);
   (!(d->mlx_ptr = mlx_init())) ? my_error(d, "ERROR: mlx init.", -1) : 1;
   (!(d->win_ptr = mlx_new_window(d->mlx_ptr, d->x_max, d->y_max, name))) ?
     my_error(d, "ERROR: win init.", -1) : 1;

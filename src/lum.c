@@ -5,12 +5,10 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Fri Mar  6 12:51:45 2015 ugo belfiore
-** Last update Thu Apr 23 08:11:20 2015 msa_m
+** Last update Mon May  4 12:58:55 2015 ugo belfiore
 */
 
-#include "../lib/minilibx/mlx.h"
-#include "../include/mini.h"
-#include "../include/my.h"
+#include "mini.h"
 
 /* int             shadow(t_st *s) */
 /* { */

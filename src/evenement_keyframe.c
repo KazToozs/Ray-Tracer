@@ -5,12 +5,10 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Thu Mar 12 13:45:12 2015 ugo belfiore
-** Last update Mon Apr 20 10:38:55 2015 ugo belfiore
+** Last update Mon May  4 12:58:36 2015 ugo belfiore
 */
 
-#include "../lib/minilibx/mlx.h"
-#include "../include/mini.h"
-#include "../include/my.h"
+#include "mini.h"
 
 /*
 ** evenement frame qui s'active à chaque frame

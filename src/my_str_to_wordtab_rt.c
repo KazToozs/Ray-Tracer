@@ -5,12 +5,10 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Fri Oct 24 19:29:19 2014 ugo belfiore
-** Last update Tue Mar 17 09:28:08 2015 ugo belfiore
+** Last update Mon May  4 12:59:45 2015 ugo belfiore
 */
 
-#include "../include/my.h"
-#include "../lib/minilibx/mlx.h"
-#include "../include/mini.h"
+#include "mini.h"
 
 int	my_count_word_rt(char *s);
 int	my_count_char_rt(char *s, int *i);

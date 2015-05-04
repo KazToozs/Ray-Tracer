@@ -5,7 +5,7 @@
 ## Login   <belfio_u@epitech.net>
 ## 
 ## Started on  Mon Oct 27 15:13:44 2014 ugo belfiore
-## Last update Thu Apr 23 08:56:20 2015 ugo belfiore
+## Last update Mon May  4 12:52:33 2015 ugo belfiore
 ##
 
 SRC     =       ./src/main.c			\
@@ -23,7 +23,8 @@ SRC     =       ./src/main.c			\
 		./src/algo_rt.c			\
 		./src/obj.c			\
 		./src/rotate.c			\
-		./src/lum.c
+		./src/lum.c			\
+		./src/move_xyz_all.c		\
 
 
 OBJ     =       $(SRC:.c=.o)
@@ -37,6 +38,7 @@ LIBMINI =	./lib/minilibx/libmlx.a
 CC      =       clang
 
 CFLAGS  +=      -W -Wall -Wextra -g3
+CFLAGS	+=	-I./include
 
 LDFLAGS	=	-L/usr/lib64/X11 -lXext -lX11 -lm -Llib/my/ -lmy -Llib/minilibx/  -lmlx ./lib/libson.so -lpthread
 

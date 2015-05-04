@@ -5,12 +5,10 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Sat Nov 22 15:11:19 2014 ugo belfiore
-** Last update Tue Mar 17 08:34:24 2015 ugo belfiore
+** Last update Mon May  4 12:58:46 2015 ugo belfiore
 */
 
-#include "../include/my.h"
-#include "../lib/minilibx/mlx.h"
-#include "../include/mini.h"
+#include "mini.h"
 
 #define LEN 4096
 char    *reset_buff(char *buff);

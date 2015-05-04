@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 28 09:26:37 2014 ugo belfiore
-** Last update Thu Apr 23 08:53:05 2015 ugo belfiore
+** Last update Mon May  4 15:03:04 2015 ugo belfiore
 */
 
 #ifndef MINI_H_
@@ -20,8 +20,10 @@
 #include <sys/stat.h>
 #include <math.h>
 #include <time.h>
-#include "fmod.h"
 #include <pthread.h>
+#include "fmod.h"
+#include "mlx.h"
+#include "my.h"
 
 /*
 ** macro rtv1
@@ -324,5 +326,6 @@ void	rotate_y(t_data *d, double angle);
 void	rotate_z(t_data *d, double angle);
 void	lum(t_data *d, int i);
 void	my_change_color(t_data *d);
+void	move_xyz_all(t_data *d, int which, int value);
 
 #endif

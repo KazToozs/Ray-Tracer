@@ -5,12 +5,10 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Fri Oct 24 19:29:19 2014 ugo belfiore
-** Last update Thu Apr 23 09:11:10 2015 ugo belfiore
+** Last update Mon May  4 12:59:26 2015 ugo belfiore
 */
 
-#include "../include/my.h"
-#include "../lib/minilibx/mlx.h"
-#include "../include/mini.h"
+#include "mini.h"
 
 static void    debug(t_data *d)
 {

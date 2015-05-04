@@ -5,12 +5,10 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon Feb  2 18:53:38 2015 ugo belfiore
-** Last update Mon Apr 20 06:53:17 2015 ugo belfiore
+** Last update Mon May  4 13:00:14 2015 ugo belfiore
 */
 
-#include "../lib/minilibx/mlx.h"
-#include "../include/mini.h"
-#include "../include/my.h"
+#include "mini.h"
 
 /*
 ** focntion qui initialise les sons.

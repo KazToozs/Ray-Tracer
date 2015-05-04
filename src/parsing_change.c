@@ -5,12 +5,10 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon Mar 16 10:54:20 2015 ugo belfiore
-** Last update Wed Mar 18 16:02:28 2015 ugo belfiore
+** Last update Mon May  4 13:00:00 2015 ugo belfiore
 */
 
-#include "../include/my.h"
-#include "../lib/minilibx/mlx.h"
-#include "../include/mini.h"
+#include "mini.h"
 
 void    init_sphere(t_data *d)
 {

@@ -5,12 +5,10 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Thu Mar 12 17:26:03 2015 ugo belfiore
-** Last update Wed Mar 18 16:34:47 2015 ugo belfiore
+** Last update Mon May  4 12:59:52 2015 ugo belfiore
 */
 
-#include "../lib/minilibx/mlx.h"
-#include "../include/mini.h"
-#include "../include/my.h"
+#include "mini.h"
 
 void		plan(t_data *d, int i)
 {

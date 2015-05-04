@@ -5,12 +5,10 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Fri Oct 31 16:36:46 2014 ugo belfiore
-** Last update Mon Mar 16 10:35:58 2015 ugo belfiore
+** Last update Mon May  4 12:58:14 2015 ugo belfiore
 */
 
-#include "../lib/minilibx/mlx.h"
-#include "../include/mini.h"
-#include "../include/my.h"
+#include "mini.h"
 
 /*
 ** affiche un pixel à l'écran aux position x et y.

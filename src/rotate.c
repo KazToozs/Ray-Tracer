@@ -5,12 +5,10 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Wed Mar  4 14:47:44 2015 ugo belfiore
-** Last update Thu Mar 12 17:43:14 2015 ugo belfiore
+** Last update Mon May  4 13:00:07 2015 ugo belfiore
 */
 
-#include "../lib/minilibx/mlx.h"
-#include "../include/mini.h"
-#include "../include/my.h"
+#include "mini.h"
 
 void		rotate_x(t_data *d, double angle)
 {
