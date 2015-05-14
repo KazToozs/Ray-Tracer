@@ -5,7 +5,7 @@
 ## Login   <belfio_u@epitech.net>
 ## 
 ## Started on  Mon Oct 27 15:13:44 2014 ugo belfiore
-## Last update Tue May 12 11:19:53 2015 ugo belfiore
+## Last update Thu May 14 13:11:46 2015 ugo belfiore
 ##
 
 SRC     =       ./src/main.c			\
@@ -26,6 +26,8 @@ SRC     =       ./src/main.c			\
 		./src/lum.c			\
 		./src/move_xyz_all.c		\
 		./src/shadow.c			\
+		./src/part_shadow.c		\
+		./src/obj_shadow.c		\
 
 
 OBJ     =       $(SRC:.c=.o)

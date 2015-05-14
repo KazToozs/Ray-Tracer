@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Sun Feb  8 16:18:36 2015 ugo belfiore
-** Last update Thu May 14 15:49:07 2015 ugo belfiore
+** Last update Wed May 13 19:02:59 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -81,12 +81,14 @@ static void	calc(t_data *d)
   while (++i < d->o.pl.check)
     plan(d, i);
   i = -1;
-  /* if (d->w == 1) */
-  /*   lum(d, 0); */
-  /* else */
-  /*   lum(d, 1); */
-  while (++i < d->o.lum.check)
-    lum(d, i);
+
+
+  if (d->w == 1)
+    lum(d, 0);
+  else
+    lum(d, 1);
+  /* while (++i < d->o.lum.check) */
+  /*   lum(d, i); */
 }
 
 /*

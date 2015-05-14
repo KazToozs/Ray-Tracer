@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 28 09:26:37 2014 ugo belfiore
-** Last update Wed May 13 19:58:10 2015 ugo belfiore
+** Last update Thu May 14 13:11:29 2015 ugo belfiore
 */
 
 #ifndef MINI_H_
@@ -345,5 +345,13 @@ int	shadow(t_data *d);
 void	part_sph(t_data *d);
 void	part_cyl(t_data *d);
 void	part_cone(t_data *d);
+void	part_sph_shadow(t_data *d);
+void	part_cyl_shadow(t_data *d);
+void	part_cone_shadow(t_data *d);
+//void	part_plan_shadow(t_data *d);
+void	sphere_shadow(t_data *d, int i);
+void	cyl_shadow(t_data *d, int i);
+void	cone_shadow(t_data *d, int i);
+void	plan_shadow(t_data *d, int i);
 
 #endif
