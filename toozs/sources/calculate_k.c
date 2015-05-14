@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Sun Mar  8 20:24:43 2015 cristopher toozs-hobson
-** Last update Tue Mar 10 16:22:07 2015 cristopher toozs-hobson
+** Last update Wed May 13 19:12:51 2015 ugo belfiore
 */
 
 #include "rt.h"
@@ -75,7 +75,7 @@ int		shadow_k(t_st *s)
       s->d.red = 0;
       s->d.green = 0;
       s->d.blue = 0;
-      return (1);
+      return (-1);
     }
   return (0);
 }

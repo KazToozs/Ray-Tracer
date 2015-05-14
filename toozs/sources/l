@@ -1,0 +1,269 @@
+calculate_k.c:** calculate_k.c for rtv1 in /home/toozs-_c/Prog_tests/rtv1/sources
+calculate_k.c:** Made by cristopher toozs-hobson
+calculate_k.c:** Login   <toozs-_c@epitech.net>
+calculate_k.c:** Started on  Sun Mar  8 20:24:43 2015 cristopher toozs-hobson
+calculate_k.c:** Last update Tue Mar 10 16:22:07 2015 cristopher toozs-hobson
+calculate_k.c:  if (x->x1 > 0.0000001 && x->x1 < s->x.k &&
+calculate_k.c:      s->x.t = x->t;
+calculate_k.c:      s->x.k = x->x1;
+calculate_k.c:      s->d.red = x->red;
+calculate_k.c:      s->d.green = x->green;
+calculate_k.c:      s->d.blue = x->blue;
+calculate_k.c:  else if (x->x2 > 0.0000001 && x->x2 < s->x.k &&
+calculate_k.c:      s->x.t = x->t;
+calculate_k.c:      s->x.k = x->x2;
+calculate_k.c:      s->d.red = x->red;
+calculate_k.c:      s->d.green = x->green;
+calculate_k.c:      s->d.blue = x->blue;
+calculate_k.c:  if (s->pl.k > 0.0000001 && s->pl.k < s->x.k)
+calculate_k.c:      s->x.t = PLANE;
+calculate_k.c:      s->x.k = s->pl.k;
+calculate_k.c:      s->d.red = s->pl.red;
+calculate_k.c:      s->d.green = s->pl.green;
+calculate_k.c:      s->d.blue = s->pl.blue;
+calculate_k.c:  if ((x->x1 < x->x2) && (x->x1 < s->x.k) && (x->x1 > 0.000001)
+calculate_k.c:    s->x.k = x->x1;
+calculate_k.c:  else if ((x->x2 < x->x1) && (x->x2 < s->x.k) && (x->x2 > 0.000001)
+calculate_k.c:    s->x.k = x->x2;
+calculate_k.c:  check(s, &s->s.x);
+calculate_k.c:  check(s, &s->co.x);
+calculate_k.c:  check(s, &s->cy.x);
+calculate_k.c:  s->x.k = 10000;
+calculate_k.c:  check_shadow(s, &s->s.x);
+calculate_k.c:  check_shadow(s, &s->co.x);
+calculate_k.c:  check_shadow(s, &s->cy.x);
+calculate_k.c:  if (s->pl.k < s->x.k && s->pl.k > 0.000001)
+calculate_k.c:    s->x.k = s->pl.k;
+calculate_k.c:  if (s->x.k > 0.000001 && s->x.k < 1 &&  s->x.k != 10000)
+calculate_k.c:      s->d.red = 0;
+calculate_k.c:      s->d.green = 0;
+calculate_k.c:      s->d.blue = 0;
+calculate_lighting.c:** calculate_lighting.c for rtv1 in /home/toozs-_c/Prog_tests/rtv1/sources
+calculate_lighting.c:** Made by cristopher toozs-hobson
+calculate_lighting.c:** Login   <toozs-_c@epitech.net>
+calculate_lighting.c:** Started on  Tue Mar 10 15:25:08 2015 cristopher toozs-hobson
+calculate_lighting.c:  if (s->x.t == SPHERE)
+calculate_lighting.c:      s->n.vx = s->x.c.p.x;
+calculate_lighting.c:      s->n.vy = s->x.c.p.y;
+calculate_lighting.c:      s->n.vz = s->x.c.p.z;
+calculate_lighting.c:  else if (s->x.t == PLANE)
+calculate_lighting.c:      s->n.vx = 0;
+calculate_lighting.c:      s->n.vy = 0;
+calculate_lighting.c:      s->n.vz = 100;
+calculate_lighting.c:  else if (s->x.t == CYLINDER)
+calculate_lighting.c:      s->n.vx = s->x.c.p.x;
+calculate_lighting.c:      s->n.vy = s->x.c.p.y;
+calculate_lighting.c:      s->n.vz = 0;
+calculate_lighting.c:  else if (s->x.t == CONE)
+calculate_lighting.c:      s->n.vx = s->x.c.p.x;
+calculate_lighting.c:      s->n.vy = s->x.c.p.y;
+calculate_lighting.c:      s->n.vz = (-1000) * s->x.c.p.z;
+calculate_lighting.c:  inter_cyl(&s->x.c, &s->cy);
+calculate_lighting.c:  inter_cone(&s->x.c, &s->co);
+calculate_lighting.c:  inter_sphere(&s->x.c, &s->s);
+calculate_lighting.c:  inter_plan(s, &s->x.c);
+calculate_lighting.c:  s->x.c.p.x = s->c.p.x + (s->x.k * s->c.v.vx);
+calculate_lighting.c:  s->x.c.p.y = s->c.p.y + (s->x.k * s->c.v.vy);
+calculate_lighting.c:  s->x.c.p.z = s->c.p.z + (s->x.k * s->c.v.vz);
+calculate_lighting.c:  s->x.c.v.vx = s->l.p.x - s->x.c.p.x;
+calculate_lighting.c:  s->x.c.v.vy = s->l.p.y - s->x.c.p.y;
+calculate_lighting.c:  s->x.c.v.vz = s->l.p.z - s->x.c.p.z;
+calculate_lighting.c:  cosin = (((s->n.vx * s->x.c.v.vx) + (s->n.vy * s->x.c.v.vy)
+calculate_lighting.c:            + (s->n.vz * s->x.c.v.vz))
+calculate_lighting.c:           / sqrt((pow(s->n.vx, 2) + pow(s->n.vy, 2) + pow(s->n.vz, 2)) *
+calculate_lighting.c:                  (pow(s->x.c.v.vx, 2) + pow(s->x.c.v.vy, 2)
+calculate_lighting.c:                   + pow(s->x.c.v.vz, 2))));
+calculate_lighting.c:      s->d.red = 0;
+calculate_lighting.c:      s->d.green = 0;
+calculate_lighting.c:      s->d.blue = 0;
+calculate_lighting.c:      s->d.red = s->d.red * cosin;
+calculate_lighting.c:      s->d.green = s->d.green * cosin;
+calculate_lighting.c:      s->d.blue = s->d.blue * cosin;
+camera_control.c:** camera_control.c for rtv1 in /home/toozs-_c/Prog_tests/rtv1/sources
+camera_control.c:** Made by cristopher toozs-hobson
+camera_control.c:** Login   <toozs-_c@epitech.net>
+camera_control.c:** Started on  Tue Mar 10 14:46:05 2015 cristopher toozs-hobson
+camera_control.c:** Last update Wed Mar 11 12:44:59 2015 cristopher toozs-hobson
+camera_control.c:      s->c.p.x += 200;
+camera_control.c:      mlx_put_image_to_window(s->d.mlx_pt, s->d.win_pt, s->d.img_pt, 0, 0);
+camera_control.c:      s->c.p.x -= 200;
+camera_control.c:      mlx_put_image_to_window(s->d.mlx_pt, s->d.win_pt, s->d.img_pt, 0, 0);
+camera_control.c:      s->c.p.y += 200;
+camera_control.c:      mlx_put_image_to_window(s->d.mlx_pt, s->d.win_pt, s->d.img_pt, 0, 0);
+camera_control.c:      s->c.p.y -= 200;
+camera_control.c:      mlx_put_image_to_window(s->d.mlx_pt, s->d.win_pt, s->d.img_pt, 0, 0);
+camera_control.c:      s->c.p.z -= 200;
+camera_control.c:      mlx_put_image_to_window(s->d.mlx_pt, s->d.win_pt, s->d.img_pt, 0, 0);
+camera_control.c:      s->c.p.z += 200;
+camera_control.c:      mlx_put_image_to_window(s->d.mlx_pt, s->d.win_pt, s->d.img_pt, 0, 0);
+camera_control.c:      s->c.rot.x += 15;
+camera_control.c:      mlx_put_image_to_window(s->d.mlx_pt, s->d.win_pt, s->d.img_pt, 0, 0);
+camera_control.c:      s->c.rot.x -= 15;
+camera_control.c:      mlx_put_image_to_window(s->d.mlx_pt, s->d.win_pt, s->d.img_pt, 0, 0);
+camera_control.c:      s->c.rot.z += 15;
+camera_control.c:      mlx_put_image_to_window(s->d.mlx_pt, s->d.win_pt, s->d.img_pt, 0, 0);
+camera_control.c:      s->c.rot.z -= 15;
+camera_control.c:      mlx_put_image_to_window(s->d.mlx_pt, s->d.win_pt, s->d.img_pt, 0, 0);
+camera_control.c:      s->c.rot.y -= 5;
+camera_control.c:      mlx_put_image_to_window(s->d.mlx_pt, s->d.win_pt, s->d.img_pt, 0, 0);
+camera_control.c:      s->c.rot.y += 5;
+camera_control.c:      mlx_put_image_to_window(s->d.mlx_pt, s->d.win_pt, s->d.img_pt, 0, 0);
+event_functions.c:** event_functions.c for rtv1 in /home/toozs-_c/Prog_tests/rtv1/sources
+event_functions.c:** Made by cristopher toozs-hobson
+event_functions.c:** Login   <toozs-_c@epitech.net>
+event_functions.c:** Started on  Sun Mar  1 11:30:25 2015 cristopher toozs-hobson
+event_functions.c:** Last update Wed Mar 11 13:56:32 2015 cristopher toozs-hobson
+image_functions.c:** image_functions.c for rtv1 in /home/toozs-_c/Prog_tests/rtv1/sources
+image_functions.c:** Made by cristopher toozs-hobson
+image_functions.c:** Login   <toozs-_c@epitech.net>
+image_functions.c:** Started on  Sun Mar  1 11:30:37 2015 cristopher toozs-hobson
+image_functions.c:** Last update Thu Mar 12 11:07:48 2015 cristopher toozs-hobson
+initialize_objects.c:** initialize_objects.c for rtv1 in /home/toozs-_c/Prog_tests/rtv1/sources
+initialize_objects.c:** Made by cristopher toozs-hobson
+initialize_objects.c:** Login   <toozs-_c@epitech.net>
+initialize_objects.c:** Started on  Tue Mar 10 15:22:07 2015 cristopher toozs-hobson
+initialize_objects.c:** Last update Wed Mar 11 11:57:13 2015 cristopher toozs-hobson
+initialize_objects.c:  s->s.p.x = 0;
+initialize_objects.c:  s->s.p.y = 0;
+initialize_objects.c:  s->s.p.z = 0;
+initialize_objects.c:  s->s.r = 500;
+initialize_objects.c:  s->s.x.red = 255;
+initialize_objects.c:  s->s.x.green = 255;
+initialize_objects.c:  s->s.x.blue = 0;
+initialize_objects.c:  s->pl.z = 0;
+initialize_objects.c:  s->pl.red = 196;
+initialize_objects.c:  s->pl.green = 196;
+initialize_objects.c:  s->pl.blue = 196;
+initialize_objects.c:  s->co.p.x = 0;
+initialize_objects.c:  s->co.p.y = -900;
+initialize_objects.c:  s->co.p.z = 0;
+initialize_objects.c:  s->co.r = 500;
+initialize_objects.c:  s->co.x.red = 255;
+initialize_objects.c:  s->co.x.green = 0;
+initialize_objects.c:  s->co.x.blue = 255;
+initialize_objects.c:  s->co.rot.x = 0;
+initialize_objects.c:  s->co.rot.y = 0;
+initialize_objects.c:  s->co.rot.z = 0;
+initialize_objects.c:  s->cy.p.x = -300;
+initialize_objects.c:  s->cy.p.y = 750;
+initialize_objects.c:  s->cy.p.z = 0;
+initialize_objects.c:  s->cy.r = 200;
+initialize_objects.c:  s->cy.x.red = 51;
+initialize_objects.c:  s->cy.x.green = 255;
+initialize_objects.c:  s->cy.x.blue = 0;
+initialize_objects.c:  s->cy.rot.x = 0;
+initialize_objects.c:  s->cy.rot.y = 0;
+initialize_objects.c:  s->cy.rot.z = 0;
+initialize_projectors.c:** initialize_projectors.c for rtv1 in /home/toozs-_c/Prog_tests/rtv1/sources
+initialize_projectors.c:** Made by cristopher toozs-hobson
+initialize_projectors.c:** Login   <toozs-_c@epitech.net>
+initialize_projectors.c:** Started on  Tue Mar 10 15:23:35 2015 cristopher toozs-hobson
+initialize_projectors.c:** Last update Wed Mar 11 11:53:23 2015 cristopher toozs-hobson
+initialize_projectors.c:  s->c.p.x = -1500;
+initialize_projectors.c:  s->c.p.y = 000;
+initialize_projectors.c:  s->c.p.z = 200;
+initialize_projectors.c:  s->c.rot.x = 0;
+initialize_projectors.c:  s->c.rot.y = 0;
+initialize_projectors.c:  s->c.rot.z = 0;
+initialize_projectors.c:  s->l.p.x = -1500;
+initialize_projectors.c:  s->l.p.y = 0;
+initialize_projectors.c:  s->l.p.z = 500;
+light_control.c:** light_control.c for rtv1 in /home/toozs-_c/Prog_tests/rtv1/sources
+light_control.c:** Made by cristopher toozs-hobson
+light_control.c:** Login   <toozs-_c@epitech.net>
+light_control.c:** Started on  Tue Mar 10 14:49:31 2015 cristopher toozs-hobson
+light_control.c:** Last update Wed Mar 11 11:01:20 2015 cristopher toozs-hobson
+light_control.c:      s->l.p.x += 25;
+light_control.c:      mlx_put_image_to_window(s->d.mlx_pt, s->d.win_pt, s->d.img_pt, 0, 0);
+light_control.c:      s->l.p.x -= 25;
+light_control.c:      mlx_put_image_to_window(s->d.mlx_pt, s->d.win_pt, s->d.img_pt, 0, 0);
+light_control.c:      s->l.p.y += 25;
+light_control.c:      mlx_put_image_to_window(s->d.mlx_pt, s->d.win_pt, s->d.img_pt, 0, 0);
+light_control.c:      s->l.p.y -= 25;
+light_control.c:      mlx_put_image_to_window(s->d.mlx_pt, s->d.win_pt, s->d.img_pt, 0, 0);
+light_control.c:      s->l.p.z += 25;
+light_control.c:      mlx_put_image_to_window(s->d.mlx_pt, s->d.win_pt, s->d.img_pt, 0, 0);
+light_control.c:      s->l.p.z -= 25;
+light_control.c:      mlx_put_image_to_window(s->d.mlx_pt, s->d.win_pt, s->d.img_pt, 0, 0);
+main.c:** main.c for rtv1 in /home/toozs-_c/Prog_tests/rtv1/sources
+main.c:** Made by cristopher toozs-hobson
+main.c:** Login   <toozs-_c@epitech.net>
+main.c:** Started on  Sun Mar  1 11:30:13 2015 cristopher toozs-hobson
+main.c:** Last update Thu Mar 12 11:07:16 2015 cristopher toozs-hobson
+main.c:  s->p.win_x = 800;
+main.c:  s->p.win_y = 600;
+main.c:  if ((s->d.mlx_pt = mlx_init()) == NULL)
+main.c:  s->d.win_pt = mlx_new_window(s->d.mlx_pt, s->p.win_x, s->p.win_y, "RTV1");
+main.c:  s->d.img_pt = mlx_new_image(s->d.mlx_pt, s->p.win_x, s->p.win_y);
+main.c:  s->d.d = mlx_get_data_addr(s->d.img_pt, &s->d.bpp, &s->d.line, &s->d.end);
+main.c:  s->p.img_start_x = 0;
+main.c:  s->p.img_start_y = 0;
+main.c:  s->p.img_x = s->p.win_x;
+main.c:  s->p.img_y = s->p.win_y;
+main.c:  s->x.k = 10000000;
+main.c:  s->d.red = 0;
+main.c:  s->d.green = 0;
+main.c:  s->d.blue = 0;
+main.c:  s->c.v.vx = 1000;
+main.c:  s->c.v.vy = (s->p.img_x / 2) - x;
+main.c:  s->c.v.vz = (s->p.img_y / 2) - y;
+main.c:  rotate(&s->c.rot, &s->c);
+main.c:  inter_cyl(&s->c, &s->cy);
+main.c:  inter_cone(&s->c, &s->co);
+main.c:  inter_sphere(&s->c, &s->s);
+main.c:  inter_plan(s, &s->c);
+main.c:  while (y < s->p.img_y)
+main.c:      while (x < s->p.img_x)
+main.c:	  put_pixel(x, y, &s->d, s->p);
+main.c:  mlx_put_image_to_window(s->d.mlx_pt, s->d.win_pt, s->d.img_pt, 0, 0);
+obj.c:** obj.c for rtv1 in /home/toozs-_c/Prog_tests/rtv1/sources
+obj.c:** Made by cristopher toozs-hobson
+obj.c:** Login   <toozs-_c@epitech.net>
+obj.c:** Started on  Thu Mar  5 10:17:14 2015 cristopher toozs-hobson
+obj.c:  s->x.x1 = 10000;
+obj.c:  s->x.x2 = 10000;
+obj.c:  s->x.t = SPHERE;
+obj.c:  translation(&c->p, s->p.x, s->p.y, s->p.z);
+obj.c:  ca = pow(c->p.x, 2) + pow(c->p.y, 2) + pow(c->p.z, 2) - pow(s->r, 2);
+obj.c:  inverse_translation(&c->p, s->p.x, s->p.y, s->p.z);
+obj.c:  delta(&s->x, a, b, ca);
+obj.c:  s->pl.k = -(c->p.z / c->v.vz);
+object_control.c:** object_control.c for rtv1 in /home/toozs-_c/Prog_tests/rtv1/sources
+object_control.c:** Made by cristopher toozs-hobson
+object_control.c:** Login   <toozs-_c@epitech.net>
+object_control.c:** Started on  Wed Mar 11 11:05:40 2015 cristopher toozs-hobson
+object_control.c:** Last update Wed Mar 11 11:40:42 2015 cristopher toozs-hobson
+object_control.c:      s->s.p.x += 100;
+object_control.c:      s->s.p.y += 100;
+object_control.c:      s->s.p.z += 100;
+object_control.c:      mlx_put_image_to_window(s->d.mlx_pt, s->d.win_pt, s->d.img_pt, 0, 0);
+object_control.c:      s->s.p.x -= 100;
+object_control.c:      s->s.p.y -= 100;
+object_control.c:      s->s.p.z -= 100;
+object_control.c:      mlx_put_image_to_window(s->d.mlx_pt, s->d.win_pt, s->d.img_pt, 0, 0);
+object_control.c:      s->cy.p.x += 100;
+object_control.c:      s->cy.p.y += 100;
+object_control.c:      s->cy.p.z += 100;
+object_control.c:      mlx_put_image_to_window(s->d.mlx_pt, s->d.win_pt, s->d.img_pt, 0, 0);
+object_control.c:      s->cy.p.x -= 100;
+object_control.c:      s->cy.p.y -= 100;
+object_control.c:      s->cy.p.z -= 100;
+object_control.c:      mlx_put_image_to_window(s->d.mlx_pt, s->d.win_pt, s->d.img_pt, 0, 0);
+object_control.c:      s->co.p.x += 100;
+object_control.c:      s->co.p.y += 100;
+object_control.c:      s->co.p.z += 100;
+object_control.c:      mlx_put_image_to_window(s->d.mlx_pt, s->d.win_pt, s->d.img_pt, 0, 0);
+object_control.c:      s->co.p.x -= 100;
+object_control.c:      s->co.p.y -= 100;
+object_control.c:      s->co.p.z -= 100;
+object_control.c:      mlx_put_image_to_window(s->d.mlx_pt, s->d.win_pt, s->d.img_pt, 0, 0);
+rotation.c:** rotation.c for rtv1 in /home/toozs-_c/Prog_tests/rtv1/rotate_tests
+rotation.c:** Made by cristopher toozs-hobson
+rotation.c:** Login   <toozs-_c@epitech.net>
+rotation.c:** Started on  Tue Mar  3 17:34:27 2015 cristopher toozs-hobson
+rotation.c:** Last update Wed Mar 11 13:49:35 2015 cristopher toozs-hobson
+translations.c:** translations.c for rtv1 in /home/toozs-_c/Prog_tests/rtv1/sources
+translations.c:** Made by cristopher toozs-hobson
+translations.c:** Login   <toozs-_c@epitech.net>
+translations.c:** Started on  Thu Mar  5 10:22:14 2015 cristopher toozs-hobson
+translations.c:** Last update Tue Mar 10 16:29:57 2015 cristopher toozs-hobson

@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 28 09:26:37 2014 ugo belfiore
-** Last update Mon May  4 15:03:04 2015 ugo belfiore
+** Last update Wed May 13 19:58:10 2015 ugo belfiore
 */
 
 #ifndef MINI_H_
@@ -74,7 +74,7 @@
 #define KEY_K 107
 #define KEY_O 111
 #define KEY_L 108
-
+#define KEY_W 119
 /*
 ** stucture son
 */
@@ -100,21 +100,29 @@ typedef struct	s_pic
   int           end;
 }		t_pic;
 
+enum    SHAPE
+  {
+    SPHERE,
+    CONE,
+    CYLINDER,
+    PLANE
+  };
+
 typedef struct	s_lum
 {
   double	*x_lum;
   double	*y_lum;
   double	*z_lum;
   int		check;
-  double	px;
-  double	py;
-  double	pz;
-  double	lx;
-  double	ly;
-  double	lz;
-  double	sx;
-  double	sy;
-  double	sz;
+  double	*px;
+  double	*py;
+  double	*pz;
+  double	*lx;
+  double	*ly;
+  double	*lz;
+  double	*sx;
+  double	*sy;
+  double	*sz;
   int		debug;
 }		t_lum;
 
@@ -262,9 +270,12 @@ typedef struct	s_data
   int		bpp;
   int		sizeline;
   int		end;
+  int		w;
   int		f[256];
   int		timer;
+  int		tmp_i;
   double	k;
+  int		kk;
   t_file	fi;
   t_sound	sd;
   t_pic		p;
@@ -327,5 +338,12 @@ void	rotate_z(t_data *d, double angle);
 void	lum(t_data *d, int i);
 void	my_change_color(t_data *d);
 void	move_xyz_all(t_data *d, int which, int value);
+void	calculate_k(t_data *d);
+void	translate(t_data *d, int x, int y, int z);
+void	inv_translate(t_data *d, int x, int y, int z);
+int	shadow(t_data *d);
+void	part_sph(t_data *d);
+void	part_cyl(t_data *d);
+void	part_cone(t_data *d);
 
 #endif

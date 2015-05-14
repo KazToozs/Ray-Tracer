@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Fri Oct 24 19:29:19 2014 ugo belfiore
-** Last update Mon May  4 12:59:26 2015 ugo belfiore
+** Last update Tue May 12 07:23:38 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -248,6 +248,15 @@ void	alloc_all(t_data *d)
   d->o.lum.x_lum = malloc(sizeof(double) * 256);
   d->o.lum.y_lum = malloc(sizeof(double) * 256);
   d->o.lum.z_lum = malloc(sizeof(double) * 256);
+  d->o.lum.px = malloc(sizeof(double) * 256);
+  d->o.lum.py = malloc(sizeof(double) * 256);
+  d->o.lum.pz = malloc(sizeof(double) * 256);
+  d->o.lum.lx = malloc(sizeof(double) * 256);
+  d->o.lum.ly = malloc(sizeof(double) * 256);
+  d->o.lum.lz = malloc(sizeof(double) * 256);
+  d->o.lum.sx = malloc(sizeof(double) * 256);
+  d->o.lum.sy = malloc(sizeof(double) * 256);
+  d->o.lum.sz = malloc(sizeof(double) * 256);
   d->o.pl.high = malloc(sizeof(int) * 256);
   d->o.pl.color_plan = malloc(sizeof(int) * 256);
   d->o.sph.x_sphere = malloc(sizeof(int) * 256);

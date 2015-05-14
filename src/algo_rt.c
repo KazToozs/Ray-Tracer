@@ -5,12 +5,12 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Sun Feb  8 16:18:36 2015 ugo belfiore
-** Last update Mon May  4 14:46:50 2015 ugo belfiore
+** Last update Wed May 13 19:02:59 2015 ugo belfiore
 */
 
 #include "mini.h"
 
-static void	part_sph(t_data *d)
+void	part_sph(t_data *d)
 {
   int		i;
 
@@ -27,7 +27,7 @@ static void	part_sph(t_data *d)
     }
 }
 
-static void	part_cyl(t_data *d)
+void	part_cyl(t_data *d)
 {
   int		i;
 
@@ -44,7 +44,7 @@ static void	part_cyl(t_data *d)
     }
 }
 
-static void	part_cone(t_data *d)
+void	part_cone(t_data *d)
 {
   int		i;
 
@@ -72,6 +72,7 @@ static void	calc(t_data *d)
 
   d->k = 100000; // distance maximal (sinon les élément infini comme le cone
 		 // ou les plan vont boucler infini.
+  d->kk = 0;
   d->colo = COLOR_BLACK;	// couleur initiale black.
   part_sph(d);
   part_cyl(d);
@@ -80,8 +81,14 @@ static void	calc(t_data *d)
   while (++i < d->o.pl.check)
     plan(d, i);
   i = -1;
-  while (++i < d->o.lum.check)
-    lum(d, i);
+
+
+  if (d->w == 1)
+    lum(d, 0);
+  else
+    lum(d, 1);
+  /* while (++i < d->o.lum.check) */
+  /*   lum(d, i); */
 }
 
 /*

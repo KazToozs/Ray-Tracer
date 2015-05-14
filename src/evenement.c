@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon Feb  2 18:47:55 2015 ugo belfiore
-** Last update Mon May  4 13:54:52 2015 ugo belfiore
+** Last update Mon May 11 17:37:07 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -37,6 +37,8 @@ int		manage_key(int keycode, void *param)
     my_error(d, "exit.", 0);
   else if (keycode == KEY_REFRESH)	// refresh
     my_parsing_rt(d);
+  else if (keycode == KEY_W)
+    d->w *= -1;
   else
     modify_key(d, keycode);
   return (0);

@@ -5,27 +5,24 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Fri Mar  6 12:51:45 2015 ugo belfiore
-** Last update Mon May  4 15:13:08 2015 ugo belfiore
+** Last update Wed May 13 19:32:00 2015 ugo belfiore
 */
 
 #include "mini.h"
 
-/* int             shadow(t_st *s) */
-/* { */
-  /*
-  ** refaire les intersections des objets à partir du point d'intersection en
-  ** utilisant les vecteurs intersection->lumière:
-  ** on check si de notre point d'intersection on voit la lumière.
-  ** Si non, c'est une ombre.
-  */
-  /* inter_cyl(&s->x.c, &s->cy); */
-  /* inter_cone(&s->x.c, &s->co); */
-  /* inter_sphere(&s->x.c, &s->s); */
-  /* inter_plan(s, &s->x.c); */
-  /* if (shadow_k(s) == -1) */
-  /*   return (-1); */
-/*   return (0); */
-/* } */
+void	translate(t_data *d, int x, int y, int z)
+{
+  d->o.view.x_eyes += x;
+  d->o.view.y_eyes += y;
+  d->o.view.z_eyes += z;
+}
+
+void	inv_translate(t_data *d, int x, int y, int z)
+{
+  d->o.view.x_eyes -= x;
+  d->o.view.y_eyes -= y;
+  d->o.view.z_eyes -= z;
+}
 
 /*
 ** décalage de bit avec un systeme d'union pour multiplier la couleur
@@ -54,26 +51,55 @@ void	my_change_color(t_data *d)
 ** fonction de la luminosité
 */
 
+void	calculate_n(t_data *d, int i)
+{
+  if (d->kk == SPHERE)
+    {
+      d->o.lum.sx[i] = d->o.lum.px[i];
+      d->o.lum.sy[i] = d->o.lum.py[i];
+      d->o.lum.sz[i] = d->o.lum.pz[i];
+    }
+  else if (d->kk == PLANE)
+    {
+      d->o.lum.sx[i] = 0;
+      d->o.lum.sy[i] = 0;
+      d->o.lum.sz[i] = 100;
+    }
+  else if (d->kk == CYLINDER)
+    {
+      d->o.lum.sx[i] = d->o.lum.px[i];
+      d->o.lum.sy[i] = d->o.lum.py[i];
+      d->o.lum.sz[i] = d->o.cy.rotz[i];
+    }
+  else if (d->kk == CONE)
+    {
+      d->o.lum.sx[i] = d->o.lum.px[i];
+      d->o.lum.sy[i] = d->o.lum.py[i];
+      d->o.lum.sz[i] = d->o.co.rotz[i];
+    }
+}
+
 void	lum(t_data *d, int i)
 {
-  d->o.lum.px = d->o.view.x_eyes + (d->k * d->o.view.vx);
-  d->o.lum.py = d->o.view.y_eyes + (d->k * d->o.view.vy);
-  d->o.lum.pz = d->o.view.z_eyes + (d->k * d->o.view.vz);
-  d->o.lum.lx = d->o.lum.px - d->o.lum.x_lum[i];
-  d->o.lum.ly = d->o.lum.py - d->o.lum.y_lum[i];
-  d->o.lum.lz = d->o.lum.pz - d->o.lum.z_lum[i];
-  /* if (shadow(s) == -1) */
-  /*   return; */
-  d->o.cal.sca = (d->o.lum.px * d->o.lum.lx)
-    + (d->o.lum.py * d->o.lum.ly) + (d->o.lum.pz * d->o.lum.lz);
-  d->o.cal.norm = sqrt(pow(d->o.lum.px, 2) + pow(d->o.lum.py, 2)
-		       + pow(d->o.lum.pz, 2));
-  d->o.cal.norl = sqrt(pow(d->o.lum.lx, 2) + pow(d->o.lum.ly, 2)
-		       + pow(d->o.lum.lz, 2));
-  d->o.cal.cosy = (d->o.cal.sca / (d->o.cal.norm * d->o.cal.norl));
-  d->o.cal.cosy = 1 - d->o.cal.cosy;
-  if (d->o.cal.cosy <= 0)
-    d->colo = 0;
-  else
+  d->o.lum.px[i] = d->o.view.x_eyes + (d->k * d->o.view.vx);
+  d->o.lum.py[i] = d->o.view.y_eyes + (d->k * d->o.view.vy);
+  d->o.lum.pz[i] = d->o.view.z_eyes + (d->k * d->o.view.vz);
+  d->o.lum.lx[i] = d->o.lum.x_lum[i] - d->o.lum.px[i];
+  d->o.lum.ly[i] = d->o.lum.y_lum[i] - d->o.lum.py[i];
+  d->o.lum.lz[i] = d->o.lum.z_lum[i] - d->o.lum.pz[i];
+  if (shadow(d) == -1)
+    return;
+  calculate_n(d, i);
+  d->o.cal.cosy = (((d->o.lum.sx[i] * d->o.lum.lx[i])
+		    + (d->o.lum.sy[i] * d->o.lum.ly[i])
+		    + (d->o.lum.sz[i] * d->o.lum.lz[i]))
+		   / sqrt((pow(d->o.lum.sx[i], 2)
+			   + pow(d->o.lum.sy[i], 2)
+			   + pow(d->o.lum.sz[i], 2)) *
+			  (pow(d->o.lum.lx[i], 2) + pow(d->o.lum.ly[i], 2)
+			   + pow(d->o.lum.lz[i], 2))));
+  if (d->o.cal.cosy > 0.000001)
     my_change_color(d);
+  else
+    d->colo = COLOR_BLACK;
 }
