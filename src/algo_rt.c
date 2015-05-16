@@ -5,61 +5,10 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Sun Feb  8 16:18:36 2015 ugo belfiore
-** Last update Thu May 14 15:49:07 2015 ugo belfiore
+** Last update Sun May 17 00:55:36 2015 ugo belfiore
 */
 
 #include "mini.h"
-
-void	part_sph(t_data *d)
-{
-  int		i;
-
-  i = -1;
-  while (++i < d->o.sph.check)
-    {
-      rotate_x(d, d->o.sph.rotx[i]);
-      rotate_y(d, d->o.sph.roty[i]);
-      rotate_z(d, d->o.sph.rotz[i]);
-      sphere(d, i);
-      rotate_x(d, -d->o.sph.rotx[i]);
-      rotate_y(d, -d->o.sph.roty[i]);
-      rotate_z(d, -d->o.sph.rotz[i]);
-    }
-}
-
-void	part_cyl(t_data *d)
-{
-  int		i;
-
-  i = -1;
-  while (++i < d->o.cy.check)
-    {
-      rotate_x(d, d->o.cy.rotx[i]);
-      rotate_y(d, d->o.cy.roty[i]);
-      rotate_z(d, d->o.cy.rotz[i]);
-      cyl(d, i);
-      rotate_x(d, -d->o.cy.rotx[i]);
-      rotate_y(d, -d->o.cy.roty[i]);
-      rotate_z(d, -d->o.cy.rotz[i]);
-    }
-}
-
-void	part_cone(t_data *d)
-{
-  int		i;
-
-  i = -1;
-  while (++i < d->o.co.check)
-    {
-      rotate_x(d, d->o.co.rotx[i]);
-      rotate_y(d, d->o.co.roty[i]);
-      rotate_z(d, d->o.co.rotz[i]);
-      cone(d, i);
-      rotate_x(d, -d->o.co.rotx[i]);
-      rotate_y(d, -d->o.co.roty[i]);
-      rotate_z(d, -d->o.co.rotz[i]);
-    }
-}
 
 /*
 ** fonction qui permet de calculer les intersections
@@ -68,25 +17,7 @@ void	part_cone(t_data *d)
 
 static void	calc(t_data *d)
 {
-  int		i;
 
-  d->k = 100000; // distance maximal (sinon les élément infini comme le cone
-		 // ou les plan vont boucler infini.
-  d->kk = 0;
-  d->colo = COLOR_BLACK;	// couleur initiale black.
-  part_sph(d);
-  part_cyl(d);
-  part_cone(d);
-  i = -1;
-  while (++i < d->o.pl.check)
-    plan(d, i);
-  i = -1;
-  /* if (d->w == 1) */
-  /*   lum(d, 0); */
-  /* else */
-  /*   lum(d, 1); */
-  while (++i < d->o.lum.check)
-    lum(d, i);
 }
 
 /*
@@ -106,12 +37,12 @@ void	algo_rt(t_data *d, int flew, int flew2)
     {
       while (j < d->y_max)
 	{
-	  d->o.view.vx = 1000;
-          d->o.view.vy = (d->x_max / 2) - i;
-          d->o.view.vz = (d->y_max / 2) - j;
-	  rotate_x(d, d->o.view.rotangx);
-	  rotate_y(d, d->o.view.rotangy);
-	  rotate_z(d, d->o.view.rotangz);
+	  /* d->o.view.vx = 1000; */
+          /* d->o.view.vy = (d->x_max / 2) - i; */
+          /* d->o.view.vz = (d->y_max / 2) - j; */
+	  /* rotate_x(d, d->o.view.rotangx); */
+	  /* rotate_y(d, d->o.view.rotangy); */
+	  /* rotate_z(d, d->o.view.rotangz); */
 	  calc(d);
 	  aff_pix_img(d, i, j, d->bigData);
 	  j += 5;

@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon Apr 20 06:52:15 2015 ugo belfiore
-** Last update Mon May  4 12:59:17 2015 ugo belfiore
+** Last update Sun May 17 01:30:28 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -16,53 +16,24 @@
 ** i = 0: exit propre avec free
 */
 
-static void	my_error_free(t_data *d)
-{
-  free(d->o.lum.x_lum);
-  free(d->o.lum.y_lum);
-  free(d->o.lum.z_lum);
-  free(d->o.pl.high);
-  free(d->o.pl.color_plan);
-  free(d->o.sph.x_sphere);
-  free(d->o.sph.y_sphere);
-  free(d->o.sph.z_sphere);
-  free(d->o.sph.r_sh);
-  free(d->o.sph.color_sphere);
-  free(d->o.sph.rotx);
-  free(d->o.sph.roty);
-  free(d->o.sph.rotz);
-  free(d->o.cy.x_cyl);
-  free(d->o.cy.y_cyl);
-  free(d->o.cy.z_cyl);
-  free(d->o.cy.r_cyl);
-  free(d->o.cy.color_cyl);
-  free(d->o.cy.rotx);
-  free(d->o.cy.roty);
-  free(d->o.cy.rotz);
-  free(d->o.cy.high);
-  free(d->o.co.x_cone);
-  free(d->o.co.y_cone);
-  free(d->o.co.z_cone);
-}
-
-void    my_error(t_data *d, char *error, int i)
+void    my_error(t_st *s, char *error, int i)
 {
   if (i == -1)
     my_printf("%s\n", error);
   else if (i == 0)
     {
-      my_error_free(d);
-      free(d->o.co.r_cone);
-      free(d->o.co.color_cone);
-      free(d->o.co.rotx);
-      free(d->o.co.roty);
-      free(d->o.co.rotz);
-      free(d->o.co.high);
+      /* my_error_free(d); */
+      /* free(d->o.co.r_cone); */
+      /* free(d->o.co.color_cone); */
+      /* free(d->o.co.rotx); */
+      /* free(d->o.co.roty); */
+      /* free(d->o.co.rotz); */
+      /* free(d->o.co.high); */
       my_printf("attention: ");
-      FMOD_Sound_Release(d->sd.bonus1);
-      FMOD_System_Close(d->sd.system);
-      FMOD_System_Release(d->sd.system);
-      mlx_destroy_window(d->mlx_ptr, d->win_ptr);
+      FMOD_Sound_Release(s->sd.bonus1);
+      FMOD_System_Close(s->sd.system);
+      FMOD_System_Release(s->sd.system);
+      mlx_destroy_window(s->d.mlx_ptr, s->d.win_ptr);
       my_printf("%s\n", error);
     }
   else

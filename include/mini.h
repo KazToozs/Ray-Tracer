@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 28 09:26:37 2014 ugo belfiore
-** Last update Sat May 16 16:39:27 2015 ugo belfiore
+** Last update Sun May 17 01:37:06 2015 ugo belfiore
 */
 
 #ifndef MINI_H_
@@ -75,6 +75,7 @@
 #define KEY_O 111
 #define KEY_L 108
 #define KEY_W 119
+
 /*
 ** stucture son
 */
@@ -89,7 +90,7 @@ typedef struct	s_sound
 ** structure image
 */
 
-typedef struct	s_pic
+typedef struct	s_piic
 {
   void		*pros;
   int		save1;
@@ -98,7 +99,7 @@ typedef struct	s_pic
   int           bpp;
   int           size;
   int           end;
-}		t_pic;
+}		t_piic;
 
 enum    SHAPE
   {
@@ -107,144 +108,6 @@ enum    SHAPE
     CYLINDER,
     PLANE
   };
-
-typedef struct	s_lum
-{
-  double	*x_lum;
-  double	*y_lum;
-  double	*z_lum;
-  int		check;
-  double	*px;
-  double	*py;
-  double	*pz;
-  double	*lx;
-  double	*ly;
-  double	*lz;
-  double	*sx;
-  double	*sy;
-  double	*sz;
-  int		debug;
-}		t_lum;
-
-/*
-** view (coordonnée et vercteur)
-*/
-
-typedef struct	s_view
-{
-  double	vx;
-  double	vy;
-  double	vz;
-  int		x_eyes;
-  int		y_eyes;
-  int		z_eyes;
-  double	rotangx;
-  double	rotangy;
-  double	rotangz;
-  int		check;
-  int		check2;
-}		t_view;
-
-/*
-** objet plan
-*/
-
-typedef struct	s_plan
-{
-  int		*high;
-  int		check;
-  double	flag;
-  int		*color_plan;
-}		t_plan;
-
-/*
-** objet sphere
-*/
-
-typedef struct	s_sphere
-{
-  int		*x_sphere;
-  int		*y_sphere;
-  int		*z_sphere;
-  int		*r_sh;
-  int		*color_sphere;
-  double	*rotx;
-  double	*roty;
-  double	*rotz;
-  int		debug;
-  int		check;
-}		t_sphere;
-
-/*
-** objet cylindre
-*/
-
-typedef struct	s_cyl
-{
-  int		*x_cyl;
-  int		*y_cyl;
-  int		*z_cyl;
-  int		*r_cyl;
-  int		*color_cyl;
-  double	*rotx;
-  double	*roty;
-  double	*rotz;
-  int		*high;
-  int		debug;
-  int		check;
-}		t_cyl;
-
-/*
-** objet cone
-*/
-
-typedef struct	s_cone
-{
-  int		*x_cone;
-  int		*y_cone;
-  int		*z_cone;
-  int		*r_cone;
-  int		*color_cone;
-  double	*rotx;
-  double	*roty;
-  double	*rotz;
-  int		*high;
-  int		debug;
-  int		check;
-}		t_cone;
-
-/*
-** calcule intersection
-*/
-
-typedef struct	s_calc
-{
-  double	a;
-  double	b;
-  double	c;
-  double	delta;
-  double	x1;
-  double	x2;
-  double	sca;
-  double	norm;
-  double	norl;
-  double	cosy;
-}		t_calc;
-
-/*
-** structure objet du raytracer
-*/
-
-typedef struct	s_obj
-{
-  t_calc	cal;
-  t_view	view;
-  t_lum		lum;
-  t_sphere	sph;
-  t_plan	pl;
-  t_cyl		cy;
-  t_cone	co;
-}		t_obj;
 
 typedef struct  s_file
 {
@@ -257,6 +120,93 @@ typedef struct  s_file
 ** data: structure principale contenant les pointeurs
 **	de fenêtreet d'image, contient le tableau **tab,
 */
+
+typedef struct  s_rot
+{
+  int           x;
+  int           y;
+  int           z;
+}               t_rot;
+
+typedef struct  s_pic
+{
+  int           win_x;
+  int           win_y;
+  int           img_start_x;
+  int           img_start_y;
+  int           img_x;
+  int           img_y;
+}               t_pic;
+
+typedef struct  s_vect
+{
+  double        vx;
+  double        vy;
+  double        vz;
+}               t_vect;
+
+typedef struct  s_pos
+{
+  double        x;
+  double        y;
+  double        z;
+}               t_pos;
+
+typedef struct  s_x
+{
+  double        x1;
+  double        x2;
+  int           red;
+  int           green;
+  int           blue;
+  int           t;
+}               t_x;
+
+typedef struct  s_cam
+{
+  t_pos         p;
+  t_vect        v;
+  t_rot         rot;
+}               t_cam;
+
+typedef struct  s_sph
+{
+  t_pos         p;
+  double        r;
+  t_x           x;
+}               t_sph;
+
+typedef struct  s_plan
+{
+  double        z;
+  double        k;
+  int           red;
+  int           green;
+  int           blue;
+}               t_plan;
+
+typedef struct  s_cone
+{
+  t_pos         p;
+  double        r;
+  t_x           x;
+  t_rot         rot;
+}               t_cone;
+
+typedef struct  s_cyl
+{
+  t_pos         p;
+  double        r;
+  t_x           x;
+  t_rot         rot;
+}               t_cyl;
+
+typedef struct  s_int
+{
+  t_cam         c;
+  double        k;
+  int           t;
+}               t_int;
 
 typedef struct	s_data
 {
@@ -273,24 +223,34 @@ typedef struct	s_data
   int		w;
   int		f[256];
   int		timer;
-  int		tmp_i;
-  double	k;
-  int		kk;
+}               t_data;
+
+typedef struct  s_st
+{
+  t_data        d;
+  t_pic         p;
+  t_cam         c;
+  t_sph         s;
+  t_plan        pl;
+  t_cone        co;
+  t_cyl         cy;
+  t_vect        n;
+  t_int         x;
+  t_cam         l;
   t_file	fi;
   t_sound	sd;
-  t_pic		p;
-  t_obj		o;
+  t_piic	pi;
   pthread_t     threads[5];
-}               t_data;
+}               t_st;
 
 /*
 ** fonction divers.
 */
 
-void	aff_win(t_data *d, char *name);
-void	aff_pix_img(t_data *d, int x, int y, char *img);
-void	sound_init(t_data *d);
-void	my_error(t_data *d, char *error, int i);
+void	aff_win(t_st *st, char *name);
+//void	aff_pix_img(t_st *st, int x, int y, char *img);
+//void	sound_init(t_data *d);
+void	my_error(t_st *s, char *error, int i);
 char	*get_next_line(const int fd);
 char	**my_str_to_wordtab_rt(char *str);
 char	*my_strdup(char *str);
@@ -299,61 +259,36 @@ char	*my_strdup(char *str);
 ** fonction evenement minilibix
 */
 
-int	manage_expose(void *param);
-void	check_refresh(t_data *d, int keycode);
-void    modify_key(t_data *d, int keycode);
-int	manage_frame(void *param);
-void	fast_way_only(t_data *d);
-void    manage_frame_test_key(t_data *d);
-int	manage_keyPres(int keycode, void *param);
-int	manage_keyRelease(int keycode, void *param);
-int	manage_key(int keycode, void *param);
+//int	manage_expose(void *param);
+//void	check_refresh(t_data *d, int keycode);
+//void    modify_key(t_data *d, int keycode);
+//int	manage_frame(void *param);
+//void	fast_way_only(t_data *d);
+//void    manage_frame_test_key(t_data *d);
+//int	manage_keyPres(int keycode, void *param);
+//int	manage_keyRelease(int keycode, void *param);
+//int	manage_key(int keycode, void *param);
 
 /*
 ** fonction rt parsing
 */
 
-void	my_parsing_rt(t_data *d);
+void	my_parsing_rt(t_st *s);
 
 /*
 ** fonction rt affichage
 */
 
-void	part_one(t_data *d);
-void	part_two(t_data *d);
-void	part_tree(t_data *d);
-void	part_four(t_data *d);
-void	part_five(t_data *d);
-void	init_sphere(t_data *d);
-void	init_cyl(t_data *d);
-void	init_cone(t_data *d);
-void	algo_rt(t_data *d, int flew, int flew2);
-void	sphere(t_data *d, int i);
-void	cyl(t_data *d, int i);
-void	cone(t_data *d, int i);
-void	plan(t_data *d, int i);
-void	rotate_x(t_data *d, double angle);
-void	rotate_y(t_data *d, double angle);
-void	rotate_z(t_data *d, double angle);
-void	lum(t_data *d, int i);
-void	my_change_color(t_data *d);
-void	move_xyz_all(t_data *d, int which, int value);
-void	calculate_k(t_data *d);
-void	translate(t_data *d, int x, int y, int z);
-void	inv_translate(t_data *d, int x, int y, int z);
-void	translate_shad(t_data *d, int x, int y, int z);
-void	inv_translate_shad(t_data *d, int x, int y, int z);
-int	shadow(t_data *d);
-void	part_sph(t_data *d);
-void	part_cyl(t_data *d);
-void	part_cone(t_data *d);
-void	part_sph_shadow(t_data *d);
-void	part_cyl_shadow(t_data *d);
-void	part_cone_shadow(t_data *d);
-void	part_plan_shadow(t_data *d);
-void	sphere_shadow(t_data *d, int i);
-void	cyl_shadow(t_data *d, int i);
-void	cone_shadow(t_data *d, int i);
-void	plan_shadow(t_data *d, int i);
+//void	algo_rt(t_data *d, int flew, int flew2);
+//void	rotate_x(t_data *d, double angle);
+//void	rotate_y(t_data *d, double angle);
+//void	rotate_z(t_data *d, double angle);
+//void	my_change_color(t_data *d);
+//void	move_xyz_all(t_data *d, int which, int value);
+//void	part_one(t_data *d);
+//void	part_two(t_data *d);
+//void	part_tree(t_data *d);
+//void	part_four(t_data *d);
+//void	part_five(t_data *d);
 
 #endif
