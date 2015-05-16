@@ -5,10 +5,24 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Fri Mar  6 12:51:45 2015 ugo belfiore
-** Last update Thu May 14 12:45:07 2015 ugo belfiore
+** Last update Sat May 16 16:44:33 2015 ugo belfiore
 */
 
 #include "mini.h"
+
+void	translate_shad(t_data *d, int x, int y, int z)
+{
+  d->o.lum.px += x;
+  d->o.lum.py += y;
+  d->o.lum.pz += z;
+}
+
+void	inv_translate_shad(t_data *d, int x, int y, int z)
+{
+  d->o.lum.px -= x;
+  d->o.lum.py -= y;
+  d->o.lum.pz -= z;
+}
 
 void	translate(t_data *d, int x, int y, int z)
 {

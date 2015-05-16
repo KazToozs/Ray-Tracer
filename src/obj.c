@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Thu Mar 12 17:26:03 2015 ugo belfiore
-** Last update Tue May 12 10:53:52 2015 ugo belfiore
+** Last update Sat May 16 17:00:56 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -17,11 +17,6 @@ void		plan(t_data *d, int i)
   tmp_z = d->o.view.vz + d->o.pl.high[i];
   if (abs(tmp_z) > 0.00001)
     d->o.pl.flag = -d->o.view.z_eyes / tmp_z;
-  else if (d->o.pl.flag < d->k && d->o.pl.flag > 0.00001)
-    {
-      d->k = d->o.pl.flag;
-      d->colo = d->o.pl.color_plan[i];
-    }
   if (d->o.pl.flag < d->k && d->o.pl.flag > 0.00001)
     {
       d->k = d->o.pl.flag;
@@ -49,6 +44,13 @@ void		cyl(t_data *d, int i)
 	  (d->o.cal.x1 < d->o.cal.x2 || d->o.cal.x2 < 0.000001))
 	{
 	  d->k = d->o.cal.x1;
+	  d->kk = CYLINDER;
+	  d->colo = COLOR_GREEN;
+	}
+      else if (d->o.cal.x2 > 0.000001 && d->o.cal.x2 < d->k &&
+	       (d->o.cal.x2 < d->o.cal.x1 || d->o.cal.x1 < 0.000001))
+	{
+	  d->k = d->o.cal.x2;
 	  d->kk = CYLINDER;
 	  d->colo = COLOR_GREEN;
 	}
@@ -85,6 +87,13 @@ void		cone(t_data *d, int i)
 	  d->kk = CONE;
           d->colo = COLOR_PURPLE;
         }
+      else if (d->o.cal.x2 > 0.000001 && d->o.cal.x2 < d->k &&
+	       (d->o.cal.x2 < d->o.cal.x1 || d->o.cal.x1 < 0.000001))
+	{
+	  d->k = d->o.cal.x2;
+	  d->kk = CONE;
+          d->colo = COLOR_PURPLE;
+	}
     }
 }
 
@@ -112,6 +121,13 @@ void		sphere(t_data *d, int i)
 	  d->k = d->o.cal.x1;
 	  d->kk = SPHERE;
 	  d->colo = COLOR_RED;
+	}
+      else if (d->o.cal.x2 > 0.000001 && d->o.cal.x2 < d->k &&
+	       (d->o.cal.x2 < d->o.cal.x1 || d->o.cal.x1 < 0.000001))
+	{
+	  d->k = d->o.cal.x2;
+          d->kk = SPHERE;
+          d->colo = COLOR_RED;
 	}
     }
 }

@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Sun Feb  8 16:18:36 2015 ugo belfiore
-** Last update Thu May 14 13:07:09 2015 ugo belfiore
+** Last update Sat May 16 14:41:05 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -60,4 +60,3 @@ void	part_cone_shadow(t_data *d)
       rotate_z(d, -d->o.co.rotz[i]);
     }
 }
-

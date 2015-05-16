@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 28 09:26:37 2014 ugo belfiore
-** Last update Thu May 14 13:11:29 2015 ugo belfiore
+** Last update Sat May 16 16:39:27 2015 ugo belfiore
 */
 
 #ifndef MINI_H_
@@ -341,6 +341,8 @@ void	move_xyz_all(t_data *d, int which, int value);
 void	calculate_k(t_data *d);
 void	translate(t_data *d, int x, int y, int z);
 void	inv_translate(t_data *d, int x, int y, int z);
+void	translate_shad(t_data *d, int x, int y, int z);
+void	inv_translate_shad(t_data *d, int x, int y, int z);
 int	shadow(t_data *d);
 void	part_sph(t_data *d);
 void	part_cyl(t_data *d);
@@ -348,7 +350,7 @@ void	part_cone(t_data *d);
 void	part_sph_shadow(t_data *d);
 void	part_cyl_shadow(t_data *d);
 void	part_cone_shadow(t_data *d);
-//void	part_plan_shadow(t_data *d);
+void	part_plan_shadow(t_data *d);
 void	sphere_shadow(t_data *d, int i);
 void	cyl_shadow(t_data *d, int i);
 void	cone_shadow(t_data *d, int i);
