@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 28 09:26:37 2014 ugo belfiore
-** Last update Sun May 17 01:37:06 2015 ugo belfiore
+** Last update Sun May 17 02:45:20 2015 ugo belfiore
 */
 
 #ifndef MINI_H_
@@ -248,8 +248,8 @@ typedef struct  s_st
 */
 
 void	aff_win(t_st *st, char *name);
-//void	aff_pix_img(t_st *st, int x, int y, char *img);
-//void	sound_init(t_data *d);
+void	aff_pix_img(t_st *st, int x, int y, char *img);
+void	sound_init(t_st *s);
 void	my_error(t_st *s, char *error, int i);
 char	*get_next_line(const int fd);
 char	**my_str_to_wordtab_rt(char *str);
@@ -259,15 +259,15 @@ char	*my_strdup(char *str);
 ** fonction evenement minilibix
 */
 
-//int	manage_expose(void *param);
-//void	check_refresh(t_data *d, int keycode);
-//void    modify_key(t_data *d, int keycode);
-//int	manage_frame(void *param);
-//void	fast_way_only(t_data *d);
-//void    manage_frame_test_key(t_data *d);
-//int	manage_keyPres(int keycode, void *param);
-//int	manage_keyRelease(int keycode, void *param);
-//int	manage_key(int keycode, void *param);
+int	manage_expose(void *param);
+void	check_refresh(t_st *s, int keycode);
+void    modify_key(t_st *s, int keycode);
+int	manage_frame(void *param);
+void	fast_way_only(t_st *s);
+void    manage_frame_test_key(t_st *s);
+int	manage_keyPres(int keycode, void *param);
+int	manage_keyRelease(int keycode, void *param);
+int	manage_key(int keycode, void *param);
 
 /*
 ** fonction rt parsing
@@ -279,16 +279,16 @@ void	my_parsing_rt(t_st *s);
 ** fonction rt affichage
 */
 
-//void	algo_rt(t_data *d, int flew, int flew2);
-//void	rotate_x(t_data *d, double angle);
-//void	rotate_y(t_data *d, double angle);
-//void	rotate_z(t_data *d, double angle);
-//void	my_change_color(t_data *d);
-//void	move_xyz_all(t_data *d, int which, int value);
-//void	part_one(t_data *d);
-//void	part_two(t_data *d);
-//void	part_tree(t_data *d);
-//void	part_four(t_data *d);
-//void	part_five(t_data *d);
+void	algo_rt(t_st *s, int flew, int flew2);
+void	rotate_x(t_st *s, double angle);
+void	rotate_y(t_st *s, double angle);
+void	rotate_z(t_st *s, double angle);
+void	my_change_color(t_st *s);
+void	move_xyz_all(t_st *s, int which, int value);
+void	part_one(t_st *s);
+void	part_two(t_st *s);
+void	part_tree(t_st *s);
+void	part_four(t_st *s);
+void	part_five(t_st *s);
 
 #endif

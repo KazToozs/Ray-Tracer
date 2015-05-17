@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Sun Feb  8 16:18:36 2015 ugo belfiore
-** Last update Sun May 17 00:55:36 2015 ugo belfiore
+** Last update Sun May 17 02:39:13 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -15,7 +15,7 @@
 ** entre chaque objet
 */
 
-static void	calc(t_data *d)
+static void	calc(t_st *s)
 {
 
 }
@@ -26,16 +26,16 @@ static void	calc(t_data *d)
 ** petit à petit la scène
 */
 
-void	algo_rt(t_data *d, int flew, int flew2)
+void	algo_rt(t_st *s, int flew, int flew2)
 {
   int	i;
   int	j;
 
   i = flew;
   j = flew2;
-  while (i < d->x_max)
+  while (i < s->d.x_max)
     {
-      while (j < d->y_max)
+      while (j < s->d.y_max)
 	{
 	  /* d->o.view.vx = 1000; */
           /* d->o.view.vy = (d->x_max / 2) - i; */
@@ -43,12 +43,12 @@ void	algo_rt(t_data *d, int flew, int flew2)
 	  /* rotate_x(d, d->o.view.rotangx); */
 	  /* rotate_y(d, d->o.view.rotangy); */
 	  /* rotate_z(d, d->o.view.rotangz); */
-	  calc(d);
-	  aff_pix_img(d, i, j, d->bigData);
+	  calc(s);
+	  aff_pix_img(s, i, j, s->d.bigData);
 	  j += 5;
 	}
       j = flew2;
       i += 5;
     }
-  mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->img_ptr, 0, 0);
+  mlx_put_image_to_window(s->d.mlx_ptr, s->d.win_ptr, s->d.img_ptr, 0, 0);
 }
