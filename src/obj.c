@@ -5,11 +5,10 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Thu Mar  5 10:17:14 2015 cristopher toozs-hobson
-** Last update Mon May 18 13:55:12 2015 ugo belfiore
+** Last update Mon May 18 13:48:29 2015 ugo belfiore
 */
 
-#include <math.h>
-#include "rt.h"
+#include "mini.h"
 
 void		delta(t_x *x, double a, double b, double ca)
 {
@@ -85,5 +84,5 @@ void		inter_cyl(t_cam *c, t_cyl *cy)
 
 void		inter_plan(t_st *s, t_cam *c)
 {
-  s->pl.k = -(c->p.z / c->v.vz);
+  s->pl->k = -(c->p.z / c->v.vz);
 }

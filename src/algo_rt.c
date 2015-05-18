@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Sun Feb  8 16:18:36 2015 ugo belfiore
-** Last update Mon May 18 12:14:17 2015 ugo belfiore
+** Last update Mon May 18 13:56:02 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -17,7 +17,12 @@
 
 static void	calc(t_st *s)
 {
-
+  inter_cyl(&s->c, s->cy);
+  inter_cone(&s->c, s->co);
+  inter_sphere(&s->c, s->s);
+  inter_plan(s, &s->c);
+  calculate_k(s);
+  /* light(s); */
 }
 
 /*
@@ -37,12 +42,12 @@ void	algo_rt(t_st *s, int flew, int flew2)
     {
       while (j < s->d.y_max)
 	{
-	  /* d->o.view.vx = 1000; */
-          /* d->o.view.vy = (d->x_max / 2) - i; */
-          /* d->o.view.vz = (d->y_max / 2) - j; */
-	  /* rotate_x(s, s->c.rot.x); */
-	  /* rotate_y(s, s->c.rot.y); */
-	  /* rotate_z(s, s->c.rot.z); */
+	  s->d.colo = COLOR_BLACK;
+	  s->x.k = 10000000;
+	  s->c.v.vx = 1000;
+	  s->c.v.vy = (s->d.x_max / 2) - i;
+	  s->c.v.vz = (s->d.y_max / 2) - j;
+	  rotate(&s->c.rot, &s->c);
 	  calc(s);
 	  aff_pix_img(s, i, j, s->d.bigData);
 	  j += 5;

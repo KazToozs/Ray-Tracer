@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 28 09:26:37 2014 ugo belfiore
-** Last update Mon May 18 11:59:51 2015 ugo belfiore
+** Last update Mon May 18 13:31:18 2015 ugo belfiore
 */
 
 #ifndef MINI_H_
@@ -291,9 +291,6 @@ void	my_parsing_rt(t_st *s);
 */
 
 void	algo_rt(t_st *s, int flew, int flew2);
-void	rotate_x(t_st *s, double angle);
-void	rotate_y(t_st *s, double angle);
-void	rotate_z(t_st *s, double angle);
 void	my_change_color(t_st *s);
 void	move_xyz_all(t_st *s, int which, int value);
 void	part_one(t_st *s);
@@ -316,5 +313,13 @@ int     cone_len(t_cone *list);
 int     cyl_len(t_cyl *list);
 int     sphere_len(t_sph *list);
 int     plan_len(t_plan *list);
+void	rotate(t_rot *rot, t_cam *c);
+void	translation(t_pos *p, int x, int y, int z);
+void	inverse_translation(t_pos *p, int x, int y, int z);
+void	calculate_k(t_st *s);
+void	inter_sphere(t_cam *c, t_sph *s);
+void	inter_cone(t_cam *c, t_cone *co);
+void	inter_cyl(t_cam *c, t_cyl *cy);
+void	inter_plan(t_st *s, t_cam *c);
 
 #endif

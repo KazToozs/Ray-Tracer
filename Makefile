@@ -5,7 +5,7 @@
 ## Login   <belfio_u@epitech.net>
 ## 
 ## Started on  Mon May 18 11:47:58 2015 ugo belfiore
-## Last update Mon May 18 12:08:54 2015 ugo belfiore
+## Last update Mon May 18 13:04:03 2015 ugo belfiore
 ##
 
 SRC     =       ./src/main.c			\
@@ -21,6 +21,10 @@ SRC     =       ./src/main.c			\
 		./src/aff_pix_img.c		\
 		./src/my_obj_list.c		\
 		./src/my_change_color.c		\
+		./src/rotation.c		\
+		./src/obj.c			\
+		./src/translations.c		\
+		./src/calculate_k.c		\
 
 OBJ     =       $(SRC:.c=.o)
 
