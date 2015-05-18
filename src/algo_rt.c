@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Sun Feb  8 16:18:36 2015 ugo belfiore
-** Last update Sun May 17 02:39:13 2015 ugo belfiore
+** Last update Mon May 18 12:14:17 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -40,9 +40,9 @@ void	algo_rt(t_st *s, int flew, int flew2)
 	  /* d->o.view.vx = 1000; */
           /* d->o.view.vy = (d->x_max / 2) - i; */
           /* d->o.view.vz = (d->y_max / 2) - j; */
-	  /* rotate_x(d, d->o.view.rotangx); */
-	  /* rotate_y(d, d->o.view.rotangy); */
-	  /* rotate_z(d, d->o.view.rotangz); */
+	  /* rotate_x(s, s->c.rot.x); */
+	  /* rotate_y(s, s->c.rot.y); */
+	  /* rotate_z(s, s->c.rot.z); */
 	  calc(s);
 	  aff_pix_img(s, i, j, s->d.bigData);
 	  j += 5;

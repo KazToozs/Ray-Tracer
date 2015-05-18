@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 28 09:26:37 2014 ugo belfiore
-** Last update Sun May 17 02:45:20 2015 ugo belfiore
+** Last update Mon May 18 11:59:51 2015 ugo belfiore
 */
 
 #ifndef MINI_H_
@@ -156,49 +156,58 @@ typedef struct  s_x
 {
   double        x1;
   double        x2;
-  int           red;
-  int           green;
-  int           blue;
+  int           color;
   int           t;
 }               t_x;
 
 typedef struct  s_cam
 {
+  struct s_cam  *prev;
   t_pos         p;
   t_vect        v;
   t_rot         rot;
+  struct s_cam  *next;
 }               t_cam;
 
 typedef struct  s_sph
 {
+  struct s_sph  *prev;
   t_pos         p;
   double        r;
   t_x           x;
+  t_rot         rot;
+  struct s_sph  *next;
 }               t_sph;
 
 typedef struct  s_plan
 {
+  struct s_plan *prev;
   double        z;
   double        k;
-  int           red;
-  int           green;
-  int           blue;
+  int           color;
+  struct s_plan *next;
 }               t_plan;
 
 typedef struct  s_cone
 {
+  struct s_cone *prev;
   t_pos         p;
   double        r;
+  int           high;
   t_x           x;
   t_rot         rot;
+  struct s_cone *next;
 }               t_cone;
 
 typedef struct  s_cyl
 {
+  struct s_cyl  *prev;
   t_pos         p;
   double        r;
+  int           high;
   t_x           x;
   t_rot         rot;
+  struct s_cyl  *next;
 }               t_cyl;
 
 typedef struct  s_int
@@ -206,6 +215,7 @@ typedef struct  s_int
   t_cam         c;
   double        k;
   int           t;
+  int		color;
 }               t_int;
 
 typedef struct	s_data
@@ -230,13 +240,13 @@ typedef struct  s_st
   t_data        d;
   t_pic         p;
   t_cam         c;
-  t_sph         s;
-  t_plan        pl;
-  t_cone        co;
-  t_cyl         cy;
+  t_sph         *s;
+  t_plan        *pl;
+  t_cone        *co;
+  t_cyl         *cy;
   t_vect        n;
   t_int         x;
-  t_cam         l;
+  t_cam         *l;
   t_file	fi;
   t_sound	sd;
   t_piic	pi;
@@ -251,6 +261,7 @@ void	aff_win(t_st *st, char *name);
 void	aff_pix_img(t_st *st, int x, int y, char *img);
 void	sound_init(t_st *s);
 void	my_error(t_st *s, char *error, int i);
+void	aff_error(char *str);
 char	*get_next_line(const int fd);
 char	**my_str_to_wordtab_rt(char *str);
 char	*my_strdup(char *str);
@@ -290,5 +301,20 @@ void	part_two(t_st *s);
 void	part_tree(t_st *s);
 void	part_four(t_st *s);
 void	part_five(t_st *s);
+
+/*
+***************** Proto parsing **************
+*/
+
+t_sph   *my_put_sph_list(t_sph *list, t_sph remp);
+t_cone  *my_put_cone_list(t_cone *list, t_cone remp);
+t_cyl   *my_put_cyl_list(t_cyl *list, t_cyl remp);
+t_plan  *my_put_plan_list(t_plan *list, int z, int color);
+t_cam   *my_put_light_list(t_cam *list, int x, int y, int z);
+int     light_len(t_cam *list);
+int     cone_len(t_cone *list);
+int     cyl_len(t_cyl *list);
+int     sphere_len(t_sph *list);
+int     plan_len(t_plan *list);
 
 #endif

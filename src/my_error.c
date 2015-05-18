@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon Apr 20 06:52:15 2015 ugo belfiore
-** Last update Sun May 17 01:30:28 2015 ugo belfiore
+** Last update Sun May 17 02:02:09 2015 jules palluau
 */
 
 #include "mini.h"
@@ -39,4 +39,10 @@ void    my_error(t_st *s, char *error, int i)
   else
     my_printf("%s\n", error);
   exit(i);
+}
+
+void	aff_error(char *str)
+{
+  my_printf("%s\n", str);
+  exit(EXIT_SUCCESS);
 }

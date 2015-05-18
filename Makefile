@@ -1,11 +1,11 @@
 ##
-## Makefile for  in /home/belfio_u/rendu/EXOTEST/FDF
+## Makefile for  in /home/belfio_u/rendu/MUL/MUL_2014_rtracer
 ## 
 ## Made by ugo belfiore
 ## Login   <belfio_u@epitech.net>
 ## 
-## Started on  Mon Oct 27 15:13:44 2014 ugo belfiore
-## Last update Sun May 17 02:41:32 2015 ugo belfiore
+## Started on  Mon May 18 11:47:58 2015 ugo belfiore
+## Last update Mon May 18 12:08:54 2015 ugo belfiore
 ##
 
 SRC     =       ./src/main.c			\
@@ -19,6 +19,8 @@ SRC     =       ./src/main.c			\
 		./src/thread_func.c		\
 		./src/algo_rt.c			\
 		./src/aff_pix_img.c		\
+		./src/my_obj_list.c		\
+		./src/my_change_color.c		\
 
 OBJ     =       $(SRC:.c=.o)
 

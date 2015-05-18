@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Fri Oct 24 19:29:19 2014 ugo belfiore
-** Last update Sun May 17 01:51:00 2015 ugo belfiore
+** Last update Mon May 18 12:03:55 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -17,16 +17,16 @@ static void    debug(t_st *s)
 /*     my_error(d, "ERROR: can't find CAMERA_POS.", -1); */
 /*   if (d->o.view.check2 == 0) */
 /*     my_error(d, "ERROR: can't find CAMERA_ROTATE.", -1); */
-/*   (d->o.lum.check == 0) ? my_error(d, "ERROR: no LIGHT detected.\n", -1) */
-/*     : my_printf("INFO: there are %d LIGHT.\n", d->o.lum.check); */
-/*   (d->o.pl.check == 0) ? my_printf("INFO: no PLAN detected.\n") */
-/*     : my_printf("INFO: there are %d PLAN.\n", d->o.pl.check); */
-/*   (d->o.sph.check == 0) ? my_printf("INFO: no SPHERE detected.\n") */
-/*     : my_printf("INFO: there are %d SPHERE.\n", d->o.sph.check); */
-/*   (d->o.cy.check == 0) ? my_printf("INFO: no CYLINDER detected.\n") */
-/*     : my_printf("INFO: there are %d CYLINDER.\n", d->o.cy.check); */
-/*   (d->o.co.check == 0) ? my_printf("INFO: no CONE detected.\n") */
-/*     : my_printf("INFO: there are %d CONE.\n", d->o.co.check); */
+  (light_len(s->l) == 0) ? my_error(s, "ERROR: no LIGHT detected.\n", -1)
+    : my_printf("INFO: there are %d LIGHT.\n", light_len(s->l));
+  (plan_len(s->pl) == 0) ? my_printf("INFO: no PLAN detected.\n")
+    : my_printf("INFO: there are %d PLAN.\n", plan_len(s->pl));
+  (sphere_len(s->s) == 0) ? my_printf("INFO: no SPHERE detected.\n")
+    : my_printf("INFO: there are %d SPHERE.\n", sphere_len(s->s));
+  (cyl_len(s->cy) == 0) ? my_printf("INFO: no CYLINDER detected.\n")
+    : my_printf("INFO: there are %d CYLINDER.\n", cyl_len(s->cy));
+  (cone_len(s->co) == 0) ? my_printf("INFO: no CONE detected.\n")
+    : my_printf("INFO: there are %d CONE.\n", cone_len(s->co));
 /*   // affichage des variables (pour verifier si ça marche) */
 /*   int   i; */
 
@@ -85,25 +85,19 @@ void	line_camera(t_st *s)
 {
   if (match(s->fi.tab[0], "CAMERA_POS:"))
     {
-      //s->o.view.check++;
-      /* if (d->o.view.check >= 2) */
-      /* 	my_error(d, "ERROR: too many CAMERA_POS.", -1); */
       if (!s->fi.tab[1] || !s->fi.tab[2] || !s->fi.tab[3])
 	my_error(s, "ERROR: argument CAMERA_POS.", -1);
-      //d->o.view.x_eyes = my_getnbr(d->fi.tab[1]);
-      //d->o.view.y_eyes = my_getnbr(d->fi.tab[2]);
-      //d->o.view.z_eyes = my_getnbr(d->fi.tab[3]);
+      s->c.p.x = (double)my_getnbr(s->fi.tab[1]);
+      s->c.p.y = (double)my_getnbr(s->fi.tab[2]);
+      s->c.p.z = (double)my_getnbr(s->fi.tab[3]);
     }
   if (match(s->fi.tab[0], "CAMERA_ROTATE:"))
     {
-      //d->o.view.check2++;
-      /* if (d->o.view.check2 >= 2) */
-      /* 	my_error(d, "ERROR: too many CAMERA_ROTATE.", -1); */
       if (!s->fi.tab[1] || !s->fi.tab[2] || !s->fi.tab[3])
 	my_error(s, "ERROR: argument CAMERA_ROTATE.", -1);
-      //d->o.view.rotangx = my_getnbr(d->fi.tab[1]);
-      //d->o.view.rotangy = my_getnbr(d->fi.tab[2]);
-      //d->o.view.rotangz = my_getnbr(d->fi.tab[3]);
+      s->c.rot.x = my_getnbr(s->fi.tab[1]);
+      s->c.rot.y = my_getnbr(s->fi.tab[2]);
+      s->c.rot.z = my_getnbr(s->fi.tab[3]);
     }
 }
 
@@ -113,101 +107,92 @@ void	line_light_plan(t_st *s)
 
   if (match(s->fi.tab[0], "LIGHT_&:"))
     {
-      //d->o.lum.check++;
-      /* if (d->o.lum.check > 255) // nombre de lumière maximum. */
-      /* 	my_error(d, "ERROR: too many LIGHT.", -1); */
       if (!s->fi.tab[1] || !s->fi.tab[2] || !s->fi.tab[3])
 	my_error(s, "ERROR: argument LIGHT.", -1);
-      //d->o.lum.x_lum[d->o.lum.check - 1] = (double)my_getnbr(d->fi.tab[1]);
-      //d->o.lum.y_lum[d->o.lum.check - 1] = (double)my_getnbr(d->fi.tab[2]);
-      //d->o.lum.z_lum[d->o.lum.check - 1] = (double)my_getnbr(d->fi.tab[3]);
+      s->l = my_put_light_list(s->l, my_getnbr(s->fi.tab[1]),
+			       my_getnbr(s->fi.tab[2]),
+			       my_getnbr(s->fi.tab[3]));
     }
   if (match(s->fi.tab[0], "PLAN_&:"))
     {
-      //d->o.pl.check++;
-      /* if (d->o.pl.check > 255) // nombre de plan maximum. */
-      /* 	my_error(d, "ERROR: too many PLAN.", -1); */
       if (!s->fi.tab[1] || !s->fi.tab[2])
 	my_error(s, "ERROR: argument PLAN.", -1);
-      //d->o.pl.high[d->o.pl.check - 1] = my_getnbr(d->fi.tab[1]);
-      //d->o.pl.color_plan[d->o.pl.check - 1] = strtol(d->fi.tab[2], &test, 16);
+      s->pl = my_put_plan_list(s->pl, my_getnbr(s->fi.tab[1]),
+			       strtol(s->fi.tab[2], &test, 16));
     }
 }
 
-void	line_sphere(t_st *s)
+void		line_sphere(t_st *s)
 {
-  char	*test;
+  char		*test;
+  t_sph		remp;
 
   if (match(s->fi.tab[0], "SPHERE_&:"))
     {
-      //d->o.sph.check++;
-      /* if (d->o.sph.check > 255) // nombre de sphere maximum. */
-      /* 	my_error(d, "ERROR: too many SPHERE.", -1); */
       if (!s->fi.tab[1] || !s->fi.tab[2] || !s->fi.tab[3]
 	  || !s->fi.tab[4] || !s->fi.tab[5] || !s->fi.tab[6]
 	  || !s->fi.tab[7] || !s->fi.tab[8])
 	my_error(s, "ERROR: argument SPHERE.", -1);
-      //d->o.sph.x_sphere[d->o.sph.check - 1] = my_getnbr(d->fi.tab[1]);
-      //d->o.sph.y_sphere[d->o.sph.check - 1] = my_getnbr(d->fi.tab[2]);
-      //d->o.sph.z_sphere[d->o.sph.check - 1] = my_getnbr(d->fi.tab[3]);
-      //d->o.sph.r_sh[d->o.sph.check - 1] = my_getnbr(d->fi.tab[4]);
-      /* d->o.sph.color_sphere[d->o.sph.check - 1] = */
-      /* 	strtol(d->fi.tab[5], &test, 16); */
-      //d->o.sph.rotx[d->o.sph.check - 1] = (double)my_getnbr(d->fi.tab[6]);
-      //d->o.sph.roty[d->o.sph.check - 1] = (double)my_getnbr(d->fi.tab[7]);
-      //d->o.sph.rotz[d->o.sph.check - 1] = (double)my_getnbr(d->fi.tab[8]);
+      remp.p.x = (double)my_getnbr(s->fi.tab[1]);
+      remp.p.y = (double)my_getnbr(s->fi.tab[2]);
+      remp.p.z = (double)my_getnbr(s->fi.tab[3]);
+      remp.r = (double)my_getnbr(s->fi.tab[4]);
+      remp.x.color = strtol(s->fi.tab[5], &test, 16);
+      remp.x.t = SPHERE;
+      remp.rot.x = my_getnbr(s->fi.tab[6]);
+      remp.rot.y = my_getnbr(s->fi.tab[7]);
+      remp.rot.z = my_getnbr(s->fi.tab[8]);
+      s->s = my_put_sph_list(s->s, remp);
     }
 }
 
 void	line_cyl(t_st *s)
 {
   char	*test;
+  t_cyl	remp;
 
   if (match(s->fi.tab[0], "CYLINDER_&:"))
     {
-      //d->o.cy.check++;
-      /* if (d->o.cy.check > 255) // nombre de cylindre maximum. */
-      /* 	my_error(d, "ERROR: too many CYLINDER.", -1); */
       if (!s->fi.tab[1] || !s->fi.tab[2] || !s->fi.tab[3]
 	  || !s->fi.tab[4] || !s->fi.tab[5] || !s->fi.tab[6]
 	  || !s->fi.tab[7] || !s->fi.tab[8] || !s->fi.tab[9])
 	my_error(s, "ERROR: argument CYLINDER.", -1);
-      //d->o.cy.x_cyl[d->o.cy.check - 1] = my_getnbr(d->fi.tab[1]);
-      //d->o.cy.y_cyl[d->o.cy.check - 1] = my_getnbr(d->fi.tab[2]);
-      //d->o.cy.z_cyl[d->o.cy.check - 1] = my_getnbr(d->fi.tab[3]);
-      //d->o.cy.r_cyl[d->o.cy.check - 1] = my_getnbr(d->fi.tab[4]);
-      /* d->o.cy.color_cyl[d->o.cy.check - 1] = */
-      /* 	strtol(d->fi.tab[5], &test, 16); */
-      //d->o.cy.rotx[d->o.cy.check - 1] = (double)my_getnbr(d->fi.tab[6]);
-      //d->o.cy.roty[d->o.cy.check - 1] = (double)my_getnbr(d->fi.tab[7]);
-      //d->o.cy.rotz[d->o.cy.check - 1] = (double)my_getnbr(d->fi.tab[8]);
-      //d->o.cy.high[d->o.cy.check - 1] = my_getnbr(d->fi.tab[9]);
+      remp.p.x = (double)my_getnbr(s->fi.tab[1]);
+      remp.p.y = (double)my_getnbr(s->fi.tab[2]);
+      remp.p.z = (double)my_getnbr(s->fi.tab[3]);
+      remp.r = (double)my_getnbr(s->fi.tab[4]);
+      remp.x.color = strtol(s->fi.tab[5], &test, 16);
+      remp.x.t = CYLINDER;
+      remp.rot.x = my_getnbr(s->fi.tab[6]);
+      remp.rot.y = my_getnbr(s->fi.tab[7]);
+      remp.rot.z = my_getnbr(s->fi.tab[8]);
+      remp.high = my_getnbr(s->fi.tab[9]);
+      s->cy = my_put_cyl_list(s->cy, remp);
     }
 }
 
-void	line_cone(t_st *s)
+void		line_cone(t_st *s)
 {
-  char	*test;
+  char		*test;
+  t_cone	remp;
 
   if (match(s->fi.tab[0], "CONE_&:"))
     {
-      //d->o.co.check++;
-      /* if (d->o.co.check > 255) // nombre de cone maximum. */
-      /* 	my_error(d, "ERROR: too many CONE.", -1); */
       if (!s->fi.tab[1] || !s->fi.tab[2] || !s->fi.tab[3]
 	  || !s->fi.tab[4] || !s->fi.tab[5] || !s->fi.tab[6]
 	  || !s->fi.tab[7] || !s->fi.tab[8] || !s->fi.tab[9])
 	my_error(s, "ERROR: argument CONE.", -1);
-      //d->o.co.x_cone[d->o.co.check - 1] = my_getnbr(d->fi.tab[1]);
-      //d->o.co.y_cone[d->o.co.check - 1] = my_getnbr(d->fi.tab[2]);
-      //d->o.co.z_cone[d->o.co.check - 1] = my_getnbr(d->fi.tab[3]);
-      //d->o.co.r_cone[d->o.co.check - 1] = my_getnbr(d->fi.tab[4]);
-      /* d->o.co.color_cone[d->o.co.check - 1] = */
-      /* 	strtol(d->fi.tab[5], &test, 16); */
-      //d->o.co.rotx[d->o.co.check - 1] = (double)my_getnbr(d->fi.tab[6]);
-      //d->o.co.roty[d->o.co.check - 1] = (double)my_getnbr(d->fi.tab[7]);
-      //d->o.co.rotz[d->o.co.check - 1] = (double)my_getnbr(d->fi.tab[8]);
-      //d->o.co.high[d->o.co.check - 1] = my_getnbr(d->fi.tab[9]);
+      remp.p.x = (double)my_getnbr(s->fi.tab[1]);
+      remp.p.y = (double)my_getnbr(s->fi.tab[2]);
+      remp.p.z = (double)my_getnbr(s->fi.tab[3]);
+      remp.r = (double)my_getnbr(s->fi.tab[4]);
+      remp.x.color = strtol(s->fi.tab[5], &test, 16);
+      remp.x.t = CONE;
+      remp.rot.x = my_getnbr(s->fi.tab[6]);
+      remp.rot.y = my_getnbr(s->fi.tab[7]);
+      remp.rot.z = my_getnbr(s->fi.tab[8]);
+      remp.high = my_getnbr(s->fi.tab[9]);
+      s->co = my_put_cone_list(s->co, remp);
     }
 }
 
@@ -223,13 +208,11 @@ void	test_line(t_st *s)
 
 void	my_parsing_rt(t_st *s)
 {
-  /* d->o.view.check = 0;	//init vue_pos */
-  /* d->o.view.check2 = 0;	//init vue_rotate */
-  /* d->o.lum.check = 0;	// init nombre de lumiere */
-  /* d->o.pl.check = 0;	// init plan */
-  /* d->o.sph.check = 0;	//init sphere */
-  /* d->o.cy.check = 0;	//init cyl */
-  /* d->o.co.check = 0;	//init cone */
+  s->s = NULL;
+  s->co = NULL;
+  s->cy = NULL;
+  s->l = NULL;
+  s->pl = NULL;
   while ((s->fi.buff = get_next_line(s->fi.fd))) // parse ligne par ligne
     {
       //si la ligne ne commence pas par /, *, ' ' ou \n, on test.
