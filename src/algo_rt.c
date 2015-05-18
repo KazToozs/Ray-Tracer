@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Sun Feb  8 16:18:36 2015 ugo belfiore
-** Last update Mon May 18 13:56:02 2015 ugo belfiore
+** Last update Mon May 18 14:05:17 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -22,7 +22,7 @@ static void	calc(t_st *s)
   inter_sphere(&s->c, s->s);
   inter_plan(s, &s->c);
   calculate_k(s);
-  /* light(s); */
+  light(s);
 }
 
 /*

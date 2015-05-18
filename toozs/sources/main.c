@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Sun Mar  1 11:30:13 2015 cristopher toozs-hobson
-** Last update Mon May 18 13:15:05 2015 ugo belfiore
+** Last update Mon May 18 14:26:32 2015 ugo belfiore
 */
 
 #include <stdlib.h>
@@ -43,13 +43,12 @@ void		calculate_colour(t_st *s, int x, int y)
 {
   init_calc(s, x, y);
   rotate(&s->c.rot, &s->c);
-  //
   inter_cyl(&s->c, &s->cy);
   inter_cone(&s->c, &s->co);
   inter_sphere(&s->c, &s->s);
   inter_plan(s, &s->c);
   calculate_k(s);
-  //light(s);
+  light(s);
 }
 
 void		calculate_pixels(t_st *s)

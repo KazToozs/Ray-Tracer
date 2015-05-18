@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Sun Mar  8 20:24:43 2015 cristopher toozs-hobson
-** Last update Mon May 18 13:54:41 2015 ugo belfiore
+** Last update Mon May 18 14:10:54 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -38,16 +38,6 @@ static void	check_plane(t_st *s)
     }
 }
 
-/* void	check_shadow(t_st *s, t_x *x) */
-/* { */
-/*   if ((x->x1 < x->x2) && (x->x1 < s->x.k) && (x->x1 > 0.000001) */
-/*       && (x->x2 < 1)) */
-/*     s->x.k = x->x1; */
-/*   else if ((x->x2 < x->x1) && (x->x2 < s->x.k) && (x->x2 > 0.000001) */
-/*   	   && (x->x2 < 1)) */
-/*     s->x.k = x->x2; */
-/* } */
-
 void		calculate_k(t_st *s)
 {
   check(s, &s->s->x);
@@ -55,21 +45,3 @@ void		calculate_k(t_st *s)
   check(s, &s->cy->x);
   check_plane(s);
 }
-
-/* int		shadow_k(t_st *s) */
-/* { */
-/*   s->x.k = 10000; */
-/*   check_shadow(s, &s->s.x); */
-/*   check_shadow(s, &s->co.x); */
-/*   check_shadow(s, &s->cy.x); */
-/*   if (s->pl.k < s->x.k && s->pl.k > 0.000001) */
-/*     s->x.k = s->pl.k; */
-/*   if (s->x.k > 0.000001 && s->x.k < 1 &&  s->x.k != 10000) */
-/*     { */
-/*       s->d.red = 0; */
-/*       s->d.green = 0; */
-/*       s->d.blue = 0; */
-/*       return (-1); */
-/*     } */
-/*   return (0); */
-/* } */

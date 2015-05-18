@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon Feb  2 18:47:55 2015 ugo belfiore
-** Last update Sun May 17 02:48:19 2015 ugo belfiore
+** Last update Mon May 18 14:36:15 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -53,23 +53,23 @@ int	manage_key(int keycode, void *param)
 
 void	modify_key(t_st *s, int keycode)
 {
-  /* (keycode == KEY_UP) ? move_xyz_all(d, 1, 10) : 1; */
-  /* (keycode == KEY_DOWN) ? move_xyz_all(d, 1, -10) : 1; */
-  /* (keycode == KEY_LEFT) ? move_xyz_all(d, 2, 10) : 1; */
-  /* (keycode == KEY_RIGHT) ? move_xyz_all(d, 2, -10) : 1; */
-  /* (keycode == KEY_MORE) ? move_xyz_all(d, 3, 10) : 1; */
-  /* (keycode == KEY_LESS) ? move_xyz_all(d, 3, -10) : 1; */
-  /* (keycode == KEY_A) ? d->o.view.rotangx += 5 : 1; */
-  /* (keycode == KEY_E) ? d->o.view.rotangx -= 5 : 1; */
-  /* (keycode == KEY_S) ? d->o.view.rotangy += 5 : 1; */
-  /* (keycode == KEY_Z) ? d->o.view.rotangy -= 5 : 1; */
-  /* (keycode == KEY_Q) ? d->o.view.rotangz += 5 : 1; */
-  /* (keycode == KEY_D) ? d->o.view.rotangz -= 5 : 1; */
-  /* (keycode == KEY_I) ? move_xyz_all(d, 4, 10) : 1; */
-  /* (keycode == KEY_K) ? move_xyz_all(d, 4, -10) : 1; */
-  /* (keycode == KEY_J) ? move_xyz_all(d, 5, 10) : 1; */
-  /* (keycode == KEY_L) ? move_xyz_all(d, 5, -10) : 1; */
-  /* (keycode == KEY_U) ? move_xyz_all(d, 6, 10) : 1; */
-  /* (keycode == KEY_O) ? move_xyz_all(d, 6, -10) : 1; */
+  (keycode == KEY_UP) ? move_xyz_all(s, 1, 10) : 1;
+  (keycode == KEY_DOWN) ? move_xyz_all(s, 1, -10) : 1;
+  (keycode == KEY_LEFT) ? move_xyz_all(s, 2, 10) : 1;
+  (keycode == KEY_RIGHT) ? move_xyz_all(s, 2, -10) : 1;
+  (keycode == KEY_MORE) ? move_xyz_all(s, 3, 10) : 1;
+  (keycode == KEY_LESS) ? move_xyz_all(s, 3, -10) : 1;
+  (keycode == KEY_A) ? s->c.rot.x += 5 : 1;
+  (keycode == KEY_E) ? s->c.rot.x -= 5 : 1;
+  (keycode == KEY_S) ? s->c.rot.y += 5 : 1;
+  (keycode == KEY_Z) ? s->c.rot.y -= 5 : 1;
+  (keycode == KEY_Q) ? s->c.rot.z += 5 : 1;
+  (keycode == KEY_D) ? s->c.rot.z -= 5 : 1;
+  (keycode == KEY_I) ? move_xyz_all(s, 4, 10) : 1;
+  (keycode == KEY_K) ? move_xyz_all(s, 4, -10) : 1;
+  (keycode == KEY_J) ? move_xyz_all(s, 5, 10) : 1;
+  (keycode == KEY_L) ? move_xyz_all(s, 5, -10) : 1;
+  (keycode == KEY_U) ? move_xyz_all(s, 6, 10) : 1;
+  (keycode == KEY_O) ? move_xyz_all(s, 6, -10) : 1;
   algo_rt(s, 5, 0);
 }
