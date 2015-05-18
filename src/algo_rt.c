@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Sun Feb  8 16:18:36 2015 ugo belfiore
-** Last update Mon May 18 14:05:17 2015 ugo belfiore
+** Last update Mon May 18 15:06:02 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -17,9 +17,28 @@
 
 static void	calc(t_st *s)
 {
-  inter_cyl(&s->c, s->cy);
-  inter_cone(&s->c, s->co);
-  inter_sphere(&s->c, s->s);
+  t_cone	*tmp_c;
+  t_cyl		*tmp_cy;
+  t_sph		*tmp_s;
+
+  tmp_c = s->co;
+  tmp_cy = s->cy;
+  tmp_s = s->s;
+  while (tmp_cy != NULL)
+    {
+      inter_cyl(&s->c, tmp_cy);
+      tmp_cy = tmp_cy->next;
+    }
+  while (tmp_c != NULL)
+    {
+      inter_cone(&s->c, tmp_c);
+      tmp_c = tmp_c->next;
+    }
+  while (tmp_s != NULL)
+    {
+      inter_sphere(&s->c, tmp_s);
+      tmp_s = tmp_s->next;
+    }
   inter_plan(s, &s->c);
   calculate_k(s);
   light(s);
