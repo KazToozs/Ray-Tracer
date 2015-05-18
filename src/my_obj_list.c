@@ -5,7 +5,7 @@
 ** Login   <pallua_j@epitech.net>
 ** 
 ** Started on  Sun May 17 01:54:41 2015 jules palluau
-** Last update Sun May 17 03:58:15 2015 jules palluau
+** Last update Mon May 18 08:47:48 2015 pallua
 */
 
 #include "mini.h"
@@ -46,7 +46,7 @@ t_sph		*my_put_sph_list(t_sph *list, t_sph remp)
   remp_rot(&elem->rot, remp.rot);
   elem->r = remp.r;
   if (list == NULL)
-    return (NULL);
+    return (elem);
   tmp = list;
   while (tmp->next != NULL)
     tmp = tmp->next;
@@ -70,7 +70,7 @@ t_cone		*my_put_cone_list(t_cone *list, t_cone remp)
   elem->r = remp.r;
   elem->high = remp.high;
   if (list == NULL)
-    return (NULL);
+    return (elem);
   tmp = list;
   while (tmp->next != NULL)
     tmp = tmp->next;
@@ -94,7 +94,7 @@ t_cyl		*my_put_cyl_list(t_cyl *list, t_cyl remp)
   elem->r = remp.r;
   elem->high = remp.high;
   if (list == NULL)
-    return (NULL);
+    return (elem);
   tmp = list;
   while (tmp->next != NULL)
     tmp = tmp->next;
@@ -116,7 +116,7 @@ t_cam		*my_put_light_list(t_cam *list, int x, int y, int z)
   elem->p.y = (double)y;
   elem->p.z = (double)z;
   if (list == NULL)
-    return (NULL);
+    return (elem);
   tmp = list;
   while (tmp->next != NULL)
     tmp = tmp->next;
@@ -137,7 +137,7 @@ t_plan		*my_put_plan_list(t_plan *list, int z, int color)
   elem->z = (double)z;
   elem->color = color;
   if (list == NULL)
-    return (NULL);
+    return (elem);
   tmp = list;
   while (tmp->next != NULL)
     tmp = tmp->next;
