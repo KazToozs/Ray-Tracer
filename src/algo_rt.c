@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Sun Feb  8 16:18:36 2015 ugo belfiore
-** Last update Mon May 18 15:06:02 2015 ugo belfiore
+** Last update Tue May 19 13:10:52 2015 pallua
 */
 
 #include "mini.h"
@@ -14,6 +14,20 @@
 ** fonction qui permet de calculer les intersections
 ** entre chaque objet
 */
+
+static void	multi_light(t_st *s)
+{
+  t_cam		*tmp_l;
+
+  tmp_l = s->l;
+  while (tmp_l != NULL)
+    {
+      light(s, tmp_l);
+      tmp_l = tmp_l->next;
+    }
+  if (s->d.nb_spots != 0)
+    my_change_color_bis(s);
+}
 
 static void	calc(t_st *s)
 {
@@ -41,7 +55,8 @@ static void	calc(t_st *s)
     }
   inter_plan(s, &s->c);
   calculate_k(s);
-  light(s);
+  //light(s, s->l);
+  multi_light(s);
 }
 
 /*
@@ -61,6 +76,7 @@ void	algo_rt(t_st *s, int flew, int flew2)
     {
       while (j < s->d.y_max)
 	{
+	  s->d.nb_spots = 0;
 	  s->d.colo = COLOR_BLACK;
 	  s->x.k = 10000000;
 	  s->c.v.vx = 1000;

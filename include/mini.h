@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 28 09:26:37 2014 ugo belfiore
-** Last update Mon May 18 14:37:27 2015 ugo belfiore
+** Last update Tue May 19 13:10:32 2015 pallua
 */
 
 #ifndef MINI_H_
@@ -233,6 +233,7 @@ typedef struct	s_data
   int		w;
   int		f[256];
   int		timer;
+  int		nb_spots;
 }               t_data;
 
 typedef struct  s_st
@@ -292,6 +293,7 @@ void	my_parsing_rt(t_st *s);
 
 void	algo_rt(t_st *s, int flew, int flew2);
 void	my_change_color(t_st *s, double cosin);
+void	my_change_color_bis(t_st *s);
 void	move_xyz_all(t_st *s, int which, int value);
 void	part_one(t_st *s);
 void	part_two(t_st *s);
@@ -321,7 +323,7 @@ void	inter_sphere(t_cam *c, t_sph *s);
 void	inter_cone(t_cam *c, t_cone *co);
 void	inter_cyl(t_cam *c, t_cyl *cy);
 void	inter_plan(t_st *s, t_cam *c);
-void	light(t_st *s);
+void	light(t_st *s, t_cam *l);
 int	shadow(t_st *s);
 void	move_xyz_all(t_st *s, int which, int value);
 

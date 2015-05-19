@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon May 18 14:04:11 2015 ugo belfiore
-** Last update Mon May 18 14:27:42 2015 ugo belfiore
+** Last update Tue May 19 12:55:12 2015 pallua
 */
 
 #include "mini.h"
@@ -38,16 +38,16 @@ static void	calculate_n(t_st *s)
     }
 }
 
-void            light(t_st *s)
+void            light(t_st *s, t_cam *l)
 {
   double        cosin;
 
   s->x.c.p.x = s->c.p.x + (s->x.k * s->c.v.vx);
   s->x.c.p.y = s->c.p.y + (s->x.k * s->c.v.vy);
   s->x.c.p.z = s->c.p.z + (s->x.k * s->c.v.vz);
-  s->x.c.v.vx = s->l->p.x - s->x.c.p.x;
-  s->x.c.v.vy = s->l->p.y - s->x.c.p.y;
-  s->x.c.v.vz = s->l->p.z - s->x.c.p.z;
+  s->x.c.v.vx = l->p.x - s->x.c.p.x;
+  s->x.c.v.vy = l->p.y - s->x.c.p.y;
+  s->x.c.v.vz = l->p.z - s->x.c.p.z;
   if (shadow(s) == -1)
     return ;
   calculate_n(s);
