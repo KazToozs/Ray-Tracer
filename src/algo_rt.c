@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Sun Feb  8 16:18:36 2015 ugo belfiore
-** Last update Wed May 20 14:45:13 2015 ugo belfiore
+** Last update Wed May 20 15:49:40 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -42,6 +42,7 @@ static void	calc(t_st *s)
   tmp_s = s->s;
   while (tmp_cy != NULL)
     {
+      //rotate_x(
       inter_cyl(&s->c, tmp_cy);
       tmp_cy = tmp_cy->next;
     }
