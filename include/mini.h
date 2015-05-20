@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 28 09:26:37 2014 ugo belfiore
-** Last update Tue May 19 13:10:32 2015 pallua
+** Last update Wed May 20 10:06:04 2015 jules palluau
 */
 
 #ifndef MINI_H_
@@ -166,6 +166,10 @@ typedef struct  s_cam
   t_pos         p;
   t_vect        v;
   t_rot         rot;
+  int		r;
+  int		g;
+  int		b;
+  int		type;
   struct s_cam  *next;
 }               t_cam;
 
@@ -292,7 +296,7 @@ void	my_parsing_rt(t_st *s);
 */
 
 void	algo_rt(t_st *s, int flew, int flew2);
-void	my_change_color(t_st *s, double cosin);
+void	my_change_color(t_st *s, double cosin, t_cam *l);
 void	my_change_color_bis(t_st *s);
 void	move_xyz_all(t_st *s, int which, int value);
 void	part_one(t_st *s);

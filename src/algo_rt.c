@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Sun Feb  8 16:18:36 2015 ugo belfiore
-** Last update Tue May 19 13:10:52 2015 pallua
+** Last update Wed May 20 11:35:40 2015 jules palluau
 */
 
 #include "mini.h"
@@ -55,7 +55,6 @@ static void	calc(t_st *s)
     }
   inter_plan(s, &s->c);
   calculate_k(s);
-  //light(s, s->l);
   multi_light(s);
 }
 
