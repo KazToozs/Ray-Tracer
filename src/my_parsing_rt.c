@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Fri Oct 24 19:29:19 2014 ugo belfiore
-** Last update Wed May 20 12:34:19 2015 ugo belfiore
+** Last update Wed May 20 14:04:34 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -72,8 +72,7 @@ static int	match(char *s1, char *s2)
   while (s2[i])
     {
       if (s1[i] != s2[i])
-	if (s2[i] != '&')
-	  return (0);
+	return (0);
       i++;
     }
   if (s2[i] == '\0' && s1[i] == '\0')
@@ -83,7 +82,7 @@ static int	match(char *s1, char *s2)
 
 void	line_camera(t_st *s)
 {
-  if (match(s->fi.tab[0], "CAMERA_POS:"))
+  if (match(s->fi.tab[0], "CAMERA-POS"))
     {
       if (!s->fi.tab[1] || !s->fi.tab[2] || !s->fi.tab[3])
 	my_error(s, "ERROR: argument CAMERA_POS.", -1);
@@ -91,7 +90,7 @@ void	line_camera(t_st *s)
       s->c.p.y = (double)my_getnbr(s->fi.tab[2]);
       s->c.p.z = (double)my_getnbr(s->fi.tab[3]);
     }
-  if (match(s->fi.tab[0], "CAMERA_ROTATE:"))
+  if (match(s->fi.tab[0], "CAMERA-ROTATE"))
     {
       if (!s->fi.tab[1] || !s->fi.tab[2] || !s->fi.tab[3])
 	my_error(s, "ERROR: argument CAMERA_ROTATE.", -1);
@@ -105,7 +104,7 @@ void	line_light_plan(t_st *s)
 {
   char	*test;
 
-  if (match(s->fi.tab[0], "LIGHT_&:"))
+  if (match(s->fi.tab[0], "LIGHT"))
     {
       if (!s->fi.tab[1] || !s->fi.tab[2] || !s->fi.tab[3])
 	my_error(s, "ERROR: argument LIGHT.", -1);
@@ -113,7 +112,7 @@ void	line_light_plan(t_st *s)
 			       my_getnbr(s->fi.tab[2]),
 			       my_getnbr(s->fi.tab[3]));
     }
-  if (match(s->fi.tab[0], "PLAN_&:"))
+  if (match(s->fi.tab[0], "PLAN"))
     {
       if (!s->fi.tab[1] || !s->fi.tab[2])
 	my_error(s, "ERROR: argument PLAN.", -1);
@@ -127,7 +126,7 @@ void		line_sphere(t_st *s)
   char		*test;
   t_sph		remp;
 
-  if (match(s->fi.tab[0], "SPHERE_&:"))
+  if (match(s->fi.tab[0], "SPHERE"))
     {
       if (!s->fi.tab[1] || !s->fi.tab[2] || !s->fi.tab[3]
 	  || !s->fi.tab[4] || !s->fi.tab[5] || !s->fi.tab[6]
@@ -151,7 +150,7 @@ void	line_cyl(t_st *s)
   char	*test;
   t_cyl	remp;
 
-  if (match(s->fi.tab[0], "CYLINDER_&:"))
+  if (match(s->fi.tab[0], "CYLINDER"))
     {
       if (!s->fi.tab[1] || !s->fi.tab[2] || !s->fi.tab[3]
 	  || !s->fi.tab[4] || !s->fi.tab[5] || !s->fi.tab[6]
@@ -176,7 +175,7 @@ void		line_cone(t_st *s)
   char		*test;
   t_cone	remp;
 
-  if (match(s->fi.tab[0], "CONE_&:"))
+  if (match(s->fi.tab[0], "CONE"))
     {
       if (!s->fi.tab[1] || !s->fi.tab[2] || !s->fi.tab[3]
 	  || !s->fi.tab[4] || !s->fi.tab[5] || !s->fi.tab[6]
@@ -198,7 +197,7 @@ void		line_cone(t_st *s)
 
 void	test_line(t_st *s)
 {
-  s->fi.tab = my_str_to_wordtab_rt(s->fi.buff);
+  s->fi.tab = my_str_tab(s->fi.buff);
   line_camera(s);
   line_light_plan(s);
   line_sphere(s);

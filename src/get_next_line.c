@@ -1,128 +1,86 @@
 /*
-** get_next_line.c for  in /home/belfio_u/rendu/CPE_2014_get_next_line
+** get_next_line2.c for get_next_line in /home/toozs-_c/ProgElem_test/get_next_line_tests
 ** 
-** Made by ugo belfiore
-** Login   <belfio_u@epitech.net>
+** Made by cristopher toozs-hobson
+** Login   <toozs-_c@epitech.net>
 ** 
-** Started on  Sat Nov 22 15:11:19 2014 ugo belfiore
-** Last update Mon May  4 12:58:46 2015 ugo belfiore
+** Started on  Wed Nov 19 11:00:34 2014 cristopher toozs-hobson
+** Last update Sun May 17 12:26:23 2015 cristopher toozs-hobson
 */
 
-#include "mini.h"
+#include <stdlib.h>
+#include "get_next_line.h"
 
-#define LEN 4096
-char    *reset_buff(char *buff);
-char    *my_strcat2(char *src1, char *src2, int ret);
-char    *read_loop(const int fd, char *result);
-char    *my_strdup2(char *str);
-
-char		*read_loop(const int fd, char *result)
-{
-  char		*buff;
-  int		ret;
-
-  ret = LEN;
-  buff = malloc((sizeof(char) * LEN) + 1);
-  buff[LEN] = '\0';
-  while (ret == LEN)
-    {
-      ret = read(fd, buff, LEN);
-      if (ret > 0)
-	{
-	  result = my_strcat2(result, buff, ret);
-     	  buff = reset_buff(buff);
-	}
-      else
-	return (NULL);
-    }
-  free(buff);
-  return (result);
-}
-
-char		*my_strdup2(char *str)
-{
-  int		i;
-  char		*cpy;
-
-  i = 0;
-  while (str[i] != '\0')
-    i++;
-  cpy = malloc(sizeof(char) * i + 1);
-  i = 0;
-  while (str[i] != '\0')
-    {
-      cpy[i] = str[i];
-      i++;
-    }
-  cpy[i] = '\0';
-  return (cpy);
-}
-
-char		*my_strcat2(char *src1, char *src2, int ret)
-{
-  static int	result_len = 0;
-  int		i;
-  int		j;
-  char		*result;
-
-  i = 0;
-  j = 0;
-  result_len += ret;
-  result = malloc((sizeof(char) * result_len) + 1);
-  if (src1 != NULL)
-    while (src1[i] != '\0')
-      {
-	result[i] = src1[i];
-	i++;
-      }
-  while (src2[j] != '\0')
-    {
-      result[i] = src2[j];
-      i++;
-      j++;
-    }
-  result[i] = '\0';
-  free(src1);
-  return (result);
-}
-
-char		*reset_buff(char *buff)
+void		buffer_clean(char *buffer, int size, char c)
 {
   int		i;
 
   i = 0;
-  while (buff[i] != '\0')
+  while (i < size)
+    buffer[i++] = c;
+}
+
+char		get_char(int fd)
+{
+  static char	buffer[BUFF_SIZE + 1] = {0};
+  static int	i = 0;
+
+  if (buffer[i] == '\0')
     {
-      buff[i] = '\0';
+      i = 0;
+      buffer_clean(buffer, BUFF_SIZE + 1, 0);
+      if (read(fd, buffer, BUFF_SIZE) <= 0)
+	return (-1);
+    }
+  return (buffer[i++]);
+}
+
+char		*my_dup_free(char *buffer)
+{
+  char		*tmp;
+  int		i;
+  int		size;
+
+  i = 0;
+  size = 0;
+  while (buffer[size] != '\0')
+    size++;
+  if ((tmp = malloc(sizeof(char) * (size + 1))) == NULL)
+    return (NULL);
+  while (buffer[i] != '\0')
+    {
+      tmp[i] = buffer[i];
       i++;
     }
-  return (buff);
+  tmp[i] = '\0';
+  free(buffer);
+  return (tmp);
 }
 
 char		*get_next_line(const int fd)
 {
+  char		*buffer;
   int		i;
-  char		*result;
-  static char	*save = NULL;
+  int		j;
+  char		c;
 
+  if ((buffer = malloc(sizeof(char) * (BUFF_SIZE + 1))) == NULL)
+    return (NULL);
   i = 0;
-  result = NULL;
-  if (save == NULL)
+  j = 1;
+  buffer_clean(buffer, BUFF_SIZE + 1, 0);
+  while ((c = get_char(fd)) != -1 && c != '\0' && c != '\n')
     {
-      result = read_loop(fd, result);
-      if (result == NULL)
-	return (NULL);
+      if (i >= (j * BUFF_SIZE))
+	if ((buffer = my_realloc(buffer, sizeof(char)
+				 * ((++j * BUFF_SIZE) + 1))) == NULL)
+	  return (NULL);
+      buffer[i++] = c;
     }
-  else
-    result = my_strdup2(save);
-  while (result[i] != '\0' && result[i] != '\n')
-    ++i;
-  if (result[i] == '\0')
+  if (c == -1 && buffer[0] == '\0')
     {
-      save = &result[i];
-      return ((result[0] != '\0') ? (my_strdup2(result)) : (NULL));
+      free(buffer);
+      return (NULL);
     }
-  result[i] = '\0';
-  save = &result[++i];
-  return (my_strdup2(result));
+  return (my_dup_free(buffer));
 }

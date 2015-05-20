@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 28 09:26:37 2014 ugo belfiore
-** Last update Wed May 20 10:06:04 2015 jules palluau
+** Last update Wed May 20 13:38:13 2015 ugo belfiore
 */
 
 #ifndef MINI_H_
@@ -268,7 +268,8 @@ void	sound_init(t_st *s);
 void	my_error(t_st *s, char *error, int i);
 void	aff_error(char *str);
 char	*get_next_line(const int fd);
-char	**my_str_to_wordtab_rt(char *str);
+char	**my_str_tab(char *str);
+void	my_show_wordtab(char **tab);
 char	*my_strdup(char *str);
 
 /*
@@ -330,5 +331,8 @@ void	inter_plan(t_st *s, t_cam *c);
 void	light(t_st *s, t_cam *l);
 int	shadow(t_st *s);
 void	move_xyz_all(t_st *s, int which, int value);
+char	*my_realloc(char *buffer, int size);
+char	**my_realloc_tab(char **buffer, int size);
+char    *my_strcpy(char *dest, char *src);
 
 #endif
