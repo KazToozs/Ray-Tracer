@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Fri Oct 24 19:29:19 2014 ugo belfiore
-** Last update Wed May 20 11:29:08 2015 jules palluau
+** Last update Wed May 20 12:34:19 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -218,7 +218,7 @@ void	my_parsing_rt(t_st *s)
       //si la ligne ne commence pas par /, *, ' ' ou \n, on test.
       if (!(s->fi.buff[0] == '/' || s->fi.buff[0] == '*'
 	    || s->fi.buff[0] == ' ' || s->fi.buff[0] == '\n'
-	    || (!s->fi.buff[0])))
+	    || (s->fi.buff[0] == '\0')))
 	test_line(s);
       free(s->fi.buff);          // supprime la ligne courante et next
     }

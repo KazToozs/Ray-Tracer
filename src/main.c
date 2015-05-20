@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Fri Dec  5 17:23:50 2014 ugo belfiore
-** Last update Wed May 20 11:44:14 2015 jules palluau
+** Last update Wed May 20 12:36:47 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -44,7 +44,7 @@ int		main(int ac, char **av)
 	my_error(&s, "ERROR: no argument & file scene1.conf corrupted.", -1);
     }
   my_parsing_rt(&s);
-  aff_win(&s, "rt");
+  //aff_win(&s, "rt");
   close(s.fi.fd);
   return (0);
 }
