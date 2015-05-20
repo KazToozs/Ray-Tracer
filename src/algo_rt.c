@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Sun Feb  8 16:18:36 2015 ugo belfiore
-** Last update Wed May 20 15:49:40 2015 ugo belfiore
+** Last update Wed May 20 16:08:17 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -42,18 +42,23 @@ static void	calc(t_st *s)
   tmp_s = s->s;
   while (tmp_cy != NULL)
     {
-      //rotate_x(
+      rotate(&tmp_cy->rot, &s->c);
       inter_cyl(&s->c, tmp_cy);
+      rotate_inv(&tmp_cy->rot, &s->c);
       tmp_cy = tmp_cy->next;
     }
   while (tmp_c != NULL)
     {
+      rotate(&tmp_c->rot, &s->c);
       inter_cone(&s->c, tmp_c);
+      rotate_inv(&tmp_c->rot, &s->c);
       tmp_c = tmp_c->next;
     }
   while (tmp_s != NULL)
     {
+      rotate(&tmp_s->rot, &s->c);
       inter_sphere(&s->c, tmp_s);
+      rotate_inv(&tmp_s->rot, &s->c);
       tmp_s = tmp_s->next;
     }
   inter_plan(s, &s->c);
