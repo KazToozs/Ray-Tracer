@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Sun Feb  8 16:18:36 2015 ugo belfiore
-** Last update Wed May 20 11:35:40 2015 jules palluau
+** Last update Wed May 20 14:45:13 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -27,6 +27,8 @@ static void	multi_light(t_st *s)
     }
   if (s->d.nb_spots != 0)
     my_change_color_bis(s);
+  else
+    s->d.colo = COLOR_BLACK;
 }
 
 static void	calc(t_st *s)
