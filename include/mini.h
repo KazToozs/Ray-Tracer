@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 28 09:26:37 2014 ugo belfiore
-** Last update Wed May 20 16:25:47 2015 jules palluau
+** Last update Thu May 21 14:18:46 2015 ugo belfiore
 */
 
 #ifndef MINI_H_
@@ -75,6 +75,7 @@
 #define KEY_O 111
 #define KEY_L 108
 #define KEY_W 119
+#define KEY_2 178
 
 /*
 ** stucture son
@@ -335,5 +336,6 @@ void	move_xyz_all(t_st *s, int which, int value);
 char	*my_realloc(char *buffer, int size);
 char	**my_realloc_tab(char **buffer, int size);
 char    *my_strcpy(char *dest, char *src);
+void	aff_all(t_st *s);
 
 #endif

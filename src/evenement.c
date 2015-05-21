@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon Feb  2 18:47:55 2015 ugo belfiore
-** Last update Mon May 18 17:59:43 2015 ugo belfiore
+** Last update Thu May 21 14:49:49 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -32,6 +32,7 @@ int	manage_key(int keycode, void *param)
   t_st	*s;
 
   s = (t_st *)param;
+  //my_printf("%d ", keycode);
   s->d.timer = 0;			// initialise le temps pour les frame
   if (keycode == KEY_ESC)		// echap
     my_error(s, "exit.", 0);
@@ -42,6 +43,8 @@ int	manage_key(int keycode, void *param)
     }
   else if (keycode == KEY_W)
     s->d.w *= -1;
+  else if (keycode == KEY_2)
+    aff_all(s);
   else
     modify_key(s, keycode);
   return (0);

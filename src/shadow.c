@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue May 12 11:16:50 2015 ugo belfiore
-** Last update Wed May 20 18:19:49 2015 jules palluau
+** Last update Thu May 21 14:43:24 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -32,17 +32,23 @@ static int	shadow_k(t_st *s, t_cam *l)
   s->x.k = 10000;
   while (tmp_s != NULL)
     {
+      rotate(&tmp_s->rot, &s->c);
       check_shadow(s, &tmp_s->x);
+      rotate_inv(&tmp_s->rot, &s->c);
       tmp_s = tmp_s->next;
     }
   while (tmp_c != NULL)
     {
+      rotate(&tmp_c->rot, &s->c);
       check_shadow(s, &tmp_c->x);
+      rotate_inv(&tmp_c->rot, &s->c);
       tmp_c = tmp_c->next;
     }
   while (tmp_cy != NULL)
     {
+      rotate(&tmp_cy->rot, &s->c);
       check_shadow(s, &tmp_cy->x);
+      rotate_inv(&tmp_cy->rot, &s->c);
       tmp_cy = tmp_cy->next;
     }
   if (s->pl->k < s->x.k && s->pl->k > 0.000001)

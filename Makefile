@@ -5,7 +5,7 @@
 ## Login   <belfio_u@epitech.net>
 ## 
 ## Started on  Mon May 18 11:47:58 2015 ugo belfiore
-## Last update Wed May 20 13:37:43 2015 ugo belfiore
+## Last update Thu May 21 14:17:04 2015 ugo belfiore
 ##
 
 SRC     =       ./src/main.c			\
@@ -32,6 +32,7 @@ SRC     =       ./src/main.c			\
 		./src/my_realloc.c		\
 		./src/my_strcpy.c		\
 		./src/my_strdup.c		\
+		./src/aff_all.c			\
 
 OBJ     =       $(SRC:.c=.o)
 

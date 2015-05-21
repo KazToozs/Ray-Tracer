@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon May 18 14:04:11 2015 ugo belfiore
-** Last update Thu May 21 10:24:20 2015 jules palluau
+** Last update Thu May 21 13:54:14 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -57,8 +57,8 @@ void            light(t_st *s, t_cam *l)
                    + pow(s->x.c.v.vz, 2))));
   if (cosin > 0.000001)
     {
-      /* if (shadow(s, l) == -1) */
-      /* 	return ; */
+      if (shadow(s, l) == -1)
+      	return ;
       my_change_color(s, cosin, l);
     }
 }
