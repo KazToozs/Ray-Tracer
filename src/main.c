@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Fri Dec  5 17:23:50 2014 ugo belfiore
-** Last update Wed May 20 13:51:18 2015 ugo belfiore
+** Last update Wed May 20 16:28:15 2015 jules palluau
 */
 
 #include "mini.h"
@@ -60,9 +60,7 @@ void	aff_win(t_st *s, char *name)
   s->d.w = 1;
   s->d.colo = COLOR_BLACK;
   //sound_init(s);
-  printf("CARE:\n");
   (!(s->d.mlx_ptr = mlx_init())) ? my_error(s, "ERROR: mlx init.", -1) : 1;
-  printf("LOL\n");
   (!(s->d.win_ptr = mlx_new_window(s->d.mlx_ptr,
 				   s->d.x_max, s->d.y_max, name))) ?
     my_error(s, "ERROR: win init.", -1) : 1;

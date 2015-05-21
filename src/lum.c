@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon May 18 14:04:11 2015 ugo belfiore
-** Last update Wed May 20 15:57:31 2015 ugo belfiore
+** Last update Thu May 21 10:24:20 2015 jules palluau
 */
 
 #include "mini.h"
@@ -49,8 +49,6 @@ void            light(t_st *s, t_cam *l)
   s->x.c.v.vx = l->p.x - s->x.c.p.x;
   s->x.c.v.vy = l->p.y - s->x.c.p.y;
   s->x.c.v.vz = l->p.z - s->x.c.p.z;
-  /* if (shadow(s) == -1) */
-  /*   return ; */
   calculate_n(s);
   cosin = (((s->n.vx * s->x.c.v.vx) + (s->n.vy * s->x.c.v.vy)
             + (s->n.vz * s->x.c.v.vz))
@@ -58,5 +56,9 @@ void            light(t_st *s, t_cam *l)
                   (pow(s->x.c.v.vx, 2) + pow(s->x.c.v.vy, 2)
                    + pow(s->x.c.v.vz, 2))));
   if (cosin > 0.000001)
-    my_change_color(s, cosin, l);
+    {
+      /* if (shadow(s, l) == -1) */
+      /* 	return ; */
+      my_change_color(s, cosin, l);
+    }
 }

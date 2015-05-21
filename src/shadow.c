@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue May 12 11:16:50 2015 ugo belfiore
-** Last update Wed May 20 15:04:01 2015 ugo belfiore
+** Last update Wed May 20 18:19:49 2015 jules palluau
 */
 
 #include "mini.h"
@@ -20,7 +20,7 @@ static void	check_shadow(t_st *s, t_x *x)
     s->x.k = x->x2;
 }
 
-static int	shadow_k(t_st *s)
+static int	shadow_k(t_st *s, t_cam *l)
 {
   t_cone	*tmp_c;
   t_cyl		*tmp_cy;
@@ -47,15 +47,15 @@ static int	shadow_k(t_st *s)
     }
   if (s->pl->k < s->x.k && s->pl->k > 0.000001)
     s->x.k = s->pl->k;
-  if (s->x.k > 0.000001 && s->x.k < 1 &&  s->x.k != 10000)
+  if (s->x.k > 0.000001 && s->x.k < 1 && s->x.k != 10000)
     {
-      s->d.colo = COLOR_BLACK;
+      my_change_color(s, 0, l);
       return (-1);
     }
   return (0);
 }
 
-int		shadow(t_st *s)
+int		shadow(t_st *s, t_cam *l)
 {
   t_cone	*tmp_c;
   t_cyl		*tmp_cy;
@@ -80,7 +80,7 @@ int		shadow(t_st *s)
       tmp_s = tmp_s->next;
     }
   inter_plan(s, &s->x.c);
-  if (shadow_k(s) == -1)
+  if (shadow_k(s, l) == -1)
     return (-1);
   return (0);
 }
