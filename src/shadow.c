@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue May 12 11:16:50 2015 ugo belfiore
-** Last update Thu May 21 14:43:24 2015 ugo belfiore
+** Last update Thu May 21 15:43:55 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -85,7 +85,8 @@ int		shadow(t_st *s, t_cam *l)
       inter_sphere(&s->x.c, tmp_s);
       tmp_s = tmp_s->next;
     }
-  inter_plan(s, &s->x.c);
+  if (s->pl != NULL)
+    inter_plan(s, &s->x.c);
   if (shadow_k(s, l) == -1)
     return (-1);
   return (0);

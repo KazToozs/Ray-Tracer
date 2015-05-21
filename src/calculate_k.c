@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Sun Mar  8 20:24:43 2015 cristopher toozs-hobson
-** Last update Mon May 18 15:05:46 2015 ugo belfiore
+** Last update Thu May 21 15:06:15 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -62,5 +62,6 @@ void		calculate_k(t_st *s)
       check(s, &tmp_cy->x);
       tmp_cy = tmp_cy->next;
     }
-  check_plane(s);
+  if (s->pl != NULL)
+    check_plane(s);
 }

@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Sun Feb  8 16:18:36 2015 ugo belfiore
-** Last update Wed May 20 16:08:17 2015 ugo belfiore
+** Last update Thu May 21 15:43:35 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -61,7 +61,8 @@ static void	calc(t_st *s)
       rotate_inv(&tmp_s->rot, &s->c);
       tmp_s = tmp_s->next;
     }
-  inter_plan(s, &s->c);
+  if (s->pl != NULL)
+    inter_plan(s, &s->c);
   calculate_k(s);
   multi_light(s);
 }
