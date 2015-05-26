@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon Feb  2 18:47:55 2015 ugo belfiore
-** Last update Thu May 21 14:49:49 2015 ugo belfiore
+** Last update Tue May 26 10:47:37 2015 pallua_j
 */
 
 #include "mini.h"
@@ -68,11 +68,11 @@ void	modify_key(t_st *s, int keycode)
   (keycode == KEY_Z) ? s->c.rot.y -= 5 : 1;
   (keycode == KEY_Q) ? s->c.rot.z += 5 : 1;
   (keycode == KEY_D) ? s->c.rot.z -= 5 : 1;
-  (keycode == KEY_I) ? move_xyz_all(s, 4, 150) : 1;
-  (keycode == KEY_K) ? move_xyz_all(s, 4, -150) : 1;
-  (keycode == KEY_J) ? move_xyz_all(s, 5, 150) : 1;
-  (keycode == KEY_L) ? move_xyz_all(s, 5, -150) : 1;
-  (keycode == KEY_U) ? move_xyz_all(s, 6, 150) : 1;
-  (keycode == KEY_O) ? move_xyz_all(s, 6, -150) : 1;
+  (keycode == KEY_I) ? move_xyz_all(s, 4, 50) : 1;
+  (keycode == KEY_K) ? move_xyz_all(s, 4, -50) : 1;
+  (keycode == KEY_J) ? move_xyz_all(s, 5, 50) : 1;
+  (keycode == KEY_L) ? move_xyz_all(s, 5, -50) : 1;
+  (keycode == KEY_U) ? move_xyz_all(s, 6, 50) : 1;
+  (keycode == KEY_O) ? move_xyz_all(s, 6, -50) : 1;
   algo_rt(s, 5, 0);
 }

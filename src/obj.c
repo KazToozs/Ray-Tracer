@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Thu Mar  5 10:17:14 2015 cristopher toozs-hobson
-** Last update Mon May 18 15:05:26 2015 ugo belfiore
+** Last update Tue May 26 11:30:29 2015 pallua_j
 */
 
 #include "mini.h"
@@ -28,8 +28,8 @@ void		inter_sphere(t_cam *c, t_sph *s)
   double	b;
   double	ca;
 
-  s->x.x1 = 10000;
-  s->x.x2 = 10000;
+  s->x.x1 = 10000000;
+  s->x.x2 = 10000000;
   s->x.t = SPHERE;
   translation(&c->p, s->p.x, s->p.y, s->p.z);
   a = pow(c->v.vx, 2) + pow(c->v.vy, 2) + pow(c->v.vz, 2);
@@ -46,8 +46,8 @@ void		inter_cone(t_cam *c, t_cone *co)
   double	b;
   double	ca;
 
-  co->x.x1 = 10000;
-  co->x.x2 = 10000;
+  co->x.x1 = 10000000;
+  co->x.x2 = 10000000;
   co->x.t = CONE;
   tmp_angle = (co->r * M_PI) / 180;
   translation(&c->p, co->p.x, co->p.y, co->p.z);
@@ -69,8 +69,8 @@ void		inter_cyl(t_cam *c, t_cyl *cy)
   double	b;
   double	ca;
 
-  cy->x.x1 = 10000;
-  cy->x.x2 = 10000;
+  cy->x.x1 = 10000000;
+  cy->x.x2 = 10000000;
   cy->x.t = CYLINDER;
   translation(&c->p, cy->p.x, cy->p.y, cy->p.z);
   a = pow(c->v.vx, 2) + pow(c->v.vy, 2);

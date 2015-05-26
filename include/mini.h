@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 28 09:26:37 2014 ugo belfiore
-** Last update Thu May 21 14:18:46 2015 ugo belfiore
+** Last update Tue May 26 11:28:28 2015 pallua_j
 */
 
 #ifndef MINI_H_
@@ -112,7 +112,7 @@ enum    SHAPE
 
 typedef struct  s_file
 {
-  char          *buff;
+  char		*buff;
   char		**tab;
   int		fd;
 }               t_file;
@@ -124,10 +124,10 @@ typedef struct  s_file
 
 typedef struct  s_rot
 {
-  int           x;
-  int           y;
-  int           z;
-}               t_rot;
+  int		x;
+  int		y;
+  int		z;
+}		t_rot;
 
 typedef struct  s_pic
 {

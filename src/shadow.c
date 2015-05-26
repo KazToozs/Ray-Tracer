@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue May 12 11:16:50 2015 ugo belfiore
-** Last update Thu May 21 15:43:55 2015 ugo belfiore
+** Last update Tue May 26 11:24:50 2015 pallua_j
 */
 
 #include "mini.h"
@@ -29,7 +29,7 @@ static int	shadow_k(t_st *s, t_cam *l)
   tmp_c = s->co;
   tmp_cy = s->cy;
   tmp_s = s->s;
-  s->x.k = 10000;
+  s->x.k = 10000000;
   while (tmp_s != NULL)
     {
       rotate(&tmp_s->rot, &s->c);
@@ -53,7 +53,8 @@ static int	shadow_k(t_st *s, t_cam *l)
     }
   if (s->pl->k < s->x.k && s->pl->k > 0.000001)
     s->x.k = s->pl->k;
-  if (s->x.k > 0.000001 && s->x.k < 1 && s->x.k != 10000)
+  //  printf("%f\n", s->x.k);
+  if (s->x.k > 0.000001 && s->x.k < 1)
     {
       my_change_color(s, 0, l);
       return (-1);

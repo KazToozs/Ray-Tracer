@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon May 18 12:07:41 2015 ugo belfiore
-** Last update Wed May 20 18:05:09 2015 jules palluau
+** Last update Tue May 26 11:49:23 2015 pallua_j
 */
 
 #include "mini.h"
@@ -46,9 +46,6 @@ void    my_change_color_bis(t_st *s)
 	}
       tmp = tmp->next;
     }
-  r /= s->d.nb_spots;
-  g /= s->d.nb_spots;
-  b /= s->d.nb_spots;
   if (r > 255)
     r = 255;
   if (g > 255)
