@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Fri Oct 24 19:29:19 2014 ugo belfiore
-** Last update Wed May 20 14:04:34 2015 ugo belfiore
+** Last update Tue May 26 17:08:14 2015 pallua_j
 */
 
 #include "mini.h"
@@ -27,39 +27,6 @@ static void    debug(t_st *s)
     : my_printf("INFO: there are %d CYLINDER.\n", cyl_len(s->cy));
   (cone_len(s->co) == 0) ? my_printf("INFO: no CONE detected.\n")
     : my_printf("INFO: there are %d CONE.\n", cone_len(s->co));
-/*   // affichage des variables (pour verifier si ça marche) */
-/*   int   i; */
-
-/*   i = -1; */
-/*   printf("cam: %d %d %d\n", d->o.view.x_eyes, d->o.view.y_eyes, */
-/*   	 d->o.view.z_eyes); */
-/*   printf("rotate: %f %f %f\n", d->o.view.rotangx, */
-/*   	 d->o.view.rotangy,d->o.view.rotangz); */
-/*   while (++i < d->o.lum.check) */
-/*     printf("lum(%d):%f %f %f\n", i, */
-/*   	   d->o.lum.x_lum[i], d->o.lum.y_lum[i], d->o.lum.z_lum[i]); */
-/*   i = -1; */
-/*   while (++i < d->o.pl.check) */
-/*     printf("plan(%d): %d %x\n", i, */
-/*   	   d->o.pl.high[i], d->o.pl.color_plan[i]); */
-/*   i = -1; */
-/*   while (++i < d->o.sph.check) */
-/*     printf("sph(%d):%d %d %d %d %x %f %f %f\n", i, d->o.sph.x_sphere[i], */
-/*            d->o.sph.y_sphere[i], d->o.sph.z_sphere[i], d->o.sph.r_sh[i], */
-/*            d->o.sph.color_sphere[i], d->o.sph.rotx[i], d->o.sph.roty[i], */
-/*            d->o.sph.rotz[i]); */
-/*   i = -1; */
-/*   while (++i < d->o.cy.check) */
-/*     printf("cyl(%d):%d %d %d %d %x %f %f %f %d\n", i, d->o.cy.x_cyl[i], */
-/*            d->o.cy.y_cyl[i], d->o.cy.z_cyl[i], d->o.cy.r_cyl[i], */
-/*            d->o.cy.color_cyl[i], d->o.cy.rotx[i], d->o.cy.roty[i], */
-/*            d->o.cy.rotz[i], d->o.cy.high[i]); */
-/*   i = -1; */
-/*   while (++i < d->o.co.check) */
-/*     printf("cone(%d):%d %d %d %d %x %f %f %f %d\n", i, d->o.co.x_cone[i], */
-/*            d->o.co.y_cone[i], d->o.co.z_cone[i], d->o.co.r_cone[i], */
-/*            d->o.co.color_cone[i], d->o.co.rotx[i], d->o.co.roty[i], */
-/*            d->o.co.rotz[i], d->o.co.high[i]); */
 }
 
 static int	match(char *s1, char *s2)
@@ -100,24 +67,34 @@ void	line_camera(t_st *s)
     }
 }
 
-void	line_light_plan(t_st *s)
+void		line_light_plan(t_st *s)
 {
-  char	*test;
+  char		*test;
+  t_cam		remp;
+  t_plan	remp_p;
 
   if (match(s->fi.tab[0], "LIGHT"))
     {
-      if (!s->fi.tab[1] || !s->fi.tab[2] || !s->fi.tab[3])
+      if (!s->fi.tab[1] || !s->fi.tab[2] || !s->fi.tab[3] || !s->fi.tab[4])
 	my_error(s, "ERROR: argument LIGHT.", -1);
-      s->l = my_put_light_list(s->l, my_getnbr(s->fi.tab[1]),
-			       my_getnbr(s->fi.tab[2]),
-			       my_getnbr(s->fi.tab[3]));
+      remp.p.x = (double)my_getnbr(s->fi.tab[1]);
+      remp.p.y = (double)my_getnbr(s->fi.tab[2]);
+      remp.p.z = (double)my_getnbr(s->fi.tab[3]);
+      remp.color = strtol(s->fi.tab[4], &test, 16);
+      s->l = my_put_light_list(s->l, remp);
     }
   if (match(s->fi.tab[0], "PLAN"))
     {
-      if (!s->fi.tab[1] || !s->fi.tab[2])
+      if (!s->fi.tab[1] || !s->fi.tab[2] || !s->fi.tab[3] || !s->fi.tab[4]
+	  || !s->fi.tab[5] || !s->fi.tab[6])
 	my_error(s, "ERROR: argument PLAN.", -1);
-      s->pl = my_put_plan_list(s->pl, my_getnbr(s->fi.tab[1]),
-			       strtol(s->fi.tab[2], &test, 16));
+      remp_p.z = (double)my_getnbr(s->fi.tab[1]);
+      remp_p.color = strtol(s->fi.tab[2], &test, 16);
+      remp_p.rot.x = my_getnbr(s->fi.tab[3]);
+      remp_p.rot.y = my_getnbr(s->fi.tab[4]);
+      remp_p.rot.z = my_getnbr(s->fi.tab[5]);
+      remp_p.coef = (double)atof(s->fi.tab[6]);
+      s->pl = my_put_plan_list(s->pl, remp_p);
     }
 }
 
@@ -130,7 +107,7 @@ void		line_sphere(t_st *s)
     {
       if (!s->fi.tab[1] || !s->fi.tab[2] || !s->fi.tab[3]
 	  || !s->fi.tab[4] || !s->fi.tab[5] || !s->fi.tab[6]
-	  || !s->fi.tab[7] || !s->fi.tab[8])
+	  || !s->fi.tab[7] || !s->fi.tab[8] || !s->fi.tab[9])
 	my_error(s, "ERROR: argument SPHERE.", -1);
       remp.p.x = (double)my_getnbr(s->fi.tab[1]);
       remp.p.y = (double)my_getnbr(s->fi.tab[2]);
@@ -141,6 +118,7 @@ void		line_sphere(t_st *s)
       remp.rot.x = my_getnbr(s->fi.tab[6]);
       remp.rot.y = my_getnbr(s->fi.tab[7]);
       remp.rot.z = my_getnbr(s->fi.tab[8]);
+      remp.x.coef = (double)atof(s->fi.tab[9]);
       s->s = my_put_sph_list(s->s, remp);
     }
 }
@@ -154,7 +132,7 @@ void	line_cyl(t_st *s)
     {
       if (!s->fi.tab[1] || !s->fi.tab[2] || !s->fi.tab[3]
 	  || !s->fi.tab[4] || !s->fi.tab[5] || !s->fi.tab[6]
-	  || !s->fi.tab[7] || !s->fi.tab[8] || !s->fi.tab[9])
+	  || !s->fi.tab[7] || !s->fi.tab[8] || !s->fi.tab[9] || !s->fi.tab[10])
 	my_error(s, "ERROR: argument CYLINDER.", -1);
       remp.p.x = (double)my_getnbr(s->fi.tab[1]);
       remp.p.y = (double)my_getnbr(s->fi.tab[2]);
@@ -166,6 +144,7 @@ void	line_cyl(t_st *s)
       remp.rot.y = my_getnbr(s->fi.tab[7]);
       remp.rot.z = my_getnbr(s->fi.tab[8]);
       remp.high = my_getnbr(s->fi.tab[9]);
+      remp.x.coef = (double)atof(s->fi.tab[10]);
       s->cy = my_put_cyl_list(s->cy, remp);
     }
 }
@@ -179,7 +158,7 @@ void		line_cone(t_st *s)
     {
       if (!s->fi.tab[1] || !s->fi.tab[2] || !s->fi.tab[3]
 	  || !s->fi.tab[4] || !s->fi.tab[5] || !s->fi.tab[6]
-	  || !s->fi.tab[7] || !s->fi.tab[8] || !s->fi.tab[9])
+	  || !s->fi.tab[7] || !s->fi.tab[8] || !s->fi.tab[9] || !s->fi.tab[10])
 	my_error(s, "ERROR: argument CONE.", -1);
       remp.p.x = (double)my_getnbr(s->fi.tab[1]);
       remp.p.y = (double)my_getnbr(s->fi.tab[2]);
@@ -191,6 +170,7 @@ void		line_cone(t_st *s)
       remp.rot.y = my_getnbr(s->fi.tab[7]);
       remp.rot.z = my_getnbr(s->fi.tab[8]);
       remp.high = my_getnbr(s->fi.tab[9]);
+      remp.x.coef = (double)atof(s->fi.tab[10]);
       s->co = my_put_cone_list(s->co, remp);
     }
 }

@@ -5,19 +5,19 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue May 12 11:16:50 2015 ugo belfiore
-** Last update Tue May 26 11:24:50 2015 pallua_j
+** Last update Tue May 26 17:11:07 2015 pallua_j
 */
 
 #include "mini.h"
 
 static void	check_shadow(t_st *s, t_x *x)
 {
-  if ((x->x1 < x->x2) && (x->x1 < s->x.k) && (x->x1 > 0.000001)
+  if ((x->x1 < x->x2) && (x->x1 < s->x.kk) && (x->x1 > 0.000001)
       && (x->x2 < 1))
-    s->x.k = x->x1;
-  else if ((x->x2 < x->x1) && (x->x2 < s->x.k) && (x->x2 > 0.000001)
+    s->x.kk = x->x1;
+  else if ((x->x2 < x->x1) && (x->x2 < s->x.kk) && (x->x2 > 0.000001)
         && (x->x2 < 1))
-    s->x.k = x->x2;
+    s->x.kk = x->x2;
 }
 
 static int	shadow_k(t_st *s, t_cam *l)
@@ -29,7 +29,7 @@ static int	shadow_k(t_st *s, t_cam *l)
   tmp_c = s->co;
   tmp_cy = s->cy;
   tmp_s = s->s;
-  s->x.k = 10000000;
+  s->x.kk = 10000000;
   while (tmp_s != NULL)
     {
       rotate(&tmp_s->rot, &s->c);
@@ -51,12 +51,12 @@ static int	shadow_k(t_st *s, t_cam *l)
       rotate_inv(&tmp_cy->rot, &s->c);
       tmp_cy = tmp_cy->next;
     }
-  if (s->pl->k < s->x.k && s->pl->k > 0.000001)
-    s->x.k = s->pl->k;
-  //  printf("%f\n", s->x.k);
-  if (s->x.k > 0.000001 && s->x.k < 1)
+  if (s->pl != NULL)
+    if (s->pl->k < s->x.kk && s->pl->k > 0.000001)
+      s->x.kk = s->pl->k;
+  if (s->x.kk > 0.000001 && s->x.kk < 1.00000000)
     {
-      my_change_color(s, 0, l);
+      //my_change_color(s, 0, l);
       return (-1);
     }
   return (0);

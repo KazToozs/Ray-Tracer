@@ -5,20 +5,23 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon May 18 12:07:41 2015 ugo belfiore
-** Last update Tue May 26 11:49:23 2015 pallua_j
+** Last update Tue May 26 17:18:42 2015 pallua_j
 */
 
 #include "mini.h"
 
 void    my_change_color(t_st *s, double cosin, t_cam *l)
 {
-  l->r = cosin * (s->d.colo & 0xFF);
+  l->r = ((s->d.colo & 0xFF) * (1 - s->x.coef)
+	  + (l->color & 0xFF) * s->x.coef) * cosin;
   if (l->r > 255)
     l->r = 255;
-  l->g = cosin * ((s->d.colo >> 8) & 0xFF);
+  l->g = (((s->d.colo >> 8) & 0xFF) * (1 - s->x.coef)
+	  + ((l->color >> 8) & 0xFF) * s->x.coef) * cosin;
   if (l->g > 255)
     l->g = 255;
-  l->b = cosin * ((s->d.colo >> 16) & 0xFF);
+  l->b = (((s->d.colo >> 16) & 0xFF) * (1 - s->x.coef)
+	  + ((l->color >> 16) & 0xFF) * s->x.coef) * cosin;
   if (l->b > 255)
     l->b = 255;
   l->type = 1;

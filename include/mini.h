@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 28 09:26:37 2014 ugo belfiore
-** Last update Tue May 26 11:28:28 2015 pallua_j
+** Last update Tue May 26 17:09:48 2015 pallua_j
 */
 
 #ifndef MINI_H_
@@ -159,6 +159,7 @@ typedef struct  s_x
   double        x2;
   int           color;
   int           t;
+  double	coef;
 }               t_x;
 
 typedef struct  s_cam
@@ -170,7 +171,9 @@ typedef struct  s_cam
   int		r;
   int		g;
   int		b;
+  int		color;
   int		type;
+  int		nbr;
   struct s_cam  *next;
 }               t_cam;
 
@@ -189,7 +192,9 @@ typedef struct  s_plan
   struct s_plan *prev;
   double        z;
   double        k;
+  double	coef;
   int           color;
+  t_rot		rot;
   struct s_plan *next;
 }               t_plan;
 
@@ -219,8 +224,10 @@ typedef struct  s_int
 {
   t_cam         c;
   double        k;
+  double	kk;
   int           t;
   int		color;
+  double	coef;
 }               t_int;
 
 typedef struct	s_data
@@ -314,8 +321,8 @@ void	part_five(t_st *s);
 t_sph   *my_put_sph_list(t_sph *list, t_sph remp);
 t_cone  *my_put_cone_list(t_cone *list, t_cone remp);
 t_cyl   *my_put_cyl_list(t_cyl *list, t_cyl remp);
-t_plan  *my_put_plan_list(t_plan *list, int z, int color);
-t_cam   *my_put_light_list(t_cam *list, int x, int y, int z);
+t_plan  *my_put_plan_list(t_plan *list, t_plan remp);
+t_cam   *my_put_light_list(t_cam *list, t_cam remp);
 int     light_len(t_cam *list);
 int     cone_len(t_cone *list);
 int     cyl_len(t_cyl *list);
