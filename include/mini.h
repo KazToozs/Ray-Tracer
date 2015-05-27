@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 28 09:26:37 2014 ugo belfiore
-** Last update Wed May 27 09:24:12 2015 pallua_j
+** Last update Wed May 27 16:24:20 2015 pallua_j
 */
 
 #ifndef MINI_H_
@@ -344,5 +344,9 @@ char	*my_realloc(char *buffer, int size);
 char	**my_realloc_tab(char **buffer, int size);
 char    *my_strcpy(char *dest, char *src);
 void	aff_all(t_st *s);
+double	dotproduct(t_vect *v1, t_vect *v2);
+void	normalized(t_vect *v);
+void	my_br(t_st *s, double dot, t_vect *br);
+double	length(t_vect *v);
 
 #endif

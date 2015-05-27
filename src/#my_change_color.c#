@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon May 18 12:07:41 2015 ugo belfiore
-** Last update Wed May 27 17:33:17 2015 pallua_j
+** Last update Wed May 27 16:26:33 2015 pallua_j
 */
 
 #include "mini.h"
@@ -16,7 +16,7 @@ double		my_spec(t_st *s)
   double	my_dot;
   double	my_spec;
 
-  my_dot = -dotproduct(&s->c.v, &s->n);
+  my_dot = -dotproduct(s->c.v, s->n) / (length(&s->c.v) * len;
   my_br(s, my_dot, &br);
   my_spec = dotproduct(&br, &s->x.c.v);
   if (my_spec < 0)
@@ -34,13 +34,24 @@ void		my_change_color(t_st *s, double cosin, t_cam *l)
   ob = ((double)(s->d.colo & 0xFF)) / 255.f;
   li = ((double)(l->color & 0xFF)) / 255.f;
   spec = my_spec(s);
-  l->r = 255 * (ob * li * cosin + (li * spec));
+  /* if (spec != 0) */
+  /*   printf("%f\n", spec); */
+  /* l->r = ((s->d.colo & 0xFF) * (1 - s->x.coef) */
+  /* 	  + (l->color & 0xFF) * s->x.coef) * cosin; */
+  l->r = 255 * (ob * li * cosin + li * spec);
+  /* l->r += 255 * (li * spec); */
   ob = ((double)((s->d.colo >> 8) & 0xFF)) / 255.f;
   li = ((double)((l->color >> 8) & 0xFF)) / 255.f;
-  l->g = 255 * (ob * li *  cosin + (li * spec));
+  /* l->g = (((s->d.colo >> 8) & 0xFF) * (1 - s->x.coef) */
+  /* 	  + ((l->color >> 8) & 0xFF) * s->x.coef) * cosin; */
+  l->g = 255 * (ob * li *  cosin + li * spec);
+  /* l->g += 255 * (li * spec); */
   ob = ((double)((s->d.colo >> 16) & 0xFF)) / 255.f;
   li = ((double)((l->color >> 16) & 0xFF)) / 255.f;
-  l->b = 255 * (ob * li * cosin + (li * spec));
+  /* l->b = (((s->d.colo >> 16) & 0xFF) * (1 - s->x.coef) */
+  /* 	  + ((l->color >> 16) & 0xFF) * s->x.coef) * cosin; */
+  l->b = 255 * (ob * li * cosin + li * spec);
+  /* l->b += 255 * (li * spec); */
   l->type = 1;
   s->d.nb_spots += 1;
 }
