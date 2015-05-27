@@ -5,18 +5,13 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Fri Oct 24 19:29:19 2014 ugo belfiore
-** Last update Tue May 26 17:08:14 2015 pallua_j
+** Last update Wed May 27 02:34:33 2015 ugo belfiore
 */
 
 #include "mini.h"
 
 static void    debug(t_st *s)
 {
-/*   // debugage de fin */
-/*   if (d->o.view.check == 0) */
-/*     my_error(d, "ERROR: can't find CAMERA_POS.", -1); */
-/*   if (d->o.view.check2 == 0) */
-/*     my_error(d, "ERROR: can't find CAMERA_ROTATE.", -1); */
   (light_len(s->l) == 0) ? my_error(s, "ERROR: no LIGHT detected.\n", -1)
     : my_printf("INFO: there are %d LIGHT.\n", light_len(s->l));
   (plan_len(s->pl) == 0) ? my_printf("INFO: no PLAN detected.\n")

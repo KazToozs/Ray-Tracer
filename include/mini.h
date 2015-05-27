@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 28 09:26:37 2014 ugo belfiore
-** Last update Tue May 26 17:09:48 2015 pallua_j
+** Last update Wed May 27 05:30:18 2015 ugo belfiore
 */
 
 #ifndef MINI_H_

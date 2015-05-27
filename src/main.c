@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Fri Dec  5 17:23:50 2014 ugo belfiore
-** Last update Thu May 21 16:31:08 2015 ugo belfiore
+** Last update Wed May 27 06:59:22 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -41,7 +41,7 @@ int		main(int ac, char **av)
     {
       s.fi.fd = open("./maps/sceneX.conf", O_RDONLY);
       if (s.fi.fd == -1)
-	my_error(&s, "ERROR: no argument & file scene1.conf corrupted.", -1);
+	my_error(&s, "ERROR: no argument & file sceneX.conf corrupted.", -1);
     }
   my_parsing_rt(&s);
   aff_win(&s, "rt");
