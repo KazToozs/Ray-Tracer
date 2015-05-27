@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon May  4 12:45:16 2015 ugo belfiore
-** Last update Mon May 18 18:06:07 2015 ugo belfiore
+** Last update Wed May 27 09:56:53 2015 pallua_j
 */
 
 #include "mini.h"
@@ -32,10 +32,8 @@ static void	move_bis(t_cam *tmp, int which, int value)
 
 void	move_xyz_all(t_st *s, int which, int value)
 {
-  int	i;
   t_cam	*tmp;
 
-  i = -1;
   tmp = s->l;
   if (which == 1)
     s->c.p.x += value;

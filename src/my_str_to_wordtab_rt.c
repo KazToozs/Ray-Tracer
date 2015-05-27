@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Mon Nov  3 10:09:14 2014 cristopher toozs-hobson
-** Last update Wed May 20 13:34:19 2015 ugo belfiore
+** Last update Tue May 26 20:32:11 2015 pallua_j
 */
 
 #include "mini.h"
@@ -20,12 +20,14 @@ int		count_words(char *str)
   while (str[i] != '\0')
     {
       if ((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z')
-	  || (str[i] >= '0' && str[i] <= '9') || str[i] == '-')
+	  || (str[i] >= '0' && str[i] <= '9') || str[i] == '-'
+	  || str[i] == '.')
 	{
 	  cpt++;
 	  while ((str[i] >= 'a' && str[i] <= 'z')
 		 || (str[i] >= 'A' && str[i] <= 'Z')
-		 || (str[i] >= '0' && str[i] <= '9') || str[i] == '-')
+		 || (str[i] >= '0' && str[i] <= '9') || str[i] == '-'
+		 || str[i] == '.')
 	    i++;
 	}
       else
@@ -41,7 +43,8 @@ int		count_chars(char *str, int *i)
   cpt = 0;
   while (str[*i] && ((str[*i] >= 'a' && str[*i] <= 'z')
 		     || (str[*i] >= 'A' && str[*i] <= 'Z')
-		     || (str[*i] >= '0' && str[*i] <= '9') || str[*i] == '-'))
+		     || (str[*i] >= '0' && str[*i] <= '9') || str[*i] == '-'
+		     || str[*i] == '.'))
     {
       cpt++;
       *i = *i + 1;
@@ -49,7 +52,7 @@ int		count_chars(char *str, int *i)
   return (cpt);
 }
 
-char		**my_str_tab(char *str)
+char		**my_str_tab(char *st)
 {
   int		i;
   int		words;
@@ -58,16 +61,16 @@ char		**my_str_tab(char *str)
 
   i = 0;
   size = 0;
-  words = count_words(str);
+  words = count_words(st);
   if ((tab = malloc(sizeof(char *) * (words + 1))) == NULL)
     exit(1);
-  while (str[i] && words > 0)
+  while (st[i] && words > 0)
     {
-      if ((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z')
-	  || (str[i] >= '0' && str[i] <= '9') || str[i] == '-')
+      if ((st[i] >= 'a' && st[i] <= 'z') || (st[i] >= 'A' && st[i] <= 'Z')
+	  || (st[i] >= '0' && st[i] <= '9') || st[i] == '-' || st[i] == '.')
 	{
-	  tab[size] = my_strdup(str + i);
-	  tab[size] [count_chars(str, &i)] = '\0';
+	  tab[size] = my_strdup(st + i);
+	  tab[size] [count_chars(st, &i)] = '\0';
 	  size++;
 	  words = words - 1;
 	}

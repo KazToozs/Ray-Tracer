@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Fri Oct 24 19:29:19 2014 ugo belfiore
-** Last update Wed May 27 02:34:33 2015 ugo belfiore
+** Last update Wed May 27 09:15:16 2015 pallua_j
 */
 
 #include "mini.h"
@@ -113,7 +113,7 @@ void		line_sphere(t_st *s)
       remp.rot.x = my_getnbr(s->fi.tab[6]);
       remp.rot.y = my_getnbr(s->fi.tab[7]);
       remp.rot.z = my_getnbr(s->fi.tab[8]);
-      remp.x.coef = (double)atof(s->fi.tab[9]);
+      remp.x.coef = atof(s->fi.tab[9]);
       s->s = my_put_sph_list(s->s, remp);
     }
 }

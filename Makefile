@@ -5,7 +5,7 @@
 ## Login   <belfio_u@epitech.net>
 ## 
 ## Started on  Mon May 18 11:47:58 2015 ugo belfiore
-## Last update Wed May 27 05:30:11 2015 ugo belfiore
+## Last update Wed May 27 09:55:03 2015 pallua_j
 ##
 
 SRC     =       ./src/main.c			\
@@ -38,16 +38,16 @@ OBJ     =       $(SRC:.c=.o)
 
 NAME    =       rt
 
-LIB     =       ./lib/my/libmy.a
+LIB     =       -L./lib/my -lmy
 
-LIBMINI =	./lib/minilibx/libmlx.a
+LIBMINI =	-L./lib/minilibx -lmlx
 
-CC      =       clang
+CC      =       gcc
 
 CFLAGS  +=      -W -Wall -Wextra -g3
 CFLAGS	+=	-I./include
 
-LDFLAGS	=	-L/usr/lib64/X11 -lXext -lX11 -lm -Llib/my/ -lmy -Llib/minilibx/  -lmlx ./lib/libson.so -lpthread
+LDFLAGS	=	$(LIB) $(LIBMINI) -L/usr/lib64/X11 -lXext -lX11 -lm ./lib/libson.so -lpthread
 
 all: $(NAME)
 

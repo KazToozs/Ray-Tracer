@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 28 09:26:37 2014 ugo belfiore
-** Last update Wed May 27 05:30:18 2015 ugo belfiore
+** Last update Wed May 27 09:24:12 2015 pallua_j
 */
 
 #ifndef MINI_H_
@@ -338,7 +338,7 @@ void	inter_cone(t_cam *c, t_cone *co);
 void	inter_cyl(t_cam *c, t_cyl *cy);
 void	inter_plan(t_st *s, t_cam *c);
 void	light(t_st *s, t_cam *l);
-int	shadow(t_st *s, t_cam *l);
+int	shadow(t_st *s);
 void	move_xyz_all(t_st *s, int which, int value);
 char	*my_realloc(char *buffer, int size);
 char	**my_realloc_tab(char **buffer, int size);
