@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 28 09:26:37 2014 ugo belfiore
-** Last update Wed May 27 16:24:20 2015 pallua_j
+** Last update Fri May 29 13:30:54 2015 ugo belfiore
 */
 
 #ifndef MINI_H_
@@ -263,7 +263,7 @@ typedef struct  s_st
   t_file	fi;
   t_sound	sd;
   t_piic	pi;
-  pthread_t     threads[5];
+  pthread_t     threads[10];
 }               t_st;
 
 /*
@@ -336,7 +336,7 @@ void	calculate_k(t_st *s);
 void	inter_sphere(t_cam *c, t_sph *s);
 void	inter_cone(t_cam *c, t_cone *co);
 void	inter_cyl(t_cam *c, t_cyl *cy);
-void	inter_plan(t_st *s, t_cam *c);
+void	inter_plan(t_cam *c, t_plan *pl);
 void	light(t_st *s, t_cam *l);
 int	shadow(t_st *s);
 void	move_xyz_all(t_st *s, int which, int value);

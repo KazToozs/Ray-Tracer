@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue May 12 11:16:50 2015 ugo belfiore
-** Last update Wed May 27 09:23:52 2015 pallua_j
+** Last update Fri May 29 12:18:38 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -25,24 +25,27 @@ static int	shadow_k(t_st *s)
   t_cone	*tmp_c;
   t_cyl		*tmp_cy;
   t_sph		*tmp_s;
+  t_plan	*tmp_pl;
 
   tmp_c = s->co;
   tmp_cy = s->cy;
   tmp_s = s->s;
+  tmp_pl = s->pl;
   s->x.kk = 10000000;
+  while (tmp_pl != NULL)
+    {
+      rotate(&tmp_pl->rot, &s->c);
+      if (tmp_pl->k < s->x.kk && tmp_pl->k > 0.000001)
+	s->x.kk = tmp_pl->k;
+      rotate_inv(&tmp_pl->rot, &s->c);
+      tmp_pl = tmp_pl->next;
+    }
   while (tmp_s != NULL)
     {
       rotate(&tmp_s->rot, &s->c);
       check_shadow(s, &tmp_s->x);
       rotate_inv(&tmp_s->rot, &s->c);
       tmp_s = tmp_s->next;
-    }
-  while (tmp_c != NULL)
-    {
-      rotate(&tmp_c->rot, &s->c);
-      check_shadow(s, &tmp_c->x);
-      rotate_inv(&tmp_c->rot, &s->c);
-      tmp_c = tmp_c->next;
     }
   while (tmp_cy != NULL)
     {
@@ -51,9 +54,13 @@ static int	shadow_k(t_st *s)
       rotate_inv(&tmp_cy->rot, &s->c);
       tmp_cy = tmp_cy->next;
     }
-  if (s->pl != NULL)
-    if (s->pl->k < s->x.kk && s->pl->k > 0.000001)
-      s->x.kk = s->pl->k;
+  while (tmp_c != NULL)
+    {
+      rotate(&tmp_c->rot, &s->c);
+      check_shadow(s, &tmp_c->x);
+      rotate_inv(&tmp_c->rot, &s->c);
+      tmp_c = tmp_c->next;
+    }
   if (s->x.kk > 0.000001 && s->x.kk < 1.00000000)
     {
       return (-1);
@@ -66,10 +73,22 @@ int		shadow(t_st *s)
   t_cone	*tmp_c;
   t_cyl		*tmp_cy;
   t_sph		*tmp_s;
+  t_plan	*tmp_pl;
 
   tmp_c = s->co;
   tmp_cy = s->cy;
   tmp_s = s->s;
+  tmp_pl = s->pl;
+  while (tmp_pl != NULL)
+    {
+      inter_plan(&s->x.c, tmp_pl);
+      tmp_pl = tmp_pl->next;
+    }
+  while (tmp_s != NULL)
+    {
+      inter_sphere(&s->x.c, tmp_s);
+      tmp_s = tmp_s->next;
+    }
   while (tmp_cy != NULL)
     {
       inter_cyl(&s->x.c, tmp_cy);
@@ -80,13 +99,6 @@ int		shadow(t_st *s)
       inter_cone(&s->x.c, tmp_c); 
       tmp_c = tmp_c->next;
     }
-  while (tmp_s != NULL)
-    {
-      inter_sphere(&s->x.c, tmp_s);
-      tmp_s = tmp_s->next;
-    }
-  if (s->pl != NULL)
-    inter_plan(s, &s->x.c);
   if (shadow_k(s) == -1)
     return (-1);
   return (0);

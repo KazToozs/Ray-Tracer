@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon Feb  2 18:47:55 2015 ugo belfiore
-** Last update Tue May 26 10:47:37 2015 pallua_j
+** Last update Fri May 29 14:18:22 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -74,5 +74,5 @@ void	modify_key(t_st *s, int keycode)
   (keycode == KEY_L) ? move_xyz_all(s, 5, -50) : 1;
   (keycode == KEY_U) ? move_xyz_all(s, 6, 50) : 1;
   (keycode == KEY_O) ? move_xyz_all(s, 6, -50) : 1;
-  algo_rt(s, 5, 0);
+  algo_rt(s, 4, 4);
 }

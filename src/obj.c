@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Thu Mar  5 10:17:14 2015 cristopher toozs-hobson
-** Last update Tue May 26 11:30:29 2015 pallua_j
+** Last update Fri May 29 12:15:27 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -82,7 +82,8 @@ void		inter_cyl(t_cam *c, t_cyl *cy)
   delta(&cy->x, a, b, ca);
 }
 
-void		inter_plan(t_st *s, t_cam *c)
+void		inter_plan(t_cam *c, t_plan *pl)
 {
-  s->pl->k = -(c->p.z / c->v.vz);
+  if (c->v.vz != 0)
+    pl->k = -((c->p.z + pl->z) / c->v.vz);
 }

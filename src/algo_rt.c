@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Sun Feb  8 16:18:36 2015 ugo belfiore
-** Last update Tue May 26 10:53:07 2015 pallua_j
+** Last update Fri May 29 14:01:41 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -37,10 +37,26 @@ static void	calc(t_st *s)
   t_cone	*tmp_c;
   t_cyl		*tmp_cy;
   t_sph		*tmp_s;
+  t_plan	*tmp_pl;
 
   tmp_c = s->co;
   tmp_cy = s->cy;
   tmp_s = s->s;
+  tmp_pl = s->pl;
+  while (tmp_pl != NULL)
+    {
+      rotate(&tmp_pl->rot, &s->c);
+      inter_plan(&s->c, tmp_pl);
+      rotate_inv(&tmp_pl->rot, &s->c);
+      tmp_pl = tmp_pl->next;
+    }
+  while (tmp_s != NULL)
+    {
+      rotate(&tmp_s->rot, &s->c);
+      inter_sphere(&s->c, tmp_s);
+      rotate_inv(&tmp_s->rot, &s->c);
+      tmp_s = tmp_s->next;
+    }
   while (tmp_cy != NULL)
     {
       rotate(&tmp_cy->rot, &s->c);
@@ -55,15 +71,6 @@ static void	calc(t_st *s)
       rotate_inv(&tmp_c->rot, &s->c);
       tmp_c = tmp_c->next;
     }
-  while (tmp_s != NULL)
-    {
-      rotate(&tmp_s->rot, &s->c);
-      inter_sphere(&s->c, tmp_s);
-      rotate_inv(&tmp_s->rot, &s->c);
-      tmp_s = tmp_s->next;
-    }
-  if (s->pl != NULL)
-    inter_plan(s, &s->c);
   calculate_k(s);
   multi_light(s);
 }
@@ -94,10 +101,10 @@ void	algo_rt(t_st *s, int flew, int flew2)
 	  rotate(&s->c.rot, &s->c);
 	  calc(s);
 	  aff_pix_img(s, i, j, s->d.bigData);
-	  j += 5;
+	  j += 9;
 	}
       j = flew2;
-      i += 5;
+      i += 9;
     }
   mlx_put_image_to_window(s->d.mlx_ptr, s->d.win_ptr, s->d.img_ptr, 0, 0);
 }
