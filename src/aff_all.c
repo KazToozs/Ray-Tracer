@@ -5,13 +5,12 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Thu May 21 14:16:28 2015 ugo belfiore
-** Last update Wed May 27 06:56:57 2015 ugo belfiore
+** Last update Sun May 31 01:15:07 2015 ugo belfiore
 */
 
 #include "mini.h"
-#define CLEARSCREEN "clear"
 
-void	aff_all(t_st *s)
+void	aff_all(t_wild *w)
 {
   t_cone        *tmp_c;
   t_cyl         *tmp_cy;
@@ -20,26 +19,25 @@ void	aff_all(t_st *s)
   t_plan	*tmp_pl;
   FILE		*fd;
 
-  system(CLEARSCREEN);
   fd = fopen("./maps/sceneSAVE.conf", "w+");
   fprintf(fd, "/*\n** sauvegarde automatique\n*/\n\n");
   fprintf(fd, "CAMERA-POS\t%d\t%d\t%d\n",
-	  (int)s->c.p.x, (int)s->c.p.y, (int)s->c.p.z);
+	  (int)w->s[0].c.p.x, (int)w->s[0].c.p.y, (int)w->s[0].c.p.z);
   fprintf(fd, "CAMERA-ROTATE\t%d\t%d\t%d\n\n",
-	  s->c.rot.x, s->c.rot.y, s->c.rot.z);
+	  w->s[0].c.rot.x, w->s[0].c.rot.y, w->s[0].c.rot.z);
   //
-  printf("cam x: %f\n", s->c.p.x);
-  printf("cam y: %f\n", s->c.p.y);
-  printf("cam z: %f\n", s->c.p.z);
-  printf("cam rotx: %d\n", s->c.rot.x);
-  printf("cam roty: %d\n", s->c.rot.y);
-  printf("cam rotz: %d\n\n", s->c.rot.z);
+  printf("cam x: %f\n", w->s[0].c.p.x);
+  printf("cam y: %f\n", w->s[0].c.p.y);
+  printf("cam z: %f\n", w->s[0].c.p.z);
+  printf("cam rotx: %d\n", w->s[0].c.rot.x);
+  printf("cam roty: %d\n", w->s[0].c.rot.y);
+  printf("cam rotz: %d\n\n", w->s[0].c.rot.z);
   //
-  tmp_c = s->co;
-  tmp_cy = s->cy;
-  tmp_s = s->s;
-  tmp_l = s->l;
-  tmp_pl = s->pl;
+  tmp_c = w->s[0].co;
+  tmp_cy = w->s[0].cy;
+  tmp_s = w->s[0].s;
+  tmp_l = w->s[0].l;
+  tmp_pl = w->s[0].pl;
   while (tmp_l != NULL)
     {
       fprintf(fd, "LIGHT\t%d\t%d\t%d\t0x%X\n", (int)tmp_l->p.x,

@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Fri Dec  5 17:23:50 2014 ugo belfiore
-** Last update Wed May 27 06:59:22 2015 ugo belfiore
+** Last update Sun May 31 00:43:05 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -14,14 +14,18 @@
 ** initialise quelque variable
 */
 
-static void	init_fucking_rt(t_st *s)
+static void	init_fucking_rt(t_wild *w)
 {
   int   i;
+  int	t;
 
   i = -1;
-  s->d.timer = 0;
+  t = -1;
+  while (++t < 5)
+    w->s[t].type = 0;
+  w->d.timer = 0;
   while (++i < 256)
-    s->d.f[i] = 0;
+    w->d.f[i] = 0;
 }
 
 /*
@@ -31,21 +35,21 @@ static void	init_fucking_rt(t_st *s)
 int		main(int ac, char **av)
 {
   extern char	**environ;
-  t_st		s;
+  t_wild	w;
 
   ac = (ac == 2) ? ac : ac;
   if (environ[0] == NULL)
-    my_error(&s, "ERROR: environment.", -1);
-  s.fi.fd = open(av[1], O_RDONLY);
-  if (s.fi.fd == -1)
+    my_error(&w, "ERROR: environment.", -1);
+  w.fi.fd = open(av[1], O_RDONLY);
+  if (w.fi.fd == -1)
     {
-      s.fi.fd = open("./maps/sceneX.conf", O_RDONLY);
-      if (s.fi.fd == -1)
-	my_error(&s, "ERROR: no argument & file sceneX.conf corrupted.", -1);
+      w.fi.fd = open("./maps/sceneX.conf", O_RDONLY);
+      if (w.fi.fd == -1)
+	my_error(&w, "ERROR: no argument & file sceneX.conf corrupted.", -1);
     }
-  my_parsing_rt(&s);
-  aff_win(&s, "rt");
-  close(s.fi.fd);
+  my_parsing_rt(&w);
+  aff_win(&w, "rt");
+  close(w.fi.fd);
   return (0);
 }
 
@@ -53,25 +57,24 @@ int		main(int ac, char **av)
 ** fonction affichage window.
 */
 
-void	aff_win(t_st *s, char *name)
+void	aff_win(t_wild *w, char *name)
 {
-  s->d.x_max = 1200;
-  s->d.y_max = 710;
-  s->d.w = 1;
-  s->d.colo = COLOR_BLACK;
-  //sound_init(s);
-  (!(s->d.mlx_ptr = mlx_init())) ? my_error(s, "ERROR: mlx init.", -1) : 1;
-  (!(s->d.win_ptr = mlx_new_window(s->d.mlx_ptr,
-				   s->d.x_max, s->d.y_max, name))) ?
-    my_error(s, "ERROR: win init.", -1) : 1;
-  (!(s->d.img_ptr = mlx_new_image(s->d.mlx_ptr, s->d.x_max, s->d.y_max))) ?
-    my_error(s, "ERROR: img init.", -1) : 1;
-  s->d.bigData = mlx_get_data_addr(s->d.img_ptr,
-				   &s->d.bpp, &s->d.sizeline, &s->d.end);
-  init_fucking_rt(s);
-  mlx_expose_hook(s->d.win_ptr, &manage_expose, (void *)(s));
-  mlx_hook(s->d.win_ptr, 2, 2, &manage_keyPres, (void *)(s));
-  mlx_hook(s->d.win_ptr, 3, 3, &manage_keyRelease, (void *)(s));
-  mlx_loop_hook(s->d.mlx_ptr, &manage_frame, (void *)(s));
-  mlx_loop(s->d.mlx_ptr);
+  w->d.x_max = 1200;
+  w->d.y_max = 710;
+  w->d.w = 1;
+  //sound_init(w);
+  (!(w->d.mlx_ptr = mlx_init())) ? my_error(w, "ERROR: mlx init.", -1) : 1;
+  (!(w->d.win_ptr = mlx_new_window(w->d.mlx_ptr,
+				   w->d.x_max, w->d.y_max, name))) ?
+    my_error(w, "ERROR: win init.", -1) : 1;
+  (!(w->d.img_ptr = mlx_new_image(w->d.mlx_ptr, w->d.x_max, w->d.y_max))) ?
+    my_error(w, "ERROR: img init.", -1) : 1;
+  w->d.bigData = mlx_get_data_addr(w->d.img_ptr,
+				   &w->d.bpp, &w->d.sizeline, &w->d.end);
+  init_fucking_rt(w);
+  mlx_expose_hook(w->d.win_ptr, &manage_expose, (void *)(w));
+  mlx_hook(w->d.win_ptr, 2, 2, &manage_keyPres, (void *)(w));
+  mlx_hook(w->d.win_ptr, 3, 3, &manage_keyRelease, (void *)(w));
+  mlx_loop_hook(w->d.mlx_ptr, &manage_frame, (void *)(w));
+  mlx_loop(w->d.mlx_ptr);
 }

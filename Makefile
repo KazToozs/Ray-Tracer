@@ -5,7 +5,7 @@
 ## Login   <belfio_u@epitech.net>
 ## 
 ## Started on  Mon May 18 11:47:58 2015 ugo belfiore
-## Last update Fri May 29 12:33:16 2015 ugo belfiore
+## Last update Sun May 31 00:48:17 2015 ugo belfiore
 ##
 
 SRC     =       ./src/main.c			\
@@ -14,13 +14,16 @@ SRC     =       ./src/main.c			\
 		./src/my_str_to_wordtab_rt.c	\
 		./src/my_show_wordtab.c		\
 		./src/get_next_line.c		\
+		./src/my_obj_list.c		\
+		./src/my_realloc.c		\
 		./src/sound.c			\
 		./src/evenement.c		\
 		./src/evenement_keyframe.c	\
 		./src/thread_func.c		\
+		./src/move_xyz_all.c		\
+		./src/aff_all.c			\
 		./src/algo_rt.c			\
 		./src/aff_pix_img.c		\
-		./src/my_obj_list.c		\
 		./src/my_change_color.c		\
 		./src/rotation.c		\
 		./src/obj.c			\
@@ -28,11 +31,8 @@ SRC     =       ./src/main.c			\
 		./src/calculate_k.c		\
 		./src/lum.c			\
 		./src/shadow.c			\
-		./src/move_xyz_all.c		\
-		./src/my_realloc.c		\
 		./src/my_strcpy.c		\
 		./src/my_strdup.c		\
-		./src/aff_all.c			\
 		./src/vector.c			\
 
 OBJ     =       $(SRC:.c=.o)

@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon May 18 12:07:41 2015 ugo belfiore
-** Last update Wed May 27 17:33:17 2015 pallua_j
+** Last update Sun May 31 00:54:51 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -31,18 +31,18 @@ void		my_change_color(t_st *s, double cosin, t_cam *l)
   double	li;
   double	spec;
 
-  ob = ((double)(s->d.colo & 0xFF)) / 255.f;
+  ob = ((double)(s->colo & 0xFF)) / 255.f;
   li = ((double)(l->color & 0xFF)) / 255.f;
   spec = my_spec(s);
   l->r = 255 * (ob * li * cosin + (li * spec));
-  ob = ((double)((s->d.colo >> 8) & 0xFF)) / 255.f;
+  ob = ((double)((s->colo >> 8) & 0xFF)) / 255.f;
   li = ((double)((l->color >> 8) & 0xFF)) / 255.f;
   l->g = 255 * (ob * li *  cosin + (li * spec));
-  ob = ((double)((s->d.colo >> 16) & 0xFF)) / 255.f;
+  ob = ((double)((s->colo >> 16) & 0xFF)) / 255.f;
   li = ((double)((l->color >> 16) & 0xFF)) / 255.f;
   l->b = 255 * (ob * li * cosin + (li * spec));
   l->type = 1;
-  s->d.nb_spots += 1;
+  s->nb_spots += 1;
 }
 
 void    my_change_color_bis(t_st *s)
@@ -72,5 +72,5 @@ void    my_change_color_bis(t_st *s)
     g = 255;
   if (b > 255)
     b = 255;
-  s->d.colo = (r) + (g * 0x100) + (b * 0x10000);
+  s->colo = (r) + (g * 0x100) + (b * 0x10000);
 }

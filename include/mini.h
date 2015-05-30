@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 28 09:26:37 2014 ugo belfiore
-** Last update Fri May 29 13:30:54 2015 ugo belfiore
+** Last update Sun May 31 01:14:36 2015 ugo belfiore
 */
 
 #ifndef MINI_H_
@@ -75,7 +75,6 @@
 #define KEY_O 111
 #define KEY_L 108
 #define KEY_W 119
-#define KEY_2 178
 
 /*
 ** stucture son
@@ -238,20 +237,16 @@ typedef struct	s_data
   char		*bigData;
   int		x_max;
   int		y_max;
-  int		colo;
   int		bpp;
   int		sizeline;
   int		end;
   int		w;
   int		f[256];
   int		timer;
-  int		nb_spots;
 }               t_data;
 
 typedef struct  s_st
 {
-  t_data        d;
-  t_pic         p;
   t_cam         c;
   t_sph         *s;
   t_plan        *pl;
@@ -260,20 +255,30 @@ typedef struct  s_st
   t_vect        n;
   t_int         x;
   t_cam         *l;
+  int		colo;
+  int		tt;
+  int		type;
+  int		nb_spots;
+}               t_st;
+
+typedef struct	s_wild
+{
+  t_st		s[5];
+  t_data        d;
+  t_pic         p;
   t_file	fi;
   t_sound	sd;
   t_piic	pi;
-  pthread_t     threads[10];
-}               t_st;
+  pthread_t     threads[5];
+}		t_wild;
 
 /*
 ** fonction divers.
 */
 
-void	aff_win(t_st *st, char *name);
-void	aff_pix_img(t_st *st, int x, int y, char *img);
-void	sound_init(t_st *s);
-void	my_error(t_st *s, char *error, int i);
+void	aff_win(t_wild *w, char *name);
+void	sound_init(t_wild *d);
+void	my_error(t_wild *w, char *error, int i);
 void	aff_error(char *str);
 char	*get_next_line(const int fd);
 char	**my_str_tab(char *str);
@@ -285,34 +290,41 @@ char	*my_strdup(char *str);
 */
 
 int	manage_expose(void *param);
-void	check_refresh(t_st *s, int keycode);
-void    modify_key(t_st *s, int keycode);
+void	check_refresh(t_wild *w, int keycode);
+void    modify_key(t_wild *w, int keycode);
 int	manage_frame(void *param);
-void	fast_way_only(t_st *s);
-void    manage_frame_test_key(t_st *s);
+void	fast_way_only(t_wild *w);
+void    manage_frame_test_key(t_wild *w);
 int	manage_keyPres(int keycode, void *param);
 int	manage_keyRelease(int keycode, void *param);
 int	manage_key(int keycode, void *param);
+void	aff_pix_img_zero(t_wild *w, int x, int y, char *img);
+void	aff_pix_img_one(t_wild *w, int x, int y, char *img);
+void	aff_pix_img_two(t_wild *w, int x, int y, char *img);
+void	aff_pix_img_tree(t_wild *w, int x, int y, char *img);
+void	aff_pix_img_four(t_wild *w, int x, int y, char *img);
+
 
 /*
 ** fonction rt parsing
 */
 
-void	my_parsing_rt(t_st *s);
+void	my_parsing_rt(t_wild *w);
 
 /*
 ** fonction rt affichage
 */
 
-void	algo_rt(t_st *s, int flew, int flew2);
+void	algo_rt(t_wild *w, t_st *s, int flew, int flew2);
 void	my_change_color(t_st *s, double cosin, t_cam *l);
 void	my_change_color_bis(t_st *s);
-void	move_xyz_all(t_st *s, int which, int value);
-void	part_one(t_st *s);
-void	part_two(t_st *s);
-void	part_tree(t_st *s);
-void	part_four(t_st *s);
-void	part_five(t_st *s);
+void	move_xyz_all(t_wild *w, int which, int value);
+void	part_one(t_wild *w);
+void	part_two(t_wild *w);
+void	part_tree(t_wild *w);
+void	part_four(t_wild *w);
+void	part_five(t_wild *w);
+void	aff_all(t_wild *w);
 
 /*
 ***************** Proto parsing **************
@@ -339,11 +351,9 @@ void	inter_cyl(t_cam *c, t_cyl *cy);
 void	inter_plan(t_cam *c, t_plan *pl);
 void	light(t_st *s, t_cam *l);
 int	shadow(t_st *s);
-void	move_xyz_all(t_st *s, int which, int value);
 char	*my_realloc(char *buffer, int size);
 char	**my_realloc_tab(char **buffer, int size);
 char    *my_strcpy(char *dest, char *src);
-void	aff_all(t_st *s);
 double	dotproduct(t_vect *v1, t_vect *v2);
 void	normalized(t_vect *v);
 void	my_br(t_st *s, double dot, t_vect *br);

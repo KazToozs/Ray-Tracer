@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Sun Feb  8 16:18:36 2015 ugo belfiore
-** Last update Fri May 29 14:01:41 2015 ugo belfiore
+** Last update Sun May 31 01:25:30 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -25,10 +25,10 @@ static void	multi_light(t_st *s)
       light(s, tmp_l);
       tmp_l = tmp_l->next;
     }
-  if (s->d.nb_spots != 0)
+  if (s->nb_spots != 0)
     my_change_color_bis(s);
   else
-    s->d.colo = COLOR_BLACK;
+    s->colo = COLOR_BLACK;
   tmp_l = s->l;
 }
 
@@ -81,30 +81,33 @@ static void	calc(t_st *s)
 ** petit à petit la scène
 */
 
-void	algo_rt(t_st *s, int flew, int flew2)
+void	algo_rt(t_wild *w, t_st *s, int flew, int flew2)
 {
   int	i;
   int	j;
 
   i = flew;
   j = flew2;
-  while (i < s->d.x_max)
+  while (i < w->d.x_max)
     {
-      while (j < s->d.y_max)
+      while (j < w->d.y_max)
 	{
-	  s->d.nb_spots = 0;
-	  s->d.colo = COLOR_BLACK;
+	  s->nb_spots = 0;
+	  s->colo = COLOR_BLACK;
 	  s->x.k = 10000000;
 	  s->c.v.vx = 1000;
-	  s->c.v.vy = (s->d.x_max / 2) - i;
-	  s->c.v.vz = (s->d.y_max / 2) - j;
+	  s->c.v.vy = (w->d.x_max / 2) - i;
+	  s->c.v.vz = (w->d.y_max / 2) - j;
 	  rotate(&s->c.rot, &s->c);
 	  calc(s);
-	  aff_pix_img(s, i, j, s->d.bigData);
+	  (s->tt == 0) ? aff_pix_img_zero(w, i, j, w->d.bigData) : 1;
+	  (s->tt == 1) ? aff_pix_img_one(w, i, j, w->d.bigData) : 1;
+	  (s->tt == 2) ? aff_pix_img_two(w, i, j, w->d.bigData) : 1;
+	  (s->tt == 3) ? aff_pix_img_tree(w, i, j, w->d.bigData) : 1;
+	  (s->tt == 4) ? aff_pix_img_four(w, i, j, w->d.bigData) : 1;
 	  j += 9;
 	}
       j = flew2;
       i += 9;
     }
-  mlx_put_image_to_window(s->d.mlx_ptr, s->d.win_ptr, s->d.img_ptr, 0, 0);
 }

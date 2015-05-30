@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon May  4 12:45:16 2015 ugo belfiore
-** Last update Wed May 27 09:56:53 2015 pallua_j
+** Last update Sun May 31 00:21:46 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -30,24 +30,29 @@ static void	move_bis(t_cam *tmp, int which, int value)
     }
 }
 
-void	move_xyz_all(t_st *s, int which, int value)
+void	move_xyz_all(t_wild *w, int which, int value)
 {
   t_cam	*tmp;
+  int	t;
 
-  tmp = s->l;
-  if (which == 1)
-    s->c.p.x += value;
-  if (which == 2)
-    s->c.p.y += value;
-  if (which == 3)
-    s->c.p.z += value;
-  if (which == 4)
+  t = -1;
+  while (++t < 5)
     {
-      while (tmp != NULL)
+      tmp = w->s[t].l;
+      if (which == 1)
+	w->s[t].c.p.x += value;
+      if (which == 2)
+	w->s[t].c.p.y += value;
+      if (which == 3)
+	w->s[t].c.p.z += value;
+      if (which == 4)
 	{
-	  tmp->p.x += value;
-	  tmp = tmp->next;
+	  while (tmp != NULL)
+	    {
+	      tmp->p.x += value;
+	      tmp = tmp->next;
+	    }
 	}
+      move_bis(tmp, which, value);
     }
-  move_bis(tmp, which, value);
 }
