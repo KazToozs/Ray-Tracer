@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon Apr 20 06:52:15 2015 ugo belfiore
-** Last update Sat May 30 23:20:21 2015 ugo belfiore
+** Last update Sun May 31 02:07:45 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -22,14 +22,6 @@ void    my_error(t_wild *w, char *error, int i)
     my_printf("%s\n", error);
   else if (i == 0)
     {
-      /* my_error_free(d); */
-      /* free(d->o.co.r_cone); */
-      /* free(d->o.co.color_cone); */
-      /* free(d->o.co.rotx); */
-      /* free(d->o.co.roty); */
-      /* free(d->o.co.rotz); */
-      /* free(d->o.co.high); */
-      my_printf("attention: ");
       FMOD_Sound_Release(w->sd.bonus1);
       FMOD_System_Close(w->sd.system);
       FMOD_System_Release(w->sd.system);

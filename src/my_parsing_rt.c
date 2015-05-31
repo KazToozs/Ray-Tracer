@@ -1,11 +1,11 @@
 /*
-** my_str_to_wordtab.c for  in /home/belfio_u/rendu/Piscine_C_J08/ex_04
+** my_parsing_rt.c for  in /home/belfio_u/rendu/MUL/MUL_2014_rtracer/src
 ** 
 ** Made by ugo belfiore
 ** Login   <belfio_u@epitech.net>
 ** 
-** Started on  Fri Oct 24 19:29:19 2014 ugo belfiore
-** Last update Sun May 31 00:37:27 2015 ugo belfiore
+** Started on  Sun May 31 02:04:45 2015 ugo belfiore
+** Last update Sun May 31 02:04:47 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -14,21 +14,18 @@ static void    debug(t_wild *w)
 {
   int		t;
 
-  t = -1;
-  while (++t < 5)
-    {
-      (light_len(w->s[t].l) == 0) ?
-	my_error(w, "ERROR: no LIGHT detected.\n", -1)
-	: my_printf("INFO: there are %d LIGHT.\n", light_len(w->s[t].l));
-      (plan_len(w->s[t].pl) == 0) ? my_printf("INFO: no PLAN detected.\n")
-	: my_printf("INFO: there are %d PLAN.\n", plan_len(w->s[t].pl));
-      (sphere_len(w->s[t].s) == 0) ? my_printf("INFO: no SPHERE detected.\n")
-	: my_printf("INFO: there are %d SPHERE.\n", sphere_len(w->s[t].s));
-      (cyl_len(w->s[t].cy) == 0) ? my_printf("INFO: no CYLINDER detected.\n")
-	: my_printf("INFO: there are %d CYLINDER.\n", cyl_len(w->s[t].cy));
-      (cone_len(w->s[t].co) == 0) ? my_printf("INFO: no CONE detected.\n")
-	: my_printf("INFO: there are %d CONE.\n", cone_len(w->s[t].co));
-    }
+  t = 0;
+  (light_len(w->s[t].l) == 0) ?
+    my_error(w, "ERROR: no LIGHT detected.\n", -1)
+    : my_printf("INFO: there are %d LIGHT.\n", light_len(w->s[t].l));
+  (plan_len(w->s[t].pl) == 0) ? my_printf("INFO: no PLAN detected.\n")
+    : my_printf("INFO: there are %d PLAN.\n", plan_len(w->s[t].pl));
+  (sphere_len(w->s[t].s) == 0) ? my_printf("INFO: no SPHERE detected.\n")
+    : my_printf("INFO: there are %d SPHERE.\n", sphere_len(w->s[t].s));
+  (cyl_len(w->s[t].cy) == 0) ? my_printf("INFO: no CYLINDER detected.\n")
+    : my_printf("INFO: there are %d CYLINDER.\n", cyl_len(w->s[t].cy));
+  (cone_len(w->s[t].co) == 0) ? my_printf("INFO: no CONE detected.\n")
+    : my_printf("INFO: there are %d CONE.\n", cone_len(w->s[t].co));
 }
 
 static int	match(char *s1, char *s2)
@@ -36,7 +33,7 @@ static int	match(char *s1, char *s2)
   int	i;
 
   i = 0;
-  if (!s1[i])
+  if (!s1)
     my_error(NULL, "ERROR: empty match", -1);
   while (s2[i])
     {

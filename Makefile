@@ -4,8 +4,8 @@
 ## Made by ugo belfiore
 ## Login   <belfio_u@epitech.net>
 ## 
-## Started on  Mon May 18 11:47:58 2015 ugo belfiore
-## Last update Sun May 31 00:48:17 2015 ugo belfiore
+## Started on  Sun May 31 01:53:15 2015 ugo belfiore
+## Last update Sun May 31 02:12:34 2015 ugo belfiore
 ##
 
 SRC     =       ./src/main.c			\
@@ -39,9 +39,9 @@ OBJ     =       $(SRC:.c=.o)
 
 NAME    =       rt
 
-LIB     =       -L./lib/my -lmy
+LIB	=	-L./lib/my -lmy
 
-LIBMINI =	-L./lib/minilibx -lmlx
+LIBMINI	=	-L./lib/minilibx -lmlx
 
 CC      =       clang
 

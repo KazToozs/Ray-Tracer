@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Fri Dec  5 17:23:50 2014 ugo belfiore
-** Last update Sun May 31 00:43:05 2015 ugo belfiore
+** Last update Sun May 31 02:07:52 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -62,7 +62,7 @@ void	aff_win(t_wild *w, char *name)
   w->d.x_max = 1200;
   w->d.y_max = 710;
   w->d.w = 1;
-  //sound_init(w);
+  sound_init(w);
   (!(w->d.mlx_ptr = mlx_init())) ? my_error(w, "ERROR: mlx init.", -1) : 1;
   (!(w->d.win_ptr = mlx_new_window(w->d.mlx_ptr,
 				   w->d.x_max, w->d.y_max, name))) ?
