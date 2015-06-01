@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon Feb  2 18:47:55 2015 ugo belfiore
-** Last update Sun May 31 01:15:39 2015 ugo belfiore
+** Last update Mon Jun  1 11:39:44 2015 fernan_s
 */
 
 #include "mini.h"
@@ -19,7 +19,7 @@ int		manage_expose(void *param)
   t_wild	*w;
 
   w = (t_wild *)param;
-  mlx_put_image_to_window(w->d.mlx_ptr, w->d.win_ptr, w->d.img_ptr, 0, 0);
+  mlx_put_image_to_window(w->d.mlx_ptr, w->d.win_ptr, w->d.img_ptr_f, 0, 0);
   return (0);
 }
 
@@ -34,10 +34,15 @@ int		manage_key(int keycode, void *param)
 
   t = -1;
   w = (t_wild *)param;
-  //my_printf("%d ", keycode);
+  my_printf("%d ", keycode);
   w->d.timer = 0;			// initialise le temps pour les frame
   while (++t < 5)
     w->s[t].type = 0;
+  if (keycode == KEY_F && w->d.timer > 170)
+    {
+      w->d.filter = (w->d.filter + 1) % 4;
+      apply_filter(w);
+    }
   if (keycode == KEY_ESC)		// echap
     my_error(w, "exit.", 0);
   else if (keycode == KEY_W)

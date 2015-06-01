@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 28 09:26:37 2014 ugo belfiore
-** Last update Sun May 31 01:14:36 2015 ugo belfiore
+** Last update Mon Jun  1 11:18:24 2015 fernan_s
 */
 
 #ifndef MINI_H_
@@ -234,13 +234,16 @@ typedef struct	s_data
   void		*mlx_ptr;
   void		*win_ptr;
   void		*img_ptr;
+  void		*img_ptr_f;
   char		*bigData;
+  char		*bigData_f;
   int		x_max;
   int		y_max;
   int		bpp;
   int		sizeline;
   int		end;
   int		w;
+  int		filter;
   int		f[256];
   int		timer;
 }               t_data;
@@ -271,6 +274,18 @@ typedef struct	s_wild
   t_piic	pi;
   pthread_t     threads[5];
 }		t_wild;
+
+/*
+** filter gestion (filter.c)
+*/
+
+typedef void	(*t_filter)(int, int, t_wild *);
+
+void	normal_f(int, int, t_wild *);
+void	grey_level(int, int, t_wild *);
+void	wb_filter(int, int, t_wild *);
+void	sepia(int, int, t_wild *);
+void	apply_filter(t_wild *);
 
 /*
 ** fonction divers.

@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Thu Mar 12 13:45:12 2015 ugo belfiore
-** Last update Sun May 31 00:58:55 2015 ugo belfiore
+** Last update Mon Jun  1 10:13:33 2015 fernan_s
 */
 
 #include "mini.h"
@@ -50,7 +50,8 @@ void	fast_way_only(t_wild *w)
   pthread_join(w->threads[2], NULL);
   pthread_join(w->threads[3], NULL);
   pthread_join(w->threads[4], NULL);
-  mlx_put_image_to_window(w->d.mlx_ptr, w->d.win_ptr, w->d.img_ptr, 0, 0);
+  apply_filter(w);
+  mlx_put_image_to_window(w->d.mlx_ptr, w->d.win_ptr, w->d.img_ptr_f, 0, 0);
 }
 
 /*

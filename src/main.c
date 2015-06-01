@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Fri Dec  5 17:23:50 2014 ugo belfiore
-** Last update Sun May 31 02:07:52 2015 ugo belfiore
+** Last update Mon Jun  1 11:34:25 2015 fernan_s
 */
 
 #include "mini.h"
@@ -14,7 +14,7 @@
 ** initialise quelque variable
 */
 
-static void	init_fucking_rt(t_wild *w)
+static void	init_glo(t_wild *w)
 {
   int   i;
   int	t;
@@ -26,6 +26,7 @@ static void	init_fucking_rt(t_wild *w)
   w->d.timer = 0;
   while (++i < 256)
     w->d.f[i] = 0;
+  w->d.filter = 0;
 }
 
 /*
@@ -71,7 +72,11 @@ void	aff_win(t_wild *w, char *name)
     my_error(w, "ERROR: img init.", -1) : 1;
   w->d.bigData = mlx_get_data_addr(w->d.img_ptr,
 				   &w->d.bpp, &w->d.sizeline, &w->d.end);
-  init_fucking_rt(w);
+  (!(w->d.img_ptr_f = mlx_new_image(w->d.mlx_ptr, w->d.x_max, w->d.y_max))) ?
+    my_error(w, "ERROR: img init.", -1) : 1;
+  w->d.bigData_f = mlx_get_data_addr(w->d.img_ptr_f,
+				     &w->d.bpp, &w->d.sizeline, &w->d.end);
+  init_glo(w);
   mlx_expose_hook(w->d.win_ptr, &manage_expose, (void *)(w));
   mlx_hook(w->d.win_ptr, 2, 2, &manage_keyPres, (void *)(w));
   mlx_hook(w->d.win_ptr, 3, 3, &manage_keyRelease, (void *)(w));

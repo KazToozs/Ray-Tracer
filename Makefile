@@ -5,7 +5,7 @@
 ## Login   <belfio_u@epitech.net>
 ## 
 ## Started on  Sun May 31 01:53:15 2015 ugo belfiore
-## Last update Sun May 31 02:12:34 2015 ugo belfiore
+## Last update Mon Jun  1 09:57:27 2015 fernan_s
 ##
 
 SRC     =       ./src/main.c			\
@@ -34,6 +34,7 @@ SRC     =       ./src/main.c			\
 		./src/my_strcpy.c		\
 		./src/my_strdup.c		\
 		./src/vector.c			\
+		./src/filter.c
 
 OBJ     =       $(SRC:.c=.o)
 
