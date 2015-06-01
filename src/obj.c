@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Thu Mar  5 10:17:14 2015 cristopher toozs-hobson
-** Last update Mon Jun  1 06:57:23 2015 ugo belfiore
+** Last update Mon Jun  1 17:12:52 2015 pallua_j
 */
 
 #include "mini.h"
@@ -36,6 +36,9 @@ void		inter_sphere(t_cam *c, t_sph *s)
   b = 2 * ((c->p.x * c->v.vx) + (c->p.y * c->v.vy) + (c->p.z * c->v.vz));
   ca = pow(c->p.x, 2) + pow(c->p.y, 2) + pow(c->p.z, 2) - pow(s->r, 2);
   inverse_translation(&c->p, s->p.x, s->p.y, s->p.z);
+  s->x.x = s->p.x;
+  s->x.y = s->p.y;
+  s->x.z = s->p.z;
   delta(&s->x, a, b, ca);
 }
 
@@ -60,6 +63,9 @@ void		inter_cone(t_cam *c, t_cone *co)
     - ((c->p.z * c->p.z)
        / (tan(tmp_angle) * tan(tmp_angle)));
   inverse_translation(&c->p, co->p.x, co->p.y, co->p.z);
+  co->x.x = co->p.x;
+  co->x.y = co->p.y;
+  co->x.z = co->p.z;
   delta(&co->x, a, b, ca);
 }
 
@@ -79,6 +85,9 @@ void		inter_cyl(t_cam *c, t_cyl *cy)
   ca = pow(c->p.x, 2)
     + pow(c->p.y, 2) - pow(cy->r, 2);
   inverse_translation(&c->p, cy->p.x, cy->p.y, cy->p.z);
+  cy->x.x = cy->p.x;
+  cy->x.y = cy->p.y;
+  cy->x.z = cy->p.z;
   delta(&cy->x, a, b, ca);
 }
 

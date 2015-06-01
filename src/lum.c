@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon May 18 14:04:11 2015 ugo belfiore
-** Last update Fri May 29 16:00:50 2015 ugo belfiore
+** Last update Mon Jun  1 17:26:30 2015 pallua_j
 */
 
 #include "mini.h"
@@ -14,9 +14,9 @@ static void	calculate_n(t_st *s)
 {
   if (s->x.t == SPHERE)
     {
-      s->n.vx = s->x.c.p.x;
-      s->n.vy = s->x.c.p.y;
-      s->n.vz = s->x.c.p.z;
+      s->n.vx = s->x.c.p.x - s->x.o.x;
+      s->n.vy = s->x.c.p.y - s->x.o.y;
+      s->n.vz = s->x.c.p.z - s->x.o.z;
     }
   else if (s->x.t == PLANE)
     {
@@ -26,15 +26,15 @@ static void	calculate_n(t_st *s)
     }
   else if (s->x.t == CYLINDER)
     {
-      s->n.vx = s->x.c.p.x;
-      s->n.vy = s->x.c.p.y;
+      s->n.vx = s->x.c.p.x - s->x.o.x;
+      s->n.vy = s->x.c.p.y - s->x.o.y;
       s->n.vz = 0;
     }
   else if (s->x.t == CONE)
     {
-      s->n.vx = s->x.c.p.x;
-      s->n.vy = s->x.c.p.y;
-      s->n.vz = (-1000) * s->x.c.p.z;
+      s->n.vx = s->x.c.p.x - s->x.o.x;
+      s->n.vy = s->x.c.p.y - s->x.o.y;
+      s->n.vz = (-1000) * (s->x.c.p.z - s->x.o.z);
     }
 }
 

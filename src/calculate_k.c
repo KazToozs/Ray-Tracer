@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Sun Mar  8 20:24:43 2015 cristopher toozs-hobson
-** Last update Sun May 31 01:36:24 2015 ugo belfiore
+** Last update Mon Jun  1 17:16:07 2015 pallua_j
 */
 
 #include "mini.h"
@@ -19,6 +19,9 @@ static void	check(t_st *s, t_x *x)
       s->x.k = x->x1;
       s->x.coef = x->coef;
       s->colo = x->color;
+      s->x.o.x = x->x;
+      s->x.o.y = x->y;
+      s->x.o.z = x->z;
     }
   else if (x->x2 > 0.0000001 && x->x2 < s->x.k &&
 	   (x->x2 < x->x1 || x->x1 < 0.0000001))
@@ -27,6 +30,9 @@ static void	check(t_st *s, t_x *x)
       s->x.k = x->x2;
       s->x.coef = x->coef;
       s->colo = x->color;
+      s->x.o.x = x->x;
+      s->x.o.y = x->y;
+      s->x.o.z = x->z;
     }
 }
 
