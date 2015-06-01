@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 28 09:26:37 2014 ugo belfiore
-** Last update Mon Jun  1 11:18:24 2015 fernan_s
+** Last update Mon Jun  1 11:58:51 2015 ugo belfiore
 */
 
 #ifndef MINI_H_
@@ -75,6 +75,7 @@
 #define KEY_O 111
 #define KEY_L 108
 #define KEY_W 119
+#define MLX mlx_put_image_to_window
 
 /*
 ** stucture son

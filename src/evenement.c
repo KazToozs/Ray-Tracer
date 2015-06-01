@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon Feb  2 18:47:55 2015 ugo belfiore
-** Last update Mon Jun  1 11:39:44 2015 fernan_s
+** Last update Mon Jun  1 11:54:23 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -34,11 +34,11 @@ int		manage_key(int keycode, void *param)
 
   t = -1;
   w = (t_wild *)param;
-  my_printf("%d ", keycode);
+  //my_printf("%d ", keycode);
   w->d.timer = 0;			// initialise le temps pour les frame
   while (++t < 5)
     w->s[t].type = 0;
-  if (keycode == KEY_F && w->d.timer > 170)
+  if (keycode == KEY_F)
     {
       w->d.filter = (w->d.filter + 1) % 4;
       apply_filter(w);
