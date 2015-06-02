@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon Feb  2 18:47:55 2015 ugo belfiore
-** Last update Tue Jun  2 17:11:55 2015 ugo belfiore
+** Last update Tue Jun  2 18:31:05 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -74,18 +74,18 @@ void	rotate_key(t_wild *w, int keycode)
 
 void	modify_key(t_wild *w, int keycode)
 {
-  (keycode == KEY_UP) ? move_xyz_all(w, 1, 150) : 1;
-  (keycode == KEY_DOWN) ? move_xyz_all(w, 1, -150) : 1;
-  (keycode == KEY_LEFT) ? move_xyz_all(w, 2, 150) : 1;
-  (keycode == KEY_RIGHT) ? move_xyz_all(w, 2, -150) : 1;
-  (keycode == KEY_MORE) ? move_xyz_all(w, 3, 150) : 1;
-  (keycode == KEY_LESS) ? move_xyz_all(w, 3, -150) : 1;
-  (keycode == KEY_I) ? move_xyz_all(w, 4, 50) : 1;
-  (keycode == KEY_K) ? move_xyz_all(w, 4, -50) : 1;
-  (keycode == KEY_J) ? move_xyz_all(w, 5, 50) : 1;
-  (keycode == KEY_L) ? move_xyz_all(w, 5, -50) : 1;
-  (keycode == KEY_U) ? move_xyz_all(w, 6, 50) : 1;
-  (keycode == KEY_O) ? move_xyz_all(w, 6, -50) : 1;
+  (keycode == KEY_UP) ? move_xyz_all(w, 1, 50) : 1;
+  (keycode == KEY_DOWN) ? move_xyz_all(w, 1, -50) : 1;
+  (keycode == KEY_LEFT) ? move_xyz_all(w, 2, 50) : 1;
+  (keycode == KEY_RIGHT) ? move_xyz_all(w, 2, -50) : 1;
+  (keycode == KEY_MORE) ? move_xyz_all(w, 3, 50) : 1;
+  (keycode == KEY_LESS) ? move_xyz_all(w, 3, -50) : 1;
+  (keycode == KEY_I) ? move_xyz_all(w, 4, 10) : 1;
+  (keycode == KEY_K) ? move_xyz_all(w, 4, -10) : 1;
+  (keycode == KEY_J) ? move_xyz_all(w, 5, 10) : 1;
+  (keycode == KEY_L) ? move_xyz_all(w, 5, -10) : 1;
+  (keycode == KEY_U) ? move_xyz_all(w, 6, 10) : 1;
+  (keycode == KEY_O) ? move_xyz_all(w, 6, -10) : 1;
   rotate_key(w, keycode);
   algo_rt(w, &w->s[0], 4, 4);
 }
