@@ -5,12 +5,12 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Sun May 31 02:04:45 2015 ugo belfiore
-** Last update Sun May 31 02:04:47 2015 ugo belfiore
+** Last update Tue Jun  2 17:35:17 2015 ugo belfiore
 */
 
 #include "mini.h"
 
-static void    debug(t_wild *w)
+static void	debug(t_wild *w)
 {
   int		t;
 
@@ -30,7 +30,7 @@ static void    debug(t_wild *w)
 
 static int	match(char *s1, char *s2)
 {
-  int	i;
+  int		i;
 
   i = 0;
   if (!s1)
@@ -231,15 +231,14 @@ void	my_parsing_rt(t_wild *w)
       w->s[t].colo = COLOR_BLACK;
       w->s[t].tt = t;
     }
-  while ((w->fi.buff = get_next_line(w->fi.fd))) // parse ligne par ligne
+  while ((w->fi.buff = get_next_line(w->fi.fd)))
     {
-      //si la ligne ne commence pas par /, *, ' ' ou \n, on test.
       if (!(w->fi.buff[0] == '/' || w->fi.buff[0] == '*'
 	    || w->fi.buff[0] == ' ' || w->fi.buff[0] == '\n'
 	    || w->fi.buff[0] == '#'
 	    || (w->fi.buff[0] == '\0')))
 	test_line(w);
-      free(w->fi.buff);          // supprime la ligne courante et next
+      free(w->fi.buff);
     }
-  debug(w);// debugage et affichage information du parsing
+  debug(w);
 }

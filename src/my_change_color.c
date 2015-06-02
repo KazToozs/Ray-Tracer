@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon May 18 12:07:41 2015 ugo belfiore
-** Last update Sun May 31 00:54:51 2015 ugo belfiore
+** Last update Tue Jun  2 17:24:16 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -45,12 +45,12 @@ void		my_change_color(t_st *s, double cosin, t_cam *l)
   s->nb_spots += 1;
 }
 
-void    my_change_color_bis(t_st *s)
+void		my_change_color_bis(t_st *s)
 {
-  t_cam	*tmp;
-  int	r;
-  int	g;
-  int	b;
+  t_cam		*tmp;
+  int		r;
+  int		g;
+  int		b;
 
   tmp = s->l;
   r = 0;
@@ -66,11 +66,8 @@ void    my_change_color_bis(t_st *s)
 	}
       tmp = tmp->next;
     }
-  if (r > 255)
-    r = 255;
-  if (g > 255)
-    g = 255;
-  if (b > 255)
-    b = 255;
+  (r > 255) ? r = 255 : 1;
+  (g > 255) ? g = 255 : 1;
+  (b > 255) ? b = 255 : 1;
   s->colo = (r) + (g * 0x100) + (b * 0x10000);
 }

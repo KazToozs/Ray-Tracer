@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Fri Dec  5 17:23:50 2014 ugo belfiore
-** Last update Mon Jun  1 11:34:25 2015 fernan_s
+** Last update Tue Jun  2 17:19:12 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -16,8 +16,8 @@
 
 static void	init_glo(t_wild *w)
 {
-  int   i;
-  int	t;
+  int		i;
+  int		t;
 
   i = -1;
   t = -1;

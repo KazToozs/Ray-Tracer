@@ -5,32 +5,10 @@
 ** Login   <pallua_j@epitech.net>
 ** 
 ** Started on  Sun May 17 01:54:41 2015 jules palluau
-** Last update Tue May 26 17:09:12 2015 pallua_j
+** Last update Tue Jun  2 17:32:39 2015 ugo belfiore
 */
 
 #include "mini.h"
-
-void		remp_pos(t_pos *p, t_pos base)
-{
-  p->x = base.x;
-  p->y = base.y;
-  p->z = base.z;
-}
-
-void		remp_x(t_x *x, t_x base)
-{
-  x->x1 = 0;
-  x->x2 = 0;
-  x->color = base.color;
-  x->t = base.t;
-}
-
-void		remp_rot(t_rot *r, t_rot base)
-{
-  r->x = base.x;
-  r->y = base.y;
-  r->z = base.z;
-}
 
 t_sph		*my_put_sph_list(t_sph *list, t_sph remp)
 {
@@ -53,7 +31,7 @@ t_sph		*my_put_sph_list(t_sph *list, t_sph remp)
     tmp = tmp->next;
   tmp->next = elem;
   elem->prev = tmp;
-  return(list);
+  return (list);
 }
 
 t_cone		*my_put_cone_list(t_cone *list, t_cone remp)
@@ -78,7 +56,7 @@ t_cone		*my_put_cone_list(t_cone *list, t_cone remp)
     tmp = tmp->next;
   tmp->next = elem;
   elem->prev = tmp;
-  return(list);
+  return (list);
 }
 
 t_cyl		*my_put_cyl_list(t_cyl *list, t_cyl remp)
@@ -103,7 +81,7 @@ t_cyl		*my_put_cyl_list(t_cyl *list, t_cyl remp)
     tmp = tmp->next;
   tmp->next = elem;
   elem->prev = tmp;
-  return(list);
+  return (list);
 }
 
 t_cam		*my_put_light_list(t_cam *list, t_cam remp)
@@ -126,13 +104,13 @@ t_cam		*my_put_light_list(t_cam *list, t_cam remp)
     tmp = tmp->next;
   tmp->next = elem;
   elem->prev = tmp;
-  return(list);
+  return (list);
 }
 
 t_plan		*my_put_plan_list(t_plan *list, t_plan remp)
 {
-  t_plan       	*tmp;
-  t_plan       	*elem;
+  t_plan	*tmp;
+  t_plan	*elem;
 
   if ((elem = malloc(sizeof(t_plan))) == NULL)
     aff_error("Can't perform malloc!\n");
@@ -149,90 +127,5 @@ t_plan		*my_put_plan_list(t_plan *list, t_plan remp)
     tmp = tmp->next;
   tmp->next = elem;
   elem->prev = tmp;
-  return(list);
-}
-
-int		plan_len(t_plan *list)
-{
-  t_plan	*tmp;
-  int		x;
-
-  x = 0;
-  if (list == NULL)
-    return (0);
-  tmp = list;
-  while (tmp != NULL)
-    {
-      x++;
-      tmp = tmp->next;
-    }
-  return (x);
-}
-
-int		sphere_len(t_sph *list)
-{
-  t_sph		*tmp;
-  int		x;
-
-  x = 0;
-  if (list == NULL)
-    return (0);
-  tmp = list;
-  while (tmp != NULL)
-    {
-      x++;
-      tmp = tmp->next;
-    }
-  return (x);
-}
-
-int		cyl_len(t_cyl *list)
-{
-  t_cyl		*tmp;
-  int		x;
-
-  x = 0;
-  if (list == NULL)
-    return (0);
-  tmp = list;
-  while (tmp != NULL)
-    {
-      x++;
-      tmp = tmp->next;
-    }
-  return (x);
-}
-
-int		cone_len(t_cone *list)
-{
-  t_cone       	*tmp;
-  int		x;
-
-  x = 0;
-  if (list == NULL)
-    return (0);
-  tmp = list;
-  while (tmp != NULL)
-    {
-      x++;
-      tmp = tmp->next;
-    }
-  return (x);
-}
-
-int		light_len(t_cam *list)
-{
-  t_cam		*tmp;
-  int		x;
-
-  x = 0;
-  if (list == NULL)
-    return (0);
-  tmp = list;
-  while (tmp != NULL)
-    {
-      x++;
-      tmp = tmp->next;
-    }
-  return (x);
+  return (list);
 }

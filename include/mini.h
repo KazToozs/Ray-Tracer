@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 28 09:26:37 2014 ugo belfiore
-** Last update Mon Jun  1 17:09:09 2015 pallua_j
+** Last update Tue Jun  2 17:31:51 2015 ugo belfiore
 */
 
 #ifndef MINI_H_
@@ -326,10 +326,15 @@ void	aff_pix_img_four(t_wild *w, int x, int y, char *img);
 
 
 /*
-** fonction rt parsing
+** fonction rt parsing & affichage
 */
 
 void	my_parsing_rt(t_wild *w);
+void	aff_all(t_wild *w);
+void	plan_print(t_plan *tmp_pl, FILE *fd);
+void	sphere_print(t_sph *tmp_s, FILE *fd);
+void	cyl_print(t_cyl *tmp_cy, FILE *fd);
+void	cone_print(t_cone *tmp_c, FILE *fd);
 
 /*
 ** fonction rt affichage
@@ -344,7 +349,6 @@ void	part_two(t_wild *w);
 void	part_tree(t_wild *w);
 void	part_four(t_wild *w);
 void	part_five(t_wild *w);
-void	aff_all(t_wild *w);
 
 /*
 ***************** Proto parsing **************
@@ -355,6 +359,9 @@ t_cone  *my_put_cone_list(t_cone *list, t_cone remp);
 t_cyl   *my_put_cyl_list(t_cyl *list, t_cyl remp);
 t_plan  *my_put_plan_list(t_plan *list, t_plan remp);
 t_cam   *my_put_light_list(t_cam *list, t_cam remp);
+void	remp_pos(t_pos *p, t_pos base);
+void	remp_x(t_x *x, t_x base);
+void	remp_rot(t_rot *r, t_rot base);
 int     light_len(t_cam *list);
 int     cone_len(t_cone *list);
 int     cyl_len(t_cyl *list);
