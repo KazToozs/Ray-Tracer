@@ -53,9 +53,9 @@ int	calc(t_st *s)
   tmp_pl = s->pl;
   while (tmp_pl != NULL)
     {
-      rotate(&tmp_pl->rot, &s->c);
+      /* rotate(&tmp_pl->rot, &s->c); */
       inter_plan(&s->c, tmp_pl);
-      rotate_inv(&tmp_pl->rot, &s->c);
+      /* rotate_inv(&tmp_pl->rot, &s->c); */
       tmp_pl = tmp_pl->next;
     }
   while (tmp_s != NULL)
@@ -67,9 +67,9 @@ int	calc(t_st *s)
     }
   while (tmp_cy != NULL)
     {
-      rotate(&tmp_cy->rot, &s->c);
+      /* rotate(&tmp_cy->rot, &s->c); */
       inter_cyl(&s->c, tmp_cy);
-      rotate_inv(&tmp_cy->rot, &s->c);
+      /* rotate_inv(&tmp_cy->rot, &s->c); */
       tmp_cy = tmp_cy->next;
     }
   while (tmp_c != NULL)

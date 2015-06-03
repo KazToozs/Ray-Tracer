@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Thu Mar  5 10:17:14 2015 cristopher toozs-hobson
-** Last update Mon Jun  1 17:12:52 2015 pallua_j
+** Last update Wed Jun  3 13:16:48 2015 cristopher toozs-hobson
 */
 
 #include "mini.h"
@@ -79,11 +79,13 @@ void		inter_cyl(t_cam *c, t_cyl *cy)
   cy->x.x2 = 10000000;
   cy->x.t = CYLINDER;
   translation(&c->p, cy->p.x, cy->p.y, cy->p.z);
+  rotate(&cy->rot, c);
   a = pow(c->v.vx, 2) + pow(c->v.vy, 2);
   b = (2 * c->p.x * c->v.vx)
     + (2 * c->p.y * c->v.vy);
   ca = pow(c->p.x, 2)
     + pow(c->p.y, 2) - pow(cy->r, 2);
+  rotate_inv(&cy->rot, c);
   inverse_translation(&c->p, cy->p.x, cy->p.y, cy->p.z);
   cy->x.x = cy->p.x;
   cy->x.y = cy->p.y;

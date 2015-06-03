@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Tue Mar  3 17:34:27 2015 cristopher toozs-hobson
-** Last update Wed May 20 16:03:13 2015 ugo belfiore
+** Last update Wed Jun  3 13:16:03 2015 cristopher toozs-hobson
 */
 
 #include "mini.h"
@@ -90,6 +90,9 @@ void		rotate(t_rot *rot, t_cam *c)
   rotate_x(&c->v.vx, &c->v.vy, &c->v.vz, rot->x);
   rotate_y(&c->v.vx, &c->v.vy, &c->v.vz, rot->y);
   rotate_z(&c->v.vx, &c->v.vy, &c->v.vz, rot->z);
+  rotate_x(&c->p.x, &c->p.y, &c->p.z, rot->x);
+  rotate_y(&c->p.x, &c->p.y, &c->p.z, rot->y);
+  rotate_z(&c->p.x, &c->p.y, &c->p.z, rot->z);
 }
 
 void		rotate_inv(t_rot *rot, t_cam *c)
@@ -97,4 +100,7 @@ void		rotate_inv(t_rot *rot, t_cam *c)
   rotate_x(&c->v.vx, &c->v.vy, &c->v.vz, -rot->x);
   rotate_y(&c->v.vx, &c->v.vy, &c->v.vz, -rot->y);
   rotate_z(&c->v.vx, &c->v.vy, &c->v.vz, -rot->z);
+  rotate_x(&c->p.x, &c->p.y, &c->p.z, -rot->x);
+  rotate_y(&c->p.x, &c->p.y, &c->p.z, -rot->y);
+  rotate_z(&c->p.x, &c->p.y, &c->p.z, -rot->z);
 }
