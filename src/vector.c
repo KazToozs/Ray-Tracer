@@ -5,7 +5,7 @@
 ** Login   <pallua_j@epitech.net>
 ** 
 ** Started on  Wed May 27 10:30:09 2015 pallua_j
-** Last update Tue Jun  2 18:14:50 2015 ugo belfiore
+** Last update Wed May 27 16:28:19 2015 pallua_j
 */
 
 #include "mini.h"
@@ -26,7 +26,7 @@ double		dotproduct(t_vect *v1, t_vect *v2)
   result = 0;
   result += v1->vx * v2->vx / (v1l * v2l);
   result += v1->vy * v2->vy / (v1l * v2l);
-  result += v1->vz * v2->vz / (v1l * v2l);
+  result += v1->vz * v2->vz / (v1l * v2l); 
   return (result);
 }
 

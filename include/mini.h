@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 28 09:26:37 2014 ugo belfiore
-** Last update Tue Jun  2 17:31:51 2015 ugo belfiore
+** Last update Tue Jun  2 13:26:06 2015 pallua_j
 */
 
 #ifndef MINI_H_
@@ -160,6 +160,7 @@ typedef struct  s_x
   int           color;
   int           t;
   double	coef;
+  double	ref;
   double	x;
   double	y;
   double	z;
@@ -196,6 +197,7 @@ typedef struct  s_plan
   double        z;
   double        k;
   double	coef;
+  double	ref;
   int           color;
   t_rot		rot;
   struct s_plan *next;
@@ -232,6 +234,7 @@ typedef struct  s_int
   int           t;
   int		color;
   double	coef;
+  double	ref;
 }               t_int;
 
 typedef struct	s_data
@@ -264,9 +267,11 @@ typedef struct  s_st
   t_int         x;
   t_cam         *l;
   int		colo;
+  int		color_ref;
   int		tt;
   int		type;
   int		nb_spots;
+  int		ref;
 }               t_st;
 
 typedef struct	s_wild
@@ -326,29 +331,29 @@ void	aff_pix_img_four(t_wild *w, int x, int y, char *img);
 
 
 /*
-** fonction rt parsing & affichage
+** fonction rt parsing
 */
 
 void	my_parsing_rt(t_wild *w);
-void	aff_all(t_wild *w);
-void	plan_print(t_plan *tmp_pl, FILE *fd);
-void	sphere_print(t_sph *tmp_s, FILE *fd);
-void	cyl_print(t_cyl *tmp_cy, FILE *fd);
-void	cone_print(t_cone *tmp_c, FILE *fd);
 
 /*
 ** fonction rt affichage
 */
 
+void	calculate_n(t_st *s);
 void	algo_rt(t_wild *w, t_st *s, int flew, int flew2);
 void	my_change_color(t_st *s, double cosin, t_cam *l);
-void	my_change_color_bis(t_st *s);
+int	my_change_color_bis(t_st *s);
 void	move_xyz_all(t_wild *w, int which, int value);
 void	part_one(t_wild *w);
 void	part_two(t_wild *w);
 void	part_tree(t_wild *w);
 void	part_four(t_wild *w);
 void	part_five(t_wild *w);
+void	aff_all(t_wild *w);
+int	calc(t_st *s);
+int	multi_light(t_st *s);
+void	reflected(t_st *s);
 
 /*
 ***************** Proto parsing **************
@@ -359,9 +364,6 @@ t_cone  *my_put_cone_list(t_cone *list, t_cone remp);
 t_cyl   *my_put_cyl_list(t_cyl *list, t_cyl remp);
 t_plan  *my_put_plan_list(t_plan *list, t_plan remp);
 t_cam   *my_put_light_list(t_cam *list, t_cam remp);
-void	remp_pos(t_pos *p, t_pos base);
-void	remp_x(t_x *x, t_x base);
-void	remp_rot(t_rot *r, t_rot base);
 int     light_len(t_cam *list);
 int     cone_len(t_cone *list);
 int     cyl_len(t_cyl *list);

@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon Apr 20 06:52:15 2015 ugo belfiore
-** Last update Tue Jun  2 17:25:16 2015 ugo belfiore
+** Last update Sun May 31 02:07:45 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -16,7 +16,7 @@
 ** i = 0: exit propre avec free
 */
 
-void	my_error(t_wild *w, char *error, int i)
+void    my_error(t_wild *w, char *error, int i)
 {
   if (i == -1)
     my_printf("%s\n", error);

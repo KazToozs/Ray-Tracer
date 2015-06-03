@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Sun Feb  8 16:18:36 2015 ugo belfiore
-** Last update Tue Jun  2 17:08:54 2015 ugo belfiore
+** Last update Tue Jun  2 11:59:38 2015 pallua_j
 */
 
 #include "mini.h"
@@ -15,10 +15,16 @@
 ** entre chaque objet
 */
 
-static void	multi_light(t_st *s)
+int		multi_light(t_st *s)
 {
   t_cam		*tmp_l;
+  int		colo;
 
+  s->x.c.p.x = s->c.p.x + (s->x.k * s->c.v.vx);
+  s->x.c.p.y = s->c.p.y + (s->x.k * s->c.v.vy);
+  s->x.c.p.z = s->c.p.z + (s->x.k * s->c.v.vz);
+  calculate_n(s);
+  reflected(s);
   tmp_l = s->l;
   while (tmp_l != NULL)
     {
@@ -26,37 +32,20 @@ static void	multi_light(t_st *s)
       tmp_l = tmp_l->next;
     }
   if (s->nb_spots != 0)
-    my_change_color_bis(s);
+    colo = my_change_color_bis(s);
   else
-    s->colo = COLOR_BLACK;
+    colo = COLOR_BLACK;
   tmp_l = s->l;
+  return (colo);
 }
 
-static void	calc_obj(t_st *s, t_sph *tmp_s, t_cyl *tmp_cy, t_cone *tmp_c)
-{
-  while (tmp_s != NULL)
-    {
-      inter_sphere(&s->c, tmp_s);
-      tmp_s = tmp_s->next;
-    }
-  while (tmp_cy != NULL)
-    {
-      inter_cyl(&s->c, tmp_cy);
-      tmp_cy = tmp_cy->next;
-    }
-  while (tmp_c != NULL)
-    {
-      inter_cone(&s->c, tmp_c);
-      tmp_c = tmp_c->next;
-    }
-}
-
-static void	calc(t_st *s)
+int	calc(t_st *s)
 {
   t_cone	*tmp_c;
   t_cyl		*tmp_cy;
   t_sph		*tmp_s;
   t_plan	*tmp_pl;
+  int		colo;
 
   tmp_c = s->co;
   tmp_cy = s->cy;
@@ -64,12 +53,35 @@ static void	calc(t_st *s)
   tmp_pl = s->pl;
   while (tmp_pl != NULL)
     {
+      rotate(&tmp_pl->rot, &s->c);
       inter_plan(&s->c, tmp_pl);
+      rotate_inv(&tmp_pl->rot, &s->c);
       tmp_pl = tmp_pl->next;
     }
-  calc_obj(s, tmp_s, tmp_cy, tmp_c);
+  while (tmp_s != NULL)
+    {
+      rotate(&tmp_s->rot, &s->c);
+      inter_sphere(&s->c, tmp_s);
+      rotate_inv(&tmp_s->rot, &s->c);
+      tmp_s = tmp_s->next;
+    }
+  while (tmp_cy != NULL)
+    {
+      rotate(&tmp_cy->rot, &s->c);
+      inter_cyl(&s->c, tmp_cy);
+      rotate_inv(&tmp_cy->rot, &s->c);
+      tmp_cy = tmp_cy->next;
+    }
+  while (tmp_c != NULL)
+    {
+      rotate(&tmp_c->rot, &s->c);
+      inter_cone(&s->c, tmp_c);
+      rotate_inv(&tmp_c->rot, &s->c);
+      tmp_c = tmp_c->next;
+    }
   calculate_k(s);
-  multi_light(s);
+  colo = multi_light(s);
+  return (colo);
 }
 
 /*
@@ -77,15 +89,6 @@ static void	calc(t_st *s)
 ** (ou plutot tout les 5 pixel, avec un system qui permet d'afficher
 ** petit à petit la scène
 */
-
-static void	witch_thread(t_wild *w, t_st *s, int i, int j)
-{
-  (s->tt == 0) ? aff_pix_img_zero(w, i, j, w->d.bigData) : 1;
-  (s->tt == 1) ? aff_pix_img_one(w, i, j, w->d.bigData) : 1;
-  (s->tt == 2) ? aff_pix_img_two(w, i, j, w->d.bigData) : 1;
-  (s->tt == 3) ? aff_pix_img_tree(w, i, j, w->d.bigData) : 1;
-  (s->tt == 4) ? aff_pix_img_four(w, i, j, w->d.bigData) : 1;
-}
 
 void	algo_rt(t_wild *w, t_st *s, int flew, int flew2)
 {
@@ -98,6 +101,7 @@ void	algo_rt(t_wild *w, t_st *s, int flew, int flew2)
     {
       while (j < w->d.y_max)
 	{
+	  s->ref = 0;
 	  s->nb_spots = 0;
 	  s->colo = COLOR_BLACK;
 	  s->x.k = 10000000;
@@ -105,8 +109,12 @@ void	algo_rt(t_wild *w, t_st *s, int flew, int flew2)
 	  s->c.v.vy = (w->d.x_max / 2) - i;
 	  s->c.v.vz = (w->d.y_max / 2) - j;
 	  rotate(&s->c.rot, &s->c);
-	  calc(s);
-	  witch_thread(w, s, i, j);
+	  s->colo = calc(s);
+	  (s->tt == 0) ? aff_pix_img_zero(w, i, j, w->d.bigData) : 1;
+	  (s->tt == 1) ? aff_pix_img_one(w, i, j, w->d.bigData) : 1;
+	  (s->tt == 2) ? aff_pix_img_two(w, i, j, w->d.bigData) : 1;
+	  (s->tt == 3) ? aff_pix_img_tree(w, i, j, w->d.bigData) : 1;
+	  (s->tt == 4) ? aff_pix_img_four(w, i, j, w->d.bigData) : 1;
 	  j += 9;
 	}
       j = flew2;

@@ -5,12 +5,12 @@
 ** Login   <fernan_s@epitech.net>
 ** 
 ** Started on  Mon Jun  1 09:51:51 2015 fernan_s
-** Last update Tue Jun  2 17:16:56 2015 ugo belfiore
+** Last update Mon Jun  1 11:29:14 2015 fernan_s
 */
 
 #include "mini.h"
 
-t_filter	func_filter[] =
+t_filter func_filter[] =
   {
     normal_f,
     grey_level,
@@ -42,6 +42,7 @@ void	grey_level(int x, int y, t_wild *s)
   s->d.bigData_f[addr + 2] = (grey > 254) ? 255 : grey;
 }
 
+
 void	wb_filter(int x, int y, t_wild *s)
 {
   int	grey;
@@ -51,21 +52,22 @@ void	wb_filter(int x, int y, t_wild *s)
   grey = (int)((float)(unsigned char)s->d.bigData[addr + 2] * 0.2125);
   grey += (int)((float)(unsigned char)s->d.bigData[addr + 1] * 0.7154);
   grey += (int)((float)(unsigned char)s->d.bigData[addr + 0] * 0.0721);
-  s->d.bigData_f[addr] = (grey < 64) ? 0
-    : ((grey < 128) ? 64
-       : ((grey < 192) ? 128
-	  : ((grey < 250) ? 192 : 255)));
-  s->d.bigData_f[addr + 1] = (grey < 64) ? 0
-    : ((grey < 128) ? 64
-       : ((grey < 192) ? 128
-	  : ((grey < 250) ? 192 : 255)));
-  s->d.bigData_f[addr + 2] = (grey < 64) ? 0
-    : ((grey < 128) ? 64
-       : ((grey < 192) ? 128
-	  : ((grey < 250) ? 192 : 255)));
+  s->d.bigData_f[addr] = (grey < 64) ? 0 :
+    ((grey < 128) ? 64 :
+     ((grey < 192) ? 128 :
+      ((grey < 250) ? 192 : 255)));
+  s->d.bigData_f[addr + 1] = (grey < 64) ? 0 :
+    ((grey < 128) ? 64 :
+     ((grey < 192) ? 128 : 
+      ((grey < 250) ? 192 : 255)));
+  s->d.bigData_f[addr + 2] = (grey < 64) ? 0 :
+    ((grey < 128) ? 64 :
+     ((grey < 192) ? 128 : 
+      ((grey < 250) ? 192 : 255)));
 }
 
-void	sepia(int x, int y, t_wild *s)
+
+void		sepia(int x, int y, t_wild *s)
 {
   int	grey;
   int	addr;
@@ -90,7 +92,9 @@ void	apply_filter(t_wild *s)
     {
       y = 0;
       while (y < s->d.y_max)
-	func_filter[s->d.filter % 4](x, y++, s);
+	{
+	  func_filter[s->d.filter % 4](x, y++, s);
+	}
       x++;
     }
 }

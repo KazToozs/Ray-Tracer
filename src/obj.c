@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Thu Mar  5 10:17:14 2015 cristopher toozs-hobson
-** Last update Tue Jun  2 18:20:35 2015 ugo belfiore
+** Last update Mon Jun  1 17:12:52 2015 pallua_j
 */
 
 #include "mini.h"
@@ -54,7 +54,6 @@ void		inter_cone(t_cam *c, t_cone *co)
   co->x.t = CONE;
   tmp_angle = (co->r * M_PI) / 180;
   translation(&c->p, co->p.x, co->p.y, co->p.z);
-  rotate(&co->rot, c);
   a = (c->v.vx * c->v.vx) + (c->v.vy * c->v.vy) - ((c->v.vz * c->v.vz) /
      (tan(tmp_angle) * tan(tmp_angle)));
   b = (2 * c->p.x * c->v.vx)
@@ -63,7 +62,6 @@ void		inter_cone(t_cam *c, t_cone *co)
   ca = (c->p.x * c->p.x) + (c->p.y * c->p.y)
     - ((c->p.z * c->p.z)
        / (tan(tmp_angle) * tan(tmp_angle)));
-  rotate_inv(&co->rot, c);
   inverse_translation(&c->p, co->p.x, co->p.y, co->p.z);
   co->x.x = co->p.x;
   co->x.y = co->p.y;
@@ -81,13 +79,11 @@ void		inter_cyl(t_cam *c, t_cyl *cy)
   cy->x.x2 = 10000000;
   cy->x.t = CYLINDER;
   translation(&c->p, cy->p.x, cy->p.y, cy->p.z);
-  rotate(&cy->rot, c);
   a = pow(c->v.vx, 2) + pow(c->v.vy, 2);
   b = (2 * c->p.x * c->v.vx)
     + (2 * c->p.y * c->v.vy);
   ca = pow(c->p.x, 2)
     + pow(c->p.y, 2) - pow(cy->r, 2);
-  rotate_inv(&cy->rot, c);
   inverse_translation(&c->p, cy->p.x, cy->p.y, cy->p.z);
   cy->x.x = cy->p.x;
   cy->x.y = cy->p.y;

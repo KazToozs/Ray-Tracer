@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Sun Mar  8 20:24:43 2015 cristopher toozs-hobson
-** Last update Mon Jun  1 17:16:07 2015 pallua_j
+** Last update Tue Jun  2 13:22:40 2015 pallua_j
 */
 
 #include "mini.h"
@@ -18,6 +18,7 @@ static void	check(t_st *s, t_x *x)
       s->x.t = x->t;
       s->x.k = x->x1;
       s->x.coef = x->coef;
+      s->x.ref = x->ref;
       s->colo = x->color;
       s->x.o.x = x->x;
       s->x.o.y = x->y;
@@ -33,6 +34,7 @@ static void	check(t_st *s, t_x *x)
       s->x.o.x = x->x;
       s->x.o.y = x->y;
       s->x.o.z = x->z;
+      s->x.ref = x->ref;
     }
 }
 
@@ -42,6 +44,7 @@ static void	check_plane(t_st *s, t_plan *pl)
     {
       s->x.t = PLANE;
       s->x.k = pl->k;
+      s->x.ref = pl->ref;
       s->x.coef = pl->coef;
       s->colo = pl->color;
     }

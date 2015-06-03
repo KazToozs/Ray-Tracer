@@ -5,12 +5,12 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Sun May 31 02:04:45 2015 ugo belfiore
-** Last update Tue Jun  2 17:35:17 2015 ugo belfiore
+** Last update Tue Jun  2 13:20:53 2015 pallua_j
 */
 
 #include "mini.h"
 
-static void	debug(t_wild *w)
+static void    debug(t_wild *w)
 {
   int		t;
 
@@ -30,7 +30,7 @@ static void	debug(t_wild *w)
 
 static int	match(char *s1, char *s2)
 {
-  int		i;
+  int	i;
 
   i = 0;
   if (!s1)
@@ -106,7 +106,7 @@ void		line_plan(t_wild *w)
       if (match(w->fi.tab[0], "PLAN"))
 	{
 	  if (!w->fi.tab[1] || !w->fi.tab[2] || !w->fi.tab[3] || !w->fi.tab[4]
-	      || !w->fi.tab[5] || !w->fi.tab[6])
+	      || !w->fi.tab[5] || !w->fi.tab[6] || !w->fi.tab[7])
 	    my_error(w, "ERROR: argument PLAN.", -1);
 	  remp_p.z = (double)my_getnbr(w->fi.tab[1]);
 	  remp_p.color = strtol(w->fi.tab[2], &test, 16);
@@ -114,6 +114,7 @@ void		line_plan(t_wild *w)
 	  remp_p.rot.y = my_getnbr(w->fi.tab[4]);
 	  remp_p.rot.z = my_getnbr(w->fi.tab[5]);
 	  remp_p.coef = (double)atof(w->fi.tab[6]);
+	  remp_p.ref = (double)atof(w->fi.tab[7]);
 	  w->s[t].pl = my_put_plan_list(w->s[t].pl, remp_p);
 	}
     }
@@ -131,7 +132,8 @@ void		line_sphere(t_wild *w)
       {
 	if (!w->fi.tab[1] || !w->fi.tab[2] || !w->fi.tab[3]
 	    || !w->fi.tab[4] || !w->fi.tab[5] || !w->fi.tab[6]
-	    || !w->fi.tab[7] || !w->fi.tab[8] || !w->fi.tab[9])
+	    || !w->fi.tab[7] || !w->fi.tab[8] || !w->fi.tab[9]
+	    || !w->fi.tab[10])
 	  my_error(w, "ERROR: argument SPHERE.", -1);
 	remp.p.x = (double)my_getnbr(w->fi.tab[1]);
 	remp.p.y = (double)my_getnbr(w->fi.tab[2]);
@@ -143,6 +145,7 @@ void		line_sphere(t_wild *w)
 	remp.rot.y = my_getnbr(w->fi.tab[7]);
 	remp.rot.z = my_getnbr(w->fi.tab[8]);
 	remp.x.coef = atof(w->fi.tab[9]);
+	remp.x.ref = atof(w->fi.tab[10]);
 	w->s[t].s = my_put_sph_list(w->s[t].s, remp);
       }
 }
@@ -159,7 +162,8 @@ void	line_cyl(t_wild *w)
       {
 	if (!w->fi.tab[1] || !w->fi.tab[2] || !w->fi.tab[3]
 	    || !w->fi.tab[4] || !w->fi.tab[5] || !w->fi.tab[6]
-	    || !w->fi.tab[7] || !w->fi.tab[8] || !w->fi.tab[10])
+	    || !w->fi.tab[7] || !w->fi.tab[8] || !w->fi.tab[10]
+	    || !w->fi.tab[11])
 	  my_error(w, "ERROR: argument CYLINDER.", -1);
 	remp.p.x = (double)my_getnbr(w->fi.tab[1]);
 	remp.p.y = (double)my_getnbr(w->fi.tab[2]);
@@ -172,6 +176,7 @@ void	line_cyl(t_wild *w)
 	remp.rot.z = my_getnbr(w->fi.tab[8]);
 	remp.high = my_getnbr(w->fi.tab[9]);
 	remp.x.coef = (double)atof(w->fi.tab[10]);
+	remp.x.ref = (double)atof(w->fi.tab[11]);
 	w->s[t].cy = my_put_cyl_list(w->s[t].cy, remp);
       }
 }
@@ -201,6 +206,7 @@ void		line_cone(t_wild *w)
 	remp.rot.z = my_getnbr(w->fi.tab[8]);
 	remp.high = my_getnbr(w->fi.tab[9]);
 	remp.x.coef = (double)atof(w->fi.tab[10]);
+	remp.x.ref = (double)atof(w->fi.tab[11]);
 	w->s[t].co = my_put_cone_list(w->s[t].co, remp);
       }
 }
@@ -231,14 +237,15 @@ void	my_parsing_rt(t_wild *w)
       w->s[t].colo = COLOR_BLACK;
       w->s[t].tt = t;
     }
-  while ((w->fi.buff = get_next_line(w->fi.fd)))
+  while ((w->fi.buff = get_next_line(w->fi.fd))) // parse ligne par ligne
     {
+      //si la ligne ne commence pas par /, *, ' ' ou \n, on test.
       if (!(w->fi.buff[0] == '/' || w->fi.buff[0] == '*'
 	    || w->fi.buff[0] == ' ' || w->fi.buff[0] == '\n'
 	    || w->fi.buff[0] == '#'
 	    || (w->fi.buff[0] == '\0')))
 	test_line(w);
-      free(w->fi.buff);
+      free(w->fi.buff);          // supprime la ligne courante et next
     }
-  debug(w);
+  debug(w);// debugage et affichage information du parsing
 }

@@ -5,7 +5,7 @@
 ## Login   <belfio_u@epitech.net>
 ## 
 ## Started on  Sun May 31 01:53:15 2015 ugo belfiore
-## Last update Tue Jun  2 17:33:16 2015 ugo belfiore
+## Last update Tue Jun  2 12:00:14 2015 pallua_j
 ##
 
 SRC     =       ./src/main.c			\
@@ -15,8 +15,6 @@ SRC     =       ./src/main.c			\
 		./src/my_show_wordtab.c		\
 		./src/get_next_line.c		\
 		./src/my_obj_list.c		\
-		./src/my_obj_list_len.c		\
-		./src/my_obj_list_remp.c	\
 		./src/my_realloc.c		\
 		./src/sound.c			\
 		./src/evenement.c		\
@@ -24,7 +22,6 @@ SRC     =       ./src/main.c			\
 		./src/thread_func.c		\
 		./src/move_xyz_all.c		\
 		./src/aff_all.c			\
-		./src/aff_all_obj.c		\
 		./src/algo_rt.c			\
 		./src/aff_pix_img.c		\
 		./src/my_change_color.c		\
@@ -37,6 +34,7 @@ SRC     =       ./src/main.c			\
 		./src/my_strcpy.c		\
 		./src/my_strdup.c		\
 		./src/vector.c			\
+		./src/reflection.c		\
 		./src/filter.c
 
 OBJ     =       $(SRC:.c=.o)
@@ -47,7 +45,7 @@ LIB	=	-L./lib/my -lmy
 
 LIBMINI	=	-L./lib/minilibx -lmlx
 
-CC      =       clang
+CC      =       gcc
 
 CFLAGS  +=      -W -Wall -Wextra -g3
 CFLAGS	+=	-I./include
