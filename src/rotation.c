@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Tue Mar  3 17:34:27 2015 cristopher toozs-hobson
-** Last update Wed Jun  3 13:16:03 2015 cristopher toozs-hobson
+** Last update Wed Jun  3 14:49:31 2015 cristopher toozs-hobson
 */
 
 #include "mini.h"
@@ -85,22 +85,52 @@ static void	rotate_z(double *x, double *y, double *z, double a)
   *z = new_z;
 }
 
-void		rotate(t_rot *rot, t_cam *c)
+void		rotate(t_rot *rot, t_vect *v, t_pos *p, int type)
 {
-  rotate_x(&c->v.vx, &c->v.vy, &c->v.vz, rot->x);
-  rotate_y(&c->v.vx, &c->v.vy, &c->v.vz, rot->y);
-  rotate_z(&c->v.vx, &c->v.vy, &c->v.vz, rot->z);
-  rotate_x(&c->p.x, &c->p.y, &c->p.z, rot->x);
-  rotate_y(&c->p.x, &c->p.y, &c->p.z, rot->y);
-  rotate_z(&c->p.x, &c->p.y, &c->p.z, rot->z);
+  if (type == 3)
+    {
+      rotate_x(&v->vx, &v->vy, &v->vz, rot->x);
+      rotate_y(&v->vx, &v->vy, &v->vz, rot->y);
+      rotate_z(&v->vx, &v->vy, &v->vz, rot->z);
+      rotate_x(&p->x, &p->y, &p->z, rot->x);
+      rotate_y(&p->x, &p->y, &p->z, rot->y);
+      rotate_z(&p->x, &p->y, &p->z, rot->z);
+    }
+  else if (type == 2)
+    {
+      rotate_x(&v->vx, &v->vy, &v->vz, rot->x);
+      rotate_y(&v->vx, &v->vy, &v->vz, rot->y);
+      rotate_z(&v->vx, &v->vy, &v->vz, rot->z);
+    }
+  else if (type == 1)
+    {
+      rotate_x(&p->x, &p->y, &p->z, rot->x);
+      rotate_y(&p->x, &p->y, &p->z, rot->y);
+      rotate_z(&p->x, &p->y, &p->z, rot->z);
+    }
 }
 
-void		rotate_inv(t_rot *rot, t_cam *c)
+void		rotate_inv(t_rot *rot, t_vect *v, t_pos *p, int type)
 {
-  rotate_x(&c->v.vx, &c->v.vy, &c->v.vz, -rot->x);
-  rotate_y(&c->v.vx, &c->v.vy, &c->v.vz, -rot->y);
-  rotate_z(&c->v.vx, &c->v.vy, &c->v.vz, -rot->z);
-  rotate_x(&c->p.x, &c->p.y, &c->p.z, -rot->x);
-  rotate_y(&c->p.x, &c->p.y, &c->p.z, -rot->y);
-  rotate_z(&c->p.x, &c->p.y, &c->p.z, -rot->z);
+  if (type == 3)
+    {
+      rotate_x(&v->vx, &v->vy, &v->vz, -rot->x);
+      rotate_y(&v->vx, &v->vy, &v->vz, -rot->y);
+      rotate_z(&v->vx, &v->vy, &v->vz, -rot->z);
+      rotate_x(&p->x, &p->y, &p->z, -rot->x);
+      rotate_y(&p->x, &p->y, &p->z, -rot->y);
+      rotate_z(&p->x, &p->y, &p->z, -rot->z);
+    }
+  else if (type == 2)
+    {
+      rotate_x(&v->vx, &v->vy, &v->vz, -rot->x);
+      rotate_y(&v->vx, &v->vy, &v->vz, -rot->y);
+      rotate_z(&v->vx, &v->vy, &v->vz, -rot->z);
+    }
+  else if (type == 1)
+    {
+      rotate_x(&p->x, &p->y, &p->z, -rot->x);
+      rotate_y(&p->x, &p->y, &p->z, -rot->y);
+      rotate_z(&p->x, &p->y, &p->z, -rot->z);
+    }
 }

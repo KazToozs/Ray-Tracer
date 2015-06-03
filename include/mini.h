@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 28 09:26:37 2014 ugo belfiore
-** Last update Tue Jun  2 13:26:06 2015 pallua_j
+** Last update Wed Jun  3 15:09:32 2015 cristopher toozs-hobson
 */
 
 #ifndef MINI_H_
@@ -369,8 +369,8 @@ int     cone_len(t_cone *list);
 int     cyl_len(t_cyl *list);
 int     sphere_len(t_sph *list);
 int     plan_len(t_plan *list);
-void	rotate(t_rot *rot, t_cam *c);
-void	rotate_inv(t_rot *rot, t_cam *c);
+void	rotate(t_rot *rot, t_vect *v, t_pos *p, int type);
+void	rotate_inv(t_rot *rot, t_vect *v, t_pos *p, int type);
 void	translation(t_pos *p, int x, int y, int z);
 void	inverse_translation(t_pos *p, int x, int y, int z);
 void	calculate_k(t_st *s);

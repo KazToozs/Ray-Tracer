@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Thu Mar  5 10:17:14 2015 cristopher toozs-hobson
-** Last update Wed Jun  3 13:16:48 2015 cristopher toozs-hobson
+** Last update Wed Jun  3 14:56:01 2015 cristopher toozs-hobson
 */
 
 #include "mini.h"
@@ -32,9 +32,11 @@ void		inter_sphere(t_cam *c, t_sph *s)
   s->x.x2 = 10000000;
   s->x.t = SPHERE;
   translation(&c->p, s->p.x, s->p.y, s->p.z);
+  rotate(&s->rot, &c->v, &c->p, 3);
   a = pow(c->v.vx, 2) + pow(c->v.vy, 2) + pow(c->v.vz, 2);
   b = 2 * ((c->p.x * c->v.vx) + (c->p.y * c->v.vy) + (c->p.z * c->v.vz));
   ca = pow(c->p.x, 2) + pow(c->p.y, 2) + pow(c->p.z, 2) - pow(s->r, 2);
+  rotate_inv(&s->rot, &c->v, &c->p, 3);
   inverse_translation(&c->p, s->p.x, s->p.y, s->p.z);
   s->x.x = s->p.x;
   s->x.y = s->p.y;
@@ -54,6 +56,7 @@ void		inter_cone(t_cam *c, t_cone *co)
   co->x.t = CONE;
   tmp_angle = (co->r * M_PI) / 180;
   translation(&c->p, co->p.x, co->p.y, co->p.z);
+  rotate(&co->rot, &c->v, &c->p, 3);
   a = (c->v.vx * c->v.vx) + (c->v.vy * c->v.vy) - ((c->v.vz * c->v.vz) /
      (tan(tmp_angle) * tan(tmp_angle)));
   b = (2 * c->p.x * c->v.vx)
@@ -62,6 +65,7 @@ void		inter_cone(t_cam *c, t_cone *co)
   ca = (c->p.x * c->p.x) + (c->p.y * c->p.y)
     - ((c->p.z * c->p.z)
        / (tan(tmp_angle) * tan(tmp_angle)));
+  rotate_inv(&co->rot, &c->v, &c->p, 3);
   inverse_translation(&c->p, co->p.x, co->p.y, co->p.z);
   co->x.x = co->p.x;
   co->x.y = co->p.y;
@@ -79,13 +83,13 @@ void		inter_cyl(t_cam *c, t_cyl *cy)
   cy->x.x2 = 10000000;
   cy->x.t = CYLINDER;
   translation(&c->p, cy->p.x, cy->p.y, cy->p.z);
-  rotate(&cy->rot, c);
+  rotate(&cy->rot, &c->v, &c->p, 3);
   a = pow(c->v.vx, 2) + pow(c->v.vy, 2);
   b = (2 * c->p.x * c->v.vx)
     + (2 * c->p.y * c->v.vy);
   ca = pow(c->p.x, 2)
     + pow(c->p.y, 2) - pow(cy->r, 2);
-  rotate_inv(&cy->rot, c);
+  rotate_inv(&cy->rot, &c->v, &c->p, 3);
   inverse_translation(&c->p, cy->p.x, cy->p.y, cy->p.z);
   cy->x.x = cy->p.x;
   cy->x.y = cy->p.y;

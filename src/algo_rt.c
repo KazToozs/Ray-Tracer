@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Sun Feb  8 16:18:36 2015 ugo belfiore
-** Last update Wed Jun  3 10:28:15 2015 cristopher toozs-hobson
+** Last update Wed Jun  3 15:34:40 2015 cristopher toozs-hobson
 */
 
 #include "mini.h"
@@ -53,30 +53,30 @@ int	calc(t_st *s)
   tmp_pl = s->pl;
   while (tmp_pl != NULL)
     {
-      rotate(&tmp_pl->rot, &s->c);
+      rotate(&tmp_pl->rot, &s->c.v, &s->c.p, 3);
       inter_plan(&s->c, tmp_pl);
-      rotate_inv(&tmp_pl->rot, &s->c);
+      rotate_inv(&tmp_pl->rot, &s->c.v, &s->c.p, 3);
       tmp_pl = tmp_pl->next;
     }
   while (tmp_s != NULL)
     {
-      rotate(&tmp_s->rot, &s->c);
+      /* rotate(&tmp_s->rot, &s->c); */
       inter_sphere(&s->c, tmp_s);
-      rotate_inv(&tmp_s->rot, &s->c);
+      /* rotate_inv(&tmp_s->rot, &s->c); */
       tmp_s = tmp_s->next;
     }
   while (tmp_cy != NULL)
     {
-      rotate(&tmp_cy->rot, &s->c);
+      /* rotate(&tmp_cy->rot, &s->c); */
       inter_cyl(&s->c, tmp_cy);
-      rotate_inv(&tmp_cy->rot, &s->c);
+      /* rotate_inv(&tmp_cy->rot, &s->c); */
       tmp_cy = tmp_cy->next;
     }
   while (tmp_c != NULL)
     {
-      rotate(&tmp_c->rot, &s->c);
+      /* rotate(&tmp_c->rot, &s->c); */
       inter_cone(&s->c, tmp_c);
-      rotate_inv(&tmp_c->rot, &s->c);
+      /* rotate_inv(&tmp_c->rot, &s->c); */
       tmp_c = tmp_c->next;
     }
   calculate_k(s);
@@ -108,7 +108,7 @@ void	algo_rt(t_wild *w, t_st *s, int flew, int flew2)
 	  s->c.v.vx = 1000;
 	  s->c.v.vy = (w->d.x_max / 2) - i;
 	  s->c.v.vz = (w->d.y_max / 2) - j;
-	  rotate(&s->c.rot, &s->c);
+	  rotate(&s->c.rot, &s->c.v, &s->c.p, 2);
 	  s->colo = calc(s);
 	  (s->tt == 0) ? aff_pix_img_zero(w, i, j, w->d.bigData) : 1;
 	  (s->tt == 1) ? aff_pix_img_one(w, i, j, w->d.bigData) : 1;

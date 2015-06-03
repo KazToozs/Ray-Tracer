@@ -5,36 +5,45 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon May 18 14:04:11 2015 ugo belfiore
-** Last update Tue Jun  2 11:02:40 2015 pallua_j
+** Last update Wed Jun  3 15:15:47 2015 cristopher toozs-hobson
 */
 
 #include "mini.h"
 
 void	calculate_n(t_st *s)
 {
+
   if (s->x.t == SPHERE)
     {
+      rotate(&s->s->rot, &s->n, NULL, 2);
       s->n.vx = s->x.c.p.x - s->x.o.x;
       s->n.vy = s->x.c.p.y - s->x.o.y;
       s->n.vz = s->x.c.p.z - s->x.o.z;
+      rotate_inv(&s->s->rot, &s->n, NULL, 2);
     }
   else if (s->x.t == PLANE)
     {
+      rotate(&s->pl->rot, &s->n, NULL, 2);
       s->n.vx = 0;
       s->n.vy = 0;
       s->n.vz = 100;
+      rotate_inv(&s->pl->rot, &s->n, NULL, 2);
     }
   else if (s->x.t == CYLINDER)
     {
+      rotate(&s->cy->rot, &s->n, NULL, 2);
       s->n.vx = s->x.c.p.x - s->x.o.x;
       s->n.vy = s->x.c.p.y - s->x.o.y;
       s->n.vz = 0;
+      rotate_inv(&s->cy->rot, &s->n, NULL, 2);
     }
   else if (s->x.t == CONE)
     {
+      rotate(&s->co->rot, &s->n, NULL, 2);
       s->n.vx = s->x.c.p.x - s->x.o.x;
       s->n.vy = s->x.c.p.y - s->x.o.y;
       s->n.vz = (-1000) * (s->x.c.p.z - s->x.o.z);
+      rotate_inv(&s->co->rot, &s->n, NULL, 2);
     }
 }
 

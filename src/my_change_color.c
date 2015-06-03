@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon May 18 12:07:41 2015 ugo belfiore
-** Last update Wed Jun  3 13:46:43 2015 cristopher toozs-hobson
+** Last update Wed Jun  3 15:18:34 2015 cristopher toozs-hobson
 */
 
 #include "mini.h"
@@ -69,8 +69,6 @@ int		my_change_color_bis(t_st *s)
 	}
       tmp = tmp->next;
     }
-  if (s->x.ref > 0)
-    printf("%X %f\n", s->color_ref, s->x.ref);
   /* ref = save & 0xFF; */
   /* r = r * (1.f - s->x.ref) + (s->x.ref * ref); */
   /* ref = ((save >> 8) & 0xFF); */
