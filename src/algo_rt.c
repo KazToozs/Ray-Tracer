@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Sun Feb  8 16:18:36 2015 ugo belfiore
-** Last update Wed Jun  3 15:34:40 2015 cristopher toozs-hobson
+** Last update Thu Jun  4 11:46:51 2015 msa_m
 */
 
 #include "mini.h"
@@ -24,7 +24,7 @@ int		multi_light(t_st *s)
   s->x.c.p.y = s->c.p.y + (s->x.k * s->c.v.vy);
   s->x.c.p.z = s->c.p.z + (s->x.k * s->c.v.vz);
   calculate_n(s);
-  reflected(s);
+  //  reflected(s);
   tmp_l = s->l;
   while (tmp_l != NULL)
     {

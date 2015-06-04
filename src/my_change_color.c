@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon May 18 12:07:41 2015 ugo belfiore
-** Last update Wed Jun  3 15:18:34 2015 cristopher toozs-hobson
+** Last update Thu Jun  4 13:41:55 2015 msa_m
 */
 
 #include "mini.h"
@@ -21,6 +21,8 @@ double		my_spec(t_st *s)
   my_spec = dotproduct(&br, &s->x.c.v);
   if (my_spec < 0)
     my_spec = 0;
+  if (s->x.coef == 0)
+    return (0);
   my_spec = pow(my_spec, s->x.coef);
   return (my_spec);
 }
