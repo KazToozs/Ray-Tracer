@@ -5,7 +5,7 @@
 ## Login   <belfio_u@epitech.net>
 ## 
 ## Started on  Sun May 31 01:53:15 2015 ugo belfiore
-## Last update Tue Jun  2 12:00:14 2015 pallua_j
+## Last update Thu Jun  4 19:31:57 2015 pallua_j
 ##
 
 SRC     =       ./src/main.c			\
@@ -47,7 +47,7 @@ LIBMINI	=	-L./lib/minilibx -lmlx
 
 CC      =       gcc
 
-CFLAGS  +=      -W -Wall -Wextra -g3
+CFLAGS  +=      -W -Wall -Wextra -g3 -Ofast
 CFLAGS	+=	-I./include
 
 LDFLAGS	=	$(LIB) $(LIBMINI) -L/usr/lib64/X11 -lXext -lX11 -lm ./lib/libson.so -lpthread

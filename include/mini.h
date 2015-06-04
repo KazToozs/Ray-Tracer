@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 28 09:26:37 2014 ugo belfiore
-** Last update Wed Jun  3 15:09:32 2015 cristopher toozs-hobson
+** Last update Thu Jun  4 18:11:49 2015 pallua_j
 */
 
 #ifndef MINI_H_
@@ -272,6 +272,7 @@ typedef struct  s_st
   int		type;
   int		nb_spots;
   int		ref;
+  int		ms;
 }               t_st;
 
 typedef struct	s_wild
