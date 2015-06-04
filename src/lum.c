@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon May 18 14:04:11 2015 ugo belfiore
-** Last update Wed Jun  3 15:15:47 2015 cristopher toozs-hobson
+** Last update Thu Jun  4 17:25:29 2015 pallua_j
 */
 
 #include "mini.h"
@@ -42,7 +42,7 @@ void	calculate_n(t_st *s)
       rotate(&s->co->rot, &s->n, NULL, 2);
       s->n.vx = s->x.c.p.x - s->x.o.x;
       s->n.vy = s->x.c.p.y - s->x.o.y;
-      s->n.vz = (-1000) * (s->x.c.p.z - s->x.o.z);
+      s->n.vz = 0 - (s->x.c.p.z - s->x.o.z);
       rotate_inv(&s->co->rot, &s->n, NULL, 2);
     }
 }
