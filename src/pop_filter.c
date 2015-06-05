@@ -5,7 +5,7 @@
 ** Login   <fernan_s@epitech.net>
 ** 
 ** Started on  Wed Jun  3 20:00:12 2015 fernan_s
-** Last update Fri Jun  5 14:12:23 2015 fernan_s
+** Last update Fri Jun  5 18:06:30 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -60,6 +60,6 @@ void		pop_filter(int x, int y, t_wild *s)
   ul_pop(grey, (x / 2), (y / 2), s);
   ur_pop(grey, (x / 2) + (s->d.x_max / 2), (y / 2), s);
   dl_pop(grey, (x / 2), (y / 2) + (s->d.y_max / 2), s);
-  dr_pop(grey, (x / 2) + (s->d.x_max / 2), (y / 2) + 
-	 (s->d.y_max / 2), s);
+  dr_pop(grey, (x / 2) + (s->d.x_max / 2), (y / 2)
+	 + (s->d.y_max / 2), s);
 }

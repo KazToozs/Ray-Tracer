@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue May 12 11:16:50 2015 ugo belfiore
-** Last update Fri Jun  5 17:58:02 2015 ugo belfiore
+** Last update Fri Jun  5 18:04:08 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -64,6 +64,25 @@ static int	shadow_k(t_st *s)
   return (0);
 }
 
+static void	shadow_obj(t_st *s, t_sph *tmp_s, t_cyl *tmp_cy, t_cone *tmp_c)
+{
+  while (tmp_s != NULL)
+    {
+      inter_sphere(&s->x.c, tmp_s);
+      tmp_s = tmp_s->next;
+    }
+  while (tmp_cy != NULL)
+    {
+      inter_cyl(&s->x.c, tmp_cy);
+      tmp_cy = tmp_cy->next;
+    }
+  while (tmp_c != NULL)
+    {
+      inter_cone(&s->x.c, tmp_c);
+      tmp_c = tmp_c->next;
+    }
+}
+
 int		shadow(t_st *s)
 {
   t_cone	*tmp_c;
@@ -80,21 +99,7 @@ int		shadow(t_st *s)
       inter_plan(&s->x.c, tmp_pl);
       tmp_pl = tmp_pl->next;
     }
-  while (tmp_s != NULL)
-    {
-      inter_sphere(&s->x.c, tmp_s);
-      tmp_s = tmp_s->next;
-    }
-  while (tmp_cy != NULL)
-    {
-      inter_cyl(&s->x.c, tmp_cy);
-      tmp_cy = tmp_cy->next;
-    }
-  while (tmp_c != NULL)
-    {
-      inter_cone(&s->x.c, tmp_c); 
-      tmp_c = tmp_c->next;
-    }
+  shadow_obj(s, tmp_s, tmp_cy, tmp_c);
   if (shadow_k(s) == -1)
     return (-1);
   return (0);

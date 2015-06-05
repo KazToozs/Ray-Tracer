@@ -5,7 +5,7 @@
 ## Login   <belfio_u@epitech.net>
 ## 
 ## Started on  Sun May 31 01:53:15 2015 ugo belfiore
-## Last update Fri Jun  5 18:00:01 2015 pallua_j
+## Last update Fri Jun  5 18:09:32 2015 ugo belfiore
 ##
 
 SRC     =       ./src/main.c			\
@@ -33,7 +33,6 @@ SRC     =       ./src/main.c			\
 		./src/my_strcpy.c		\
 		./src/my_strdup.c		\
 		./src/vector.c			\
-		./src/reflection.c		\
 		./src/filter.c			\
 		./src/pop_filter.c		\
 		./src/get_color.c		\
