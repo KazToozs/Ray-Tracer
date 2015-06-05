@@ -5,7 +5,7 @@
 ** Login   <fernan_s@epitech.net>
 ** 
 ** Started on  Wed Jun  3 20:00:12 2015 fernan_s
-** Last update Thu Jun  4 21:12:31 2015 fernan_s
+** Last update Fri Jun  5 14:12:23 2015 fernan_s
 */
 
 #include "mini.h"
@@ -16,7 +16,7 @@ void		ul_pop(unsigned int grey, int x, int y, t_wild *s)
 
   addr = (s->d.sizeline * y) + (x * (s->d.bpp / 8));
   s->d.bigData_f[addr + 2] = 255 ^ grey;
-  s->d.bigData_f[addr + 1] = 255 ^ grey;
+  s->d.bigData_f[addr + 1] = grey;
   s->d.bigData_f[addr] = grey;
 }
 
@@ -61,5 +61,5 @@ void		pop_filter(int x, int y, t_wild *s)
   ur_pop(grey, (x / 2) + (s->d.x_max / 2), (y / 2), s);
   dl_pop(grey, (x / 2), (y / 2) + (s->d.y_max / 2), s);
   dr_pop(grey, (x / 2) + (s->d.x_max / 2), (y / 2) + 
-	     (s->d.y_max / 2), s);
+	 (s->d.y_max / 2), s);
 }

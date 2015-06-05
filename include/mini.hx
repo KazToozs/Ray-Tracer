@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 28 09:26:37 2014 ugo belfiore
-** Last update Fri Jun  5 15:13:11 2015 ugo belfiore
+** Last update Wed Jun  3 10:05:51 2015 ugo belfiore
 */
 
 #ifndef MINI_H_
@@ -76,7 +76,6 @@
 #define KEY_L 108
 #define KEY_W 119
 #define MLX mlx_put_image_to_window
-#define KEY_TAB	65289
 
 /*
 ** stucture son
@@ -162,8 +161,9 @@ typedef struct  s_x
   int           t;
   double	coef;
   double	ref;
-  t_pos		p;
-  t_rot		rot;
+  double	x;
+  double	y;
+  double	z;
 }               t_x;
 
 typedef struct  s_cam
@@ -228,7 +228,7 @@ typedef struct  s_cyl
 typedef struct  s_int
 {
   t_cam         c;
-  t_cam		o;
+  t_pos		o;
   double        k;
   double	kk;
   int           t;
@@ -251,7 +251,6 @@ typedef struct	s_data
   int		sizeline;
   int		end;
   int		w;
-  int		tabi;
   int		filter;
   int		f[256];
   int		timer;
@@ -273,7 +272,6 @@ typedef struct  s_st
   int		type;
   int		nb_spots;
   int		ref;
-  int		ms;
 }               t_st;
 
 typedef struct	s_wild
@@ -287,36 +285,11 @@ typedef struct	s_wild
   pthread_t     threads[5];
 }		t_wild;
 
-/*                                                                              
-** negative filter (negativ.c)                                                  
-*/
-
-void    negativ_f(int, int, t_wild *);
-void    negativ_inv_f(int, int, t_wild *);
-
-/*
-** grey value (get_grey.c)                                                    
-*/
-
-unsigned int    get_color(int, t_wild *);
-unsigned int    color_avarage(int, int, t_wild *);
-
-/*                                                                            
-** filter pop art (pop_filter);                                               
-*/
-
-void    ul_pop(unsigned int, int, int, t_wild *);
-void    ur_pop(unsigned int, int, int, t_wild *);
-void    dl_pop(unsigned int, int, int, t_wild *);
-void    dr_pop(unsigned int, int, int, t_wild *);
-void    pop_filter(int, int, t_wild *);
-
 /*
 ** filter gestion (filter.c)
 */
 
 typedef void	(*t_filter)(int, int, t_wild *);
-
 void	normal_f(int, int, t_wild *);
 void	grey_level(int, int, t_wild *);
 void	wb_filter(int, int, t_wild *);
@@ -361,10 +334,10 @@ void	aff_pix_img_four(t_wild *w, int x, int y, char *img);
 */
 
 void	my_parsing_rt(t_wild *w);
-void	plan_print(t_plan *tmp_pl, FILE *fd);
-void	sphere_print(t_sph *tmp_s, FILE *fd);
-void	cyl_print(t_cyl *tmp_cy, FILE *fd);
-void	cone_print(t_cone *tmp_c, FILE *fd);
+void    plan_print(t_plan *tmp_pl, FILE *fd);
+void    sphere_print(t_sph *tmp_s, FILE *fd);
+void    cyl_print(t_cyl *tmp_cy, FILE *fd);
+void    cone_print(t_cone *tmp_c, FILE *fd);
 
 /*
 ** fonction rt affichage
@@ -381,6 +354,7 @@ void	part_tree(t_wild *w);
 void	part_four(t_wild *w);
 void	part_five(t_wild *w);
 void	aff_all(t_wild *w);
+
 int	calc(t_st *s);
 int	multi_light(t_st *s);
 void	reflected(t_st *s);
@@ -399,8 +373,8 @@ int     cone_len(t_cone *list);
 int     cyl_len(t_cyl *list);
 int     sphere_len(t_sph *list);
 int     plan_len(t_plan *list);
-void	rotate(t_rot *rot, t_vect *v, t_pos *p, int type);
-void	rotate_inv(t_rot *rot, t_vect *v, t_pos *p, int type);
+void	rotate(t_rot *rot, t_cam *c);
+void	rotate_inv(t_rot *rot, t_cam *c);
 void	translation(t_pos *p, int x, int y, int z);
 void	inverse_translation(t_pos *p, int x, int y, int z);
 void	calculate_k(t_st *s);

@@ -5,7 +5,7 @@
 ## Login   <belfio_u@epitech.net>
 ## 
 ## Started on  Sun May 31 01:53:15 2015 ugo belfiore
-## Last update Fri Jun  5 13:41:05 2015 fernan_s
+## Last update Fri Jun  5 16:18:26 2015 ugo belfiore
 ##
 
 SRC     =       ./src/main.c			\
@@ -22,6 +22,7 @@ SRC     =       ./src/main.c			\
 		./src/thread_func.c		\
 		./src/move_xyz_all.c		\
 		./src/aff_all.c			\
+		./src/aff_all_obj.c		\
 		./src/algo_rt.c			\
 		./src/aff_pix_img.c		\
 		./src/my_change_color.c		\
@@ -37,7 +38,8 @@ SRC     =       ./src/main.c			\
 		./src/reflection.c		\
 		./src/filter.c			\
 		./src/pop_filter.c		\
-		./src/get_color.c
+		./src/get_color.c		\
+		./src/negativ.c			\
 
 OBJ     =       $(SRC:.c=.o)
 
@@ -47,9 +49,9 @@ LIB	=	-L./lib/my -lmy
 
 LIBMINI	=	-L./lib/minilibx -lmlx
 
-CC      =       gcc
+CC      =       clang
 
-CFLAGS  +=      -W -Wall -Wextra -g3 -Ofast
+CFLAGS  +=      -W -Wall -Wextra -Ofast
 CFLAGS	+=	-I./include
 
 LDFLAGS	=	$(LIB) $(LIBMINI) -L/usr/lib64/X11 -lXext -lX11 -lm ./lib/libson.so -lpthread

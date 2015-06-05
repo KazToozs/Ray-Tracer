@@ -5,38 +5,16 @@
 ** Login   <fernan_s@epitech.net>
 ** 
 ** Started on  Mon Jun  1 09:51:51 2015 fernan_s
-** Last update Fri Jun  5 13:42:34 2015 fernan_s
+** Last update Fri Jun  5 14:04:25 2015 fernan_s
 */
 
 #include "mini.h"
-
-
-void	negativ_f(int x, int y, t_wild *s)
-{
-  int	addr;
-
-  addr = (s->d.sizeline * y) + (x * (s->d.bpp / 8));
-  s->d.bigData_f[addr + 2] = 255 ^ s->d.bigData[addr + 2];
-  s->d.bigData_f[addr + 1] = 255 ^ s->d.bigData[addr + 1];
-  s->d.bigData_f[addr] = 255 ^ s->d.bigData[addr + 0];
-}
-
-void	lol_f(int x, int y, t_wild *s)
-{
-  int	addr;
-
-  addr = (s->d.sizeline * y) + (x * (s->d.bpp / 8));
-  s->d.bigData_f[addr + 2] = 255 - s->d.bigData[addr + 0];
-  s->d.bigData_f[addr + 1] = 255 - s->d.bigData[addr + 1];
-  s->d.bigData_f[addr] = 255 - s->d.bigData[addr + 2];
-}
-
 
 t_filter func_filter[] =
   {
     normal_f,
     negativ_f,
-    lol_f,
+    negativ_inv_f,
     grey_level,
     wb_filter,
     sepia,

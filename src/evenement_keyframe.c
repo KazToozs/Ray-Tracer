@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Thu Mar 12 13:45:12 2015 ugo belfiore
-** Last update Fri Jun  5 13:20:47 2015 cristopher toozs-hobson
+** Last update Fri Jun  5 14:17:40 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -21,12 +21,16 @@ int		manage_frame(void *param)
   w = (t_wild *)param;
   manage_frame_test_key(w);
   w->d.timer++;
-  if (w->d.timer > 172 && w->s[0].type == 0)
+  if (w->d.timer > 172 && w->s[0].ms <= 32)
     {
-      w->s[0].type++;
+      w->s[0].ms *= 4;
+      w->s[1].ms *= 4;
+      w->s[2].ms *= 4;
+      w->s[3].ms *= 4;
+      w->s[4].ms *= 4;
       w->d.timer = 9;
     }
-  if (w->d.timer > 172 && w->s[0].type != 0)
+  if (w->d.timer > 172 && w->s[0].ms > 32)
     return (0);
   fast_way_only(w);
   return (0);

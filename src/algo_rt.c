@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Sun Feb  8 16:18:36 2015 ugo belfiore
-** Last update Fri Jun  5 13:43:40 2015 fernan_s
+** Last update Fri Jun  5 16:15:51 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -53,30 +53,22 @@ int	calc(t_st *s)
   tmp_pl = s->pl;
   while (tmp_pl != NULL)
     {
-      rotate(&tmp_pl->rot, &s->c.v, &s->c.p, 3);
       inter_plan(&s->c, tmp_pl);
-      rotate_inv(&tmp_pl->rot, &s->c.v, &s->c.p, 3);
       tmp_pl = tmp_pl->next;
     }
   while (tmp_s != NULL)
     {
-      /* rotate(&tmp_s->rot, &s->c); */
       inter_sphere(&s->c, tmp_s);
-      /* rotate_inv(&tmp_s->rot, &s->c); */
       tmp_s = tmp_s->next;
     }
   while (tmp_cy != NULL)
     {
-      /* rotate(&tmp_cy->rot, &s->c); */
       inter_cyl(&s->c, tmp_cy);
-      /* rotate_inv(&tmp_cy->rot, &s->c); */
       tmp_cy = tmp_cy->next;
     }
   while (tmp_c != NULL)
     {
-      /* rotate(&tmp_c->rot, &s->c); */
       inter_cone(&s->c, tmp_c);
-      /* rotate_inv(&tmp_c->rot, &s->c); */
       tmp_c = tmp_c->next;
     }
   calculate_k(s);
@@ -152,7 +144,6 @@ void	algo_rt(t_wild *w, t_st *s, int flew, int flew2)
 
   i = flew;
   j = flew2;
-  s->ms = 32;
   while (i < w->d.x_max)
     {
       while (j < w->d.y_max)

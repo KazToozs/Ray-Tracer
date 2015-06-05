@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Thu Mar  5 10:17:14 2015 cristopher toozs-hobson
-** Last update Fri Jun  5 11:49:57 2015 cristopher toozs-hobson
+** Last update Fri Jun  5 16:10:47 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -102,6 +102,8 @@ void		inter_cyl(t_cam *c, t_cyl *cy)
 
 void		inter_plan(t_cam *c, t_plan *pl)
 {
+  rotate(&pl->rot, &c->v, &c->p, 3);
   if (c->v.vz != 0)
     pl->k = -((c->p.z + pl->z) / c->v.vz);
+  rotate_inv(&pl->rot, &c->v, &c->p, 3);
 }

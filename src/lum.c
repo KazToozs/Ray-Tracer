@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon May 18 14:04:11 2015 ugo belfiore
-** Last update Fri Jun  5 11:56:59 2015 cristopher toozs-hobson
+** Last update Fri Jun  5 16:07:50 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -22,11 +22,11 @@ void	calculate_n(t_st *s)
     }
   else if (s->x.t == PLANE)
     {
-      rotate(&s->x.o.rot, &s->n, NULL, 2);
+      //rotate(&s->x.o.rot, &s->n, NULL, 2);
       s->n.vx = 0;
       s->n.vy = 0;
       s->n.vz = 100;
-      rotate_inv(&s->x.o.rot, &s->n, NULL, 2);
+      //rotate_inv(&s->x.o.rot, &s->n, NULL, 2);
     }
   else if (s->x.t == CYLINDER)
     {
