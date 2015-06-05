@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Thu May 21 14:16:28 2015 ugo belfiore
-** Last update Tue Jun  2 17:01:36 2015 ugo belfiore
+** Last update Fri Jun  5 17:05:35 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -60,7 +60,8 @@ void		aff_all(t_wild *w)
   tmp_s = w->s[0].s;
   tmp_l = w->s[0].l;
   tmp_pl = w->s[0].pl;
-  fd = fopen("./maps/sceneSAVE.conf", "w+");
+  if ((fd = fopen("./maps/sceneSAVE.conf", "w+")) == NULL)
+    aff_error("error malloc.\n");
   first_print(w, fd);
   light_print(tmp_l, fd);
   plan_print(tmp_pl, fd);

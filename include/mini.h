@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 28 09:26:37 2014 ugo belfiore
-** Last update Fri Jun  5 15:13:11 2015 ugo belfiore
+** Last update Fri Jun  5 16:47:31 2015 ugo belfiore
 */
 
 #ifndef MINI_H_
@@ -21,7 +21,6 @@
 #include <math.h>
 #include <time.h>
 #include <pthread.h>
-#include "fmod.h"
 #include "mlx.h"
 #include "my.h"
 
@@ -76,17 +75,6 @@
 #define KEY_L 108
 #define KEY_W 119
 #define MLX mlx_put_image_to_window
-#define KEY_TAB	65289
-
-/*
-** stucture son
-*/
-
-typedef struct	s_sound
-{
-  FMOD_SYSTEM	*system;
-  FMOD_SOUND	*bonus1;
-}		t_sound;
 
 /*
 ** structure image
@@ -282,27 +270,26 @@ typedef struct	s_wild
   t_data        d;
   t_pic         p;
   t_file	fi;
-  t_sound	sd;
   t_piic	pi;
   pthread_t     threads[5];
 }		t_wild;
 
-/*                                                                              
-** negative filter (negativ.c)                                                  
+/*
+** negative filter (negativ.c)
 */
 
 void    negativ_f(int, int, t_wild *);
 void    negativ_inv_f(int, int, t_wild *);
 
 /*
-** grey value (get_grey.c)                                                    
+** grey value (get_grey.c)
 */
 
 unsigned int    get_color(int, t_wild *);
 unsigned int    color_avarage(int, int, t_wild *);
 
-/*                                                                            
-** filter pop art (pop_filter);                                               
+/*
+** filter pop art (pop_filter);
 */
 
 void    ul_pop(unsigned int, int, int, t_wild *);
@@ -328,7 +315,6 @@ void	apply_filter(t_wild *);
 */
 
 void	aff_win(t_wild *w, char *name);
-void	sound_init(t_wild *d);
 void	my_error(t_wild *w, char *error, int i);
 void	aff_error(char *str);
 char	*get_next_line(const int fd);
@@ -372,6 +358,7 @@ void	cone_print(t_cone *tmp_c, FILE *fd);
 
 void	calculate_n(t_st *s);
 void	algo_rt(t_wild *w, t_st *s, int flew, int flew2);
+int	calc(t_st *s);
 void	my_change_color(t_st *s, double cosin, t_cam *l);
 int	my_change_color_bis(t_st *s);
 void	move_xyz_all(t_wild *w, int which, int value);
@@ -382,7 +369,6 @@ void	part_four(t_wild *w);
 void	part_five(t_wild *w);
 void	aff_all(t_wild *w);
 int	calc(t_st *s);
-int	multi_light(t_st *s);
 void	reflected(t_st *s);
 
 /*

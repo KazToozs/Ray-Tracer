@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon Apr 20 06:52:15 2015 ugo belfiore
-** Last update Sun May 31 02:07:45 2015 ugo belfiore
+** Last update Fri Jun  5 16:37:14 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -22,9 +22,6 @@ void    my_error(t_wild *w, char *error, int i)
     my_printf("%s\n", error);
   else if (i == 0)
     {
-      FMOD_Sound_Release(w->sd.bonus1);
-      FMOD_System_Close(w->sd.system);
-      FMOD_System_Release(w->sd.system);
       mlx_destroy_window(w->d.mlx_ptr, w->d.win_ptr);
       my_printf("%s\n", error);
     }

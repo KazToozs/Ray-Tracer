@@ -5,7 +5,7 @@
 ## Login   <belfio_u@epitech.net>
 ## 
 ## Started on  Sun May 31 01:53:15 2015 ugo belfiore
-## Last update Fri Jun  5 16:18:26 2015 ugo belfiore
+## Last update Fri Jun  5 16:44:25 2015 ugo belfiore
 ##
 
 SRC     =       ./src/main.c			\
@@ -16,7 +16,6 @@ SRC     =       ./src/main.c			\
 		./src/get_next_line.c		\
 		./src/my_obj_list.c		\
 		./src/my_realloc.c		\
-		./src/sound.c			\
 		./src/evenement.c		\
 		./src/evenement_keyframe.c	\
 		./src/thread_func.c		\
@@ -40,6 +39,7 @@ SRC     =       ./src/main.c			\
 		./src/pop_filter.c		\
 		./src/get_color.c		\
 		./src/negativ.c			\
+		./src/calc.c			\
 
 OBJ     =       $(SRC:.c=.o)
 
@@ -54,7 +54,7 @@ CC      =       clang
 CFLAGS  +=      -W -Wall -Wextra -Ofast
 CFLAGS	+=	-I./include
 
-LDFLAGS	=	$(LIB) $(LIBMINI) -L/usr/lib64/X11 -lXext -lX11 -lm ./lib/libson.so -lpthread
+LDFLAGS	=	$(LIB) $(LIBMINI) -L/usr/lib64/X11 -lXext -lX11 -lm -lpthread
 
 all: $(NAME)
 
