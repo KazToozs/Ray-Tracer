@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 21 16:01:36 2014 ugo belfiore
-** Last update Thu Nov  6 20:39:00 2014 ugo belfiore
+** Last update Fri Jun  5 18:50:21 2015 msa_m
 */
 
 #include <stdlib.h>
@@ -27,7 +27,7 @@ char	*nega(int neg, char* tab, int c)
 int	division(int nbr, int div)
 {
   int	c;
-  
+
   c = 0;
   while (nbr/div >= 1)
     {

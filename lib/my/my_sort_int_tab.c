@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Sun Oct  5 14:32:21 2014 ugo belfiore
-** Last update Thu Nov  6 19:36:37 2014 ugo belfiore
+** Last update Fri Jun  5 18:55:34 2015 msa_m
 */
 
 void	my_sort_int_tab(int *tab, int size)
@@ -21,7 +21,7 @@ void	my_sort_int_tab(int *tab, int size)
       again = 1;
       while (i < size)
 	{
-	  if (tab[i] > tab[i + 1]) 
+	  if (tab[i] > tab[i + 1])
 	    {
 	      again = 0;
 	      my_swap(&tab[i], &tab[i + 1]);

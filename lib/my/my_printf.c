@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Wed Nov 12 16:27:21 2014 ugo belfiore
-** Last update Mon Nov 24 08:27:50 2014 ugo belfiore
+** Last update Fri Jun  5 18:56:15 2015 msa_m
 */
 
 #include <stdarg.h>
@@ -19,7 +19,7 @@ int	my_printf2(va_list ap, const char *format, int i, int cmp)
   cmp += (format[i] == '%') ? my_putchar_return('%') : 0;
   cmp += (format[i] == 'c') ? my_putchar_return(va_arg(ap, int)) : 0;
   cmp += (format[i] == 's') ? my_putstr(va_arg(ap, char *)) : 0;
-  cmp += (format[i] == 'd' || format[i] == 'i') ? 
+  cmp += (format[i] == 'd' || format[i] == 'i') ?
     my_putnbr_base_return(va_arg(ap, int), "0123456789"): 0;
   if (format[i] == 'l' && format[i + 1] == 'd')
     {
@@ -28,7 +28,7 @@ int	my_printf2(va_list ap, const char *format, int i, int cmp)
       i++;
     }
   cmp += (format[i] == 'b') ? my_putnbr_base_return(va_arg(ap, int), "01") : 0;
-  cmp += (format[i] == 'x' || format[i] == 'X') ? 
+  cmp += (format[i] == 'x' || format[i] == 'X') ?
     my_putnbr_base_return(va_arg(ap, int), "0123456789ABCDEF"): 0;
   cmp += (format[i] == 'u') ? my_put_nbr_uns(va_arg(ap, unsigned int)) : 0;
   cmp += (format[i] == 'o') ?
@@ -62,7 +62,7 @@ int		my_printf(const char *format, ...)
   cmp = 0;
   va_start(ap, format);
   while (format[i] != '\0')
-    {      
+    {
       if (format[i] == '%')
       	{
       	  c++;
