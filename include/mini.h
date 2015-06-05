@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 28 09:26:37 2014 ugo belfiore
-** Last update Fri Jun  5 16:47:31 2015 ugo belfiore
+** Last update Fri Jun  5 17:48:06 2015 ugo belfiore
 */
 
 #ifndef MINI_H_
@@ -75,6 +75,8 @@
 #define KEY_L 108
 #define KEY_W 119
 #define MLX mlx_put_image_to_window
+#define WORD_1 !w->fi.tab[1] || !w->fi.tab[2] || !w->fi.tab[3] || !w->fi.tab[4]
+#define WORD_2 !w->fi.tab[5] || !w->fi.tab[6] || !w->fi.tab[7] || !w->fi.tab[8]
 
 /*
 ** structure image
@@ -346,6 +348,12 @@ void	aff_pix_img_four(t_wild *w, int x, int y, char *img);
 ** fonction rt parsing
 */
 
+int	match(char *s1, char *s2);
+void	line_light(t_wild *w);
+void	line_plan(t_wild *w);
+void	line_sphere(t_wild *w);
+void	line_cyl(t_wild *w);
+void	line_cone(t_wild *w);
 void	my_parsing_rt(t_wild *w);
 void	plan_print(t_plan *tmp_pl, FILE *fd);
 void	sphere_print(t_sph *tmp_s, FILE *fd);
@@ -375,6 +383,9 @@ void	reflected(t_st *s);
 ***************** Proto parsing **************
 */
 
+void	remp_pos(t_pos *p, t_pos base);
+void	remp_x(t_x *x, t_x base);
+void	remp_rot(t_rot *r, t_rot base);
 t_sph   *my_put_sph_list(t_sph *list, t_sph remp);
 t_cone  *my_put_cone_list(t_cone *list, t_cone remp);
 t_cyl   *my_put_cyl_list(t_cyl *list, t_cyl remp);

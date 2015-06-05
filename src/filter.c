@@ -5,12 +5,12 @@
 ** Login   <fernan_s@epitech.net>
 ** 
 ** Started on  Mon Jun  1 09:51:51 2015 fernan_s
-** Last update Fri Jun  5 14:04:25 2015 fernan_s
+** Last update Fri Jun  5 17:14:27 2015 ugo belfiore
 */
 
 #include "mini.h"
 
-t_filter func_filter[] =
+t_filter	func_filter[] =
   {
     normal_f,
     negativ_f,
@@ -45,7 +45,6 @@ void	grey_level(int x, int y, t_wild *s)
   s->d.bigData_f[addr + 2] = (grey > 254) ? 255 : grey;
 }
 
-
 void	wb_filter(int x, int y, t_wild *s)
 {
   int	grey;
@@ -60,8 +59,7 @@ void	wb_filter(int x, int y, t_wild *s)
   s->d.bigData_f[addr + 2] = (grey > 128) ? 255 : 0;
 }
 
-
-void		sepia(int x, int y, t_wild *s)
+void	sepia(int x, int y, t_wild *s)
 {
   int	grey;
   int	addr;
@@ -86,9 +84,7 @@ void	apply_filter(t_wild *s)
     {
       y = 0;
       while (y < s->d.y_max)
-	{
-	  func_filter[s->d.filter](x, y++, s);
-	}
+	func_filter[s->d.filter](x, y++, s);
       x++;
     }
 }

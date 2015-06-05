@@ -5,14 +5,13 @@
 ## Login   <belfio_u@epitech.net>
 ## 
 ## Started on  Sun May 31 01:53:15 2015 ugo belfiore
-## Last update Fri Jun  5 16:44:25 2015 ugo belfiore
+## Last update Fri Jun  5 17:49:40 2015 ugo belfiore
 ##
 
 SRC     =       ./src/main.c			\
 		./src/my_error.c		\
 		./src/my_parsing_rt.c		\
 		./src/my_str_to_wordtab_rt.c	\
-		./src/my_show_wordtab.c		\
 		./src/get_next_line.c		\
 		./src/my_obj_list.c		\
 		./src/my_realloc.c		\
@@ -40,6 +39,9 @@ SRC     =       ./src/main.c			\
 		./src/get_color.c		\
 		./src/negativ.c			\
 		./src/calc.c			\
+		./src/my_obj_pos.c		\
+		./src/my_obj_len.c		\
+		./src/my_parsing_obj.c		\
 
 OBJ     =       $(SRC:.c=.o)
 

@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon May 18 12:07:41 2015 ugo belfiore
-** Last update Thu Jun  4 13:41:55 2015 msa_m
+** Last update Fri Jun  5 17:23:47 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -71,12 +71,6 @@ int		my_change_color_bis(t_st *s)
 	}
       tmp = tmp->next;
     }
-  /* ref = save & 0xFF; */
-  /* r = r * (1.f - s->x.ref) + (s->x.ref * ref); */
-  /* ref = ((save >> 8) & 0xFF); */
-  /* g = g * (1.f - s->x.ref) + (s->x.ref * ref); */
-  /* ref = ((save >> 16) & 0xFF); */
-  /* b = b * (1.f - s->x.ref) + (s->x.ref * (ref)); */
   if (r > 255)
     r = 255;
   if (g > 255)

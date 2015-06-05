@@ -5,10 +5,30 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon May 18 14:04:11 2015 ugo belfiore
-** Last update Fri Jun  5 16:07:50 2015 ugo belfiore
+** Last update Fri Jun  5 17:21:09 2015 ugo belfiore
 */
 
 #include "mini.h"
+
+static void	calculate_n_obj(t_st *s)
+{
+  if (s->x.t == CYLINDER)
+    {
+      rotate(&s->x.o.rot, &s->n, NULL, 2);
+      s->n.vx = s->x.c.p.x - s->x.o.p.x;
+      s->n.vy = s->x.c.p.y - s->x.o.p.y;
+      s->n.vz = 0;
+      rotate_inv(&s->x.o.rot, &s->n, NULL, 2);
+    }
+  if (s->x.t == CONE)
+    {
+      rotate(&s->x.o.rot, &s->n, NULL, 2);
+      s->n.vx = s->x.c.p.x - s->x.o.p.x;
+      s->n.vy = s->x.c.p.y - s->x.o.p.y;
+      s->n.vz = 0 - (s->x.c.p.z - s->x.o.p.z);
+      rotate_inv(&s->x.o.rot, &s->n, NULL, 2);
+    }
+}
 
 void	calculate_n(t_st *s)
 {
@@ -20,30 +40,13 @@ void	calculate_n(t_st *s)
       s->n.vz = s->x.c.p.z - s->x.o.p.z;
       rotate_inv(&s->x.o.rot, &s->n, NULL, 2);
     }
-  else if (s->x.t == PLANE)
+  if (s->x.t == PLANE)
     {
-      //rotate(&s->x.o.rot, &s->n, NULL, 2);
       s->n.vx = 0;
       s->n.vy = 0;
       s->n.vz = 100;
-      //rotate_inv(&s->x.o.rot, &s->n, NULL, 2);
     }
-  else if (s->x.t == CYLINDER)
-    {
-      rotate(&s->x.o.rot, &s->n, NULL, 2);
-      s->n.vx = s->x.c.p.x - s->x.o.p.x;
-      s->n.vy = s->x.c.p.y - s->x.o.p.y;
-      s->n.vz = 0;
-      rotate_inv(&s->x.o.rot, &s->n, NULL, 2);
-    }
-  else if (s->x.t == CONE)
-    {
-      rotate(&s->x.o.rot, &s->n, NULL, 2);
-      s->n.vx = s->x.c.p.x - s->x.o.p.x;
-      s->n.vy = s->x.c.p.y - s->x.o.p.y;
-      s->n.vz = 0 - (s->x.c.p.z - s->x.o.p.z);
-      rotate_inv(&s->x.o.rot, &s->n, NULL, 2);
-    }
+  calculate_n_obj(s);
 }
 
 void            light(t_st *s, t_cam *l)

@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Mon Nov  3 10:09:14 2014 cristopher toozs-hobson
-** Last update Tue May 26 20:32:11 2015 pallua_j
+** Last update Fri Jun  5 17:51:57 2015 ugo belfiore
 */
 
 #include "mini.h"
@@ -63,7 +63,7 @@ char		**my_str_tab(char *st)
   size = 0;
   words = count_words(st);
   if ((tab = malloc(sizeof(char *) * (words + 1))) == NULL)
-    exit(1);
+    exit(EXIT_FAILURE);
   while (st[i] && words > 0)
     {
       if ((st[i] >= 'a' && st[i] <= 'z') || (st[i] >= 'A' && st[i] <= 'Z')
