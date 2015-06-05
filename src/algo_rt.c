@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Sun Feb  8 16:18:36 2015 ugo belfiore
-** Last update Fri Jun  5 13:20:23 2015 cristopher toozs-hobson
+** Last update Fri Jun  5 13:43:40 2015 fernan_s
 */
 
 #include "mini.h"
@@ -152,7 +152,7 @@ void	algo_rt(t_wild *w, t_st *s, int flew, int flew2)
 
   i = flew;
   j = flew2;
-  s->ms = 1;
+  s->ms = 32;
   while (i < w->d.x_max)
     {
       while (j < w->d.y_max)

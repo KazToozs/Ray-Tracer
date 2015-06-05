@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon Feb  2 18:47:55 2015 ugo belfiore
-** Last update Tue Jun  2 10:32:52 2015 msa_m
+** Last update Fri Jun  5 13:42:21 2015 fernan_s
 */
 
 #include "mini.h"
@@ -40,7 +40,7 @@ int		manage_key(int keycode, void *param)
     w->s[t].type = 0;
   if (keycode == KEY_F)
     {
-      w->d.filter = (w->d.filter + 1) % 4;
+      w->d.filter = (w->d.filter + 1) % 7;
       apply_filter(w);
     }
   if (keycode == KEY_ESC)		// echap

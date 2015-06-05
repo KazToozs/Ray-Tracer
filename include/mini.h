@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 28 09:26:37 2014 ugo belfiore
-** Last update Fri Jun  5 13:20:38 2015 cristopher toozs-hobson
+** Last update Fri Jun  5 13:40:15 2015 fernan_s
 */
 
 #ifndef MINI_H_
@@ -284,6 +284,23 @@ typedef struct	s_wild
   t_piic	pi;
   pthread_t     threads[5];
 }		t_wild;
+
+/*                                                                            
+** grey value (get_grey.c)                                                    
+*/
+
+unsigned int    get_color(int, t_wild *);
+unsigned int    color_avarage(int, int, t_wild *);
+
+/*                                                                            
+** filter pop art (pop_filter);                                               
+*/
+
+void    ul_pop(unsigned int, int, int, t_wild *);
+void    ur_pop(unsigned int, int, int, t_wild *);
+void    dl_pop(unsigned int, int, int, t_wild *);
+void    dr_pop(unsigned int, int, int, t_wild *);
+void    pop_filter(int, int, t_wild *);
 
 /*
 ** filter gestion (filter.c)
