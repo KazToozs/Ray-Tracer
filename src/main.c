@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Fri Dec  5 17:23:50 2014 ugo belfiore
-** Last update Fri Jun  5 16:37:02 2015 ugo belfiore
+** Last update Fri Jun  5 18:34:25 2015 msa_m
 */
 
 #include "mini.h"
@@ -27,7 +27,6 @@ static void	init_glo(t_wild *w)
       w->s[t].ms = 1;
     }
   w->d.timer = 0;
-  w->d.tabi = 0;
   while (++i < 256)
     w->d.f[i] = 0;
   w->d.filter = 0;
