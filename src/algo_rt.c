@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Sun Feb  8 16:18:36 2015 ugo belfiore
-** Last update Fri Jun  5 16:46:01 2015 ugo belfiore
+** Last update Fri Jun  5 17:49:29 2015 pallua_j
 */
 
 #include "mini.h"
@@ -16,46 +16,17 @@
 ** petit à petit la scène
 */
 
-void		anti_aliasing(t_st *s, int x, int y, t_wild *w)
+void		my_ave(t_st *s, float r[s->ms], float g[s->ms], float b[s->ms])
 {
-  double	part;
-  int		nbx;
-  int		nby;
   float		r_f;
   float		g_f;
   float		b_f;
   int		nb;
-  float		r[s->ms];
-  float		g[s->ms];
-  float		b[s->ms];
-  float		aa[s->ms];
 
-  nbx = -1;
-  part = 1 / (sqrt(s->ms) + 1);
+  nb = -1;
   r_f = 0;
   g_f = 0;
   b_f = 0;
-  nb = -1;
-  while (++nbx < sqrt(s->ms))
-    {
-      nby = -1;
-      while (++nby < sqrt(s->ms))
-	{
-	  s->ref = 0;
-	  s->nb_spots = 0;
-	  s->colo = COLOR_BLACK;
-	  s->x.k = 10000000;
-	  s->c.v.vx = 1000;
-	  s->c.v.vy = (w->d.x_max / 2) - (x + (part * (nbx + 1)));
-	  s->c.v.vz = (w->d.y_max / 2) - (y + (part * (nby + 1)));
-	  rotate(&s->c.rot, &s->c.v, &s->c.p, 2);
-	  aa[++nb] = calc(s);
-	  r[nb] = (int)aa[nb] & 0xFF;
-	  g[nb] = ((int)aa[nb] >> 8) & 0xFF;
-	  b[nb] = ((int)aa[nb] >> 16) & 0xFF;
-	}
-    }
-  nb = -1;
   while (++nb < s->ms)
     {
       r_f += r[nb] / s->ms;
@@ -69,6 +40,45 @@ void		anti_aliasing(t_st *s, int x, int y, t_wild *w)
   if (b_f > 255)
     b_f = 255;
   s->colo = ((int)r_f) + ((int)g_f * 0x100) + ((int)b_f * 0x10000);
+}
+
+void		init_struct_ray(t_st *s)
+{
+  s->ref = 0;
+  s->nb_spots = 0;
+  s->colo = COLOR_BLACK;
+  s->x.k = 10000000;
+  s->c.v.vx = 1000;
+  rotate(&s->c.rot, &s->c.v, &s->c.p, 2);
+}
+
+void		anti_aliasing(t_st *s, int x, int y, t_wild *w)
+{
+  double	part;
+  int		nbx;
+  int		nby;
+  int		nb;
+  float		c[3][s->ms];
+  float		aa[s->ms];
+
+  nbx = -1;
+  part = 1 / (sqrt(s->ms) + 1);
+  nb = -1;
+  while (++nbx < sqrt(s->ms))
+    {
+      nby = -1;
+      while (++nby < sqrt(s->ms))
+	{
+	  s->c.v.vy = (w->d.x_max / 2) - (x + (part * (nbx + 1)));
+	  s->c.v.vz = (w->d.y_max / 2) - (y + (part * (nby + 1)));
+	  init_struct_ray(s);
+	  aa[++nb] = calc(s);
+	  c[0][nb] = (int)aa[nb] & 0xFF;
+	  c[1][nb] = ((int)aa[nb] >> 8) & 0xFF;
+	  c[2][nb] = ((int)aa[nb] >> 16) & 0xFF;
+	}
+    }
+  my_ave(s, c[0], c[1], c[2]);
 }
 
 void	algo_rt(t_wild *w, t_st *s, int flew, int flew2)

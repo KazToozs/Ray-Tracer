@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon May 18 12:07:41 2015 ugo belfiore
-** Last update Fri Jun  5 17:23:47 2015 ugo belfiore
+** Last update Fri Jun  5 17:54:20 2015 pallua_j
 */
 
 #include "mini.h"
@@ -50,32 +50,27 @@ void		my_change_color(t_st *s, double cosin, t_cam *l)
 int		my_change_color_bis(t_st *s)
 {
   t_cam		*tmp;
-  int		r;
-  int		g;
-  int		b;
-  int		ref;
-  int		save;
+  int		c[3];
 
-  save = s->color_ref;
   tmp = s->l;
-  r = 0;
-  g = 0;
-  b = 0;
+  c[0] = 0;
+  c[1] = 0;
+  c[2] = 0;
   while (tmp != NULL)
     {
       if (tmp->type == 1)
 	{
-	  r += tmp->r;
-	  g += tmp->g;
-	  b += tmp->b;
+	  c[0] += tmp->r;
+	  c[1] += tmp->g;
+	  c[2] += tmp->b;
 	}
       tmp = tmp->next;
     }
-  if (r > 255)
-    r = 255;
-  if (g > 255)
-    g = 255;
-  if (b > 255)
-    b = 255;
-  return ((r) + (g * 0x100) + (b * 0x10000));
+  if (c[0] > 255)
+    c[0] = 255;
+  if (c[1] > 255)
+    c[1] = 255;
+  if (c[2] > 255)
+    c[2] = 255;
+  return ((c[0]) + (c[1] * 0x100) + (c[2] * 0x10000));
 }

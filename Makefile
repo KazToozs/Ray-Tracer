@@ -5,7 +5,7 @@
 ## Login   <belfio_u@epitech.net>
 ## 
 ## Started on  Sun May 31 01:53:15 2015 ugo belfiore
-## Last update Fri Jun  5 17:49:40 2015 ugo belfiore
+## Last update Fri Jun  5 18:00:01 2015 pallua_j
 ##
 
 SRC     =       ./src/main.c			\
@@ -51,7 +51,7 @@ LIB	=	-L./lib/my -lmy
 
 LIBMINI	=	-L./lib/minilibx -lmlx
 
-CC      =       clang
+CC      =       gcc
 
 CFLAGS  +=      -W -Wall -Wextra -Ofast
 CFLAGS	+=	-I./include
