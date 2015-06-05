@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Tue Oct 28 09:26:37 2014 ugo belfiore
-** Last update Thu Jun  4 18:11:49 2015 pallua_j
+** Last update Fri Jun  5 13:20:38 2015 cristopher toozs-hobson
 */
 
 #ifndef MINI_H_
@@ -161,9 +161,8 @@ typedef struct  s_x
   int           t;
   double	coef;
   double	ref;
-  double	x;
-  double	y;
-  double	z;
+  t_pos		p;
+  t_rot		rot;
 }               t_x;
 
 typedef struct  s_cam
@@ -228,7 +227,7 @@ typedef struct  s_cyl
 typedef struct  s_int
 {
   t_cam         c;
-  t_pos		o;
+  t_cam		o;
   double        k;
   double	kk;
   int           t;

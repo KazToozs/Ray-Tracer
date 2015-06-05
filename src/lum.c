@@ -5,45 +5,44 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Mon May 18 14:04:11 2015 ugo belfiore
-** Last update Thu Jun  4 17:25:29 2015 pallua_j
+** Last update Fri Jun  5 11:56:59 2015 cristopher toozs-hobson
 */
 
 #include "mini.h"
 
 void	calculate_n(t_st *s)
 {
-
   if (s->x.t == SPHERE)
     {
-      rotate(&s->s->rot, &s->n, NULL, 2);
-      s->n.vx = s->x.c.p.x - s->x.o.x;
-      s->n.vy = s->x.c.p.y - s->x.o.y;
-      s->n.vz = s->x.c.p.z - s->x.o.z;
-      rotate_inv(&s->s->rot, &s->n, NULL, 2);
+      rotate(&s->x.o.rot, &s->n, NULL, 2);
+      s->n.vx = s->x.c.p.x - s->x.o.p.x;
+      s->n.vy = s->x.c.p.y - s->x.o.p.y;
+      s->n.vz = s->x.c.p.z - s->x.o.p.z;
+      rotate_inv(&s->x.o.rot, &s->n, NULL, 2);
     }
   else if (s->x.t == PLANE)
     {
-      rotate(&s->pl->rot, &s->n, NULL, 2);
+      rotate(&s->x.o.rot, &s->n, NULL, 2);
       s->n.vx = 0;
       s->n.vy = 0;
       s->n.vz = 100;
-      rotate_inv(&s->pl->rot, &s->n, NULL, 2);
+      rotate_inv(&s->x.o.rot, &s->n, NULL, 2);
     }
   else if (s->x.t == CYLINDER)
     {
-      rotate(&s->cy->rot, &s->n, NULL, 2);
-      s->n.vx = s->x.c.p.x - s->x.o.x;
-      s->n.vy = s->x.c.p.y - s->x.o.y;
+      rotate(&s->x.o.rot, &s->n, NULL, 2);
+      s->n.vx = s->x.c.p.x - s->x.o.p.x;
+      s->n.vy = s->x.c.p.y - s->x.o.p.y;
       s->n.vz = 0;
-      rotate_inv(&s->cy->rot, &s->n, NULL, 2);
+      rotate_inv(&s->x.o.rot, &s->n, NULL, 2);
     }
   else if (s->x.t == CONE)
     {
-      rotate(&s->co->rot, &s->n, NULL, 2);
-      s->n.vx = s->x.c.p.x - s->x.o.x;
-      s->n.vy = s->x.c.p.y - s->x.o.y;
-      s->n.vz = 0 - (s->x.c.p.z - s->x.o.z);
-      rotate_inv(&s->co->rot, &s->n, NULL, 2);
+      rotate(&s->x.o.rot, &s->n, NULL, 2);
+      s->n.vx = s->x.c.p.x - s->x.o.p.x;
+      s->n.vy = s->x.c.p.y - s->x.o.p.y;
+      s->n.vz = 0 - (s->x.c.p.z - s->x.o.p.z);
+      rotate_inv(&s->x.o.rot, &s->n, NULL, 2);
     }
 }
 

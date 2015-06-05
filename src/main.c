@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Fri Dec  5 17:23:50 2014 ugo belfiore
-** Last update Mon Jun  1 11:34:25 2015 fernan_s
+** Last update Fri Jun  5 12:55:14 2015 cristopher toozs-hobson
 */
 
 #include "mini.h"
@@ -22,7 +22,10 @@ static void	init_glo(t_wild *w)
   i = -1;
   t = -1;
   while (++t < 5)
-    w->s[t].type = 0;
+    {
+      w->s[t].type = 0;
+      w->s[t].ms = 1;
+    }
   w->d.timer = 0;
   while (++i < 256)
     w->d.f[i] = 0;

@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Sun Feb  8 16:18:36 2015 ugo belfiore
-** Last update Thu Jun  4 19:46:05 2015 pallua_j
+** Last update Fri Jun  5 13:20:23 2015 cristopher toozs-hobson
 */
 
 #include "mini.h"
@@ -24,7 +24,7 @@ int		multi_light(t_st *s)
   s->x.c.p.y = s->c.p.y + (s->x.k * s->c.v.vy);
   s->x.c.p.z = s->c.p.z + (s->x.k * s->c.v.vz);
   calculate_n(s);
-  //  reflected(s);
+  //reflected(s);
   tmp_l = s->l;
   while (tmp_l != NULL)
     {
@@ -119,10 +119,10 @@ void		anti_aliasing(t_st *s, int x, int y, t_wild *w)
 	  s->nb_spots = 0;
 	  s->colo = COLOR_BLACK;
 	  s->x.k = 10000000;
-	  rotate(&s->c.rot, &s->c.v, &s->c.p, 2);
 	  s->c.v.vx = 1000;
 	  s->c.v.vy = (w->d.x_max / 2) - (x + (part * (nbx + 1)));
 	  s->c.v.vz = (w->d.y_max / 2) - (y + (part * (nby + 1)));
+	  rotate(&s->c.rot, &s->c.v, &s->c.p, 2);
 	  aa[++nb] = calc(s);
 	  r[nb] = (int)aa[nb] & 0xFF;
 	  g[nb] = ((int)aa[nb] >> 8) & 0xFF;
@@ -152,7 +152,7 @@ void	algo_rt(t_wild *w, t_st *s, int flew, int flew2)
 
   i = flew;
   j = flew2;
-  s->ms = 16;
+  s->ms = 1;
   while (i < w->d.x_max)
     {
       while (j < w->d.y_max)

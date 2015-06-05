@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Sun Mar  8 20:24:43 2015 cristopher toozs-hobson
-** Last update Tue Jun  2 13:22:40 2015 pallua_j
+** Last update Fri Jun  5 13:29:34 2015 cristopher toozs-hobson
 */
 
 #include "mini.h"
@@ -20,9 +20,12 @@ static void	check(t_st *s, t_x *x)
       s->x.coef = x->coef;
       s->x.ref = x->ref;
       s->colo = x->color;
-      s->x.o.x = x->x;
-      s->x.o.y = x->y;
-      s->x.o.z = x->z;
+      s->x.o.p.x = x->p.x;
+      s->x.o.p.y = x->p.y;
+      s->x.o.p.z = x->p.z;
+      s->x.o.rot.x = x->rot.x;
+      s->x.o.rot.y = x->rot.y;
+      s->x.o.rot.z = x->rot.z;
     }
   else if (x->x2 > 0.0000001 && x->x2 < s->x.k &&
 	   (x->x2 < x->x1 || x->x1 < 0.0000001))
@@ -31,9 +34,12 @@ static void	check(t_st *s, t_x *x)
       s->x.k = x->x2;
       s->x.coef = x->coef;
       s->colo = x->color;
-      s->x.o.x = x->x;
-      s->x.o.y = x->y;
-      s->x.o.z = x->z;
+      s->x.o.p.x = x->p.x;
+      s->x.o.p.y = x->p.y;
+      s->x.o.p.z = x->p.z;
+      s->x.o.rot.x = x->rot.x;
+      s->x.o.rot.y = x->rot.y;
+      s->x.o.rot.z = x->rot.z;
       s->x.ref = x->ref;
     }
 }
@@ -44,6 +50,9 @@ static void	check_plane(t_st *s, t_plan *pl)
     {
       s->x.t = PLANE;
       s->x.k = pl->k;
+      s->x.o.rot.x = pl->rot.x;
+      s->x.o.rot.y = pl->rot.y;
+      s->x.o.rot.z = pl->rot.z;
       s->x.ref = pl->ref;
       s->x.coef = pl->coef;
       s->colo = pl->color;
